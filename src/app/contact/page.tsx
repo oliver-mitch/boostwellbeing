@@ -78,7 +78,7 @@ export default function BoostWellbeingContactPage() {
       {/* Navigation */}
       <nav className="container-turtle py-6">
         <div className="flex items-center justify-between">
-          <Link href="/boostwellbeing" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center">
               <Heart className="w-6 h-6 text-white" />
             </div>
@@ -87,16 +87,16 @@ export default function BoostWellbeingContactPage() {
             </span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
-            <Link href="/boostwellbeing/group-health" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
+            <Link href="/group-health" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
               Group Health
             </Link>
-            <Link href="/boostwellbeing/survey" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
+            <Link href="/survey" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
               Wellbeing Survey
             </Link>
-            <Link href="/boostwellbeing/contact" className="text-blue-600 font-semibold">
+            <Link href="/contact" className="text-blue-600 font-semibold">
               Contact
             </Link>
-            <Link href="/boostwellbeing" className="text-slate-700 hover:text-blue-600 transition-colors">
+            <Link href="/" className="text-slate-700 hover:text-blue-600 transition-colors">
               ← Back Home
             </Link>
           </div>
@@ -423,7 +423,7 @@ export default function BoostWellbeingContactPage() {
                 Get insights into your team's wellbeing first
               </p>
               <Link
-                href="/boostwellbeing/survey"
+                href="/survey"
                 className="bg-white text-blue-600 px-6 py-2.5 rounded-lg font-semibold inline-flex items-center gap-2 hover:shadow-lg transition-all"
               >
                 Take Wellbeing Survey

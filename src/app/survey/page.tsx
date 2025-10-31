@@ -29,7 +29,7 @@ export default function BoostWellbeingSurveyPage() {
       {/* Navigation */}
       <nav className="container-turtle py-6">
         <div className="flex items-center justify-between">
-          <Link href="/boostwellbeing" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center">
               <Heart className="w-6 h-6 text-white" />
             </div>
@@ -38,16 +38,16 @@ export default function BoostWellbeingSurveyPage() {
             </span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
-            <Link href="/boostwellbeing/group-health" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
+            <Link href="/group-health" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
               Group Health
             </Link>
-            <Link href="/boostwellbeing/survey" className="text-blue-600 font-semibold">
+            <Link href="/survey" className="text-blue-600 font-semibold">
               Wellbeing Survey
             </Link>
-            <Link href="/boostwellbeing/contact" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
+            <Link href="/contact" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
               Contact
             </Link>
-            <Link href="/boostwellbeing" className="text-slate-700 hover:text-blue-600 transition-colors">
+            <Link href="/" className="text-slate-700 hover:text-blue-600 transition-colors">
               ← Back Home
             </Link>
           </div>
@@ -333,7 +333,7 @@ export default function BoostWellbeingSurveyPage() {
             Explore how Southern Cross Group Health Insurance can support your team's health and wellbeing
           </p>
           <Link
-            href="/boostwellbeing/group-health"
+            href="/group-health"
             className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center gap-3 hover:shadow-xl transition-all"
           >
             Learn About Group Health

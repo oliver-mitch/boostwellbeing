@@ -16,7 +16,7 @@ export default function BoostWellbeingGroupHealthPage() {
       {/* Navigation */}
       <nav className="container-turtle py-6">
         <div className="flex items-center justify-between">
-          <Link href="/boostwellbeing" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center">
               <Heart className="w-6 h-6 text-white" />
             </div>
@@ -25,16 +25,16 @@ export default function BoostWellbeingGroupHealthPage() {
             </span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
-            <Link href="/boostwellbeing/group-health" className="text-blue-600 font-semibold">
+            <Link href="/group-health" className="text-blue-600 font-semibold">
               Group Health
             </Link>
-            <Link href="/boostwellbeing/survey" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
+            <Link href="/survey" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
               Wellbeing Survey
             </Link>
-            <Link href="/boostwellbeing/contact" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
+            <Link href="/contact" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
               Contact
             </Link>
-            <Link href="/boostwellbeing" className="text-slate-700 hover:text-blue-600 transition-colors">
+            <Link href="/" className="text-slate-700 hover:text-blue-600 transition-colors">
               ← Back Home
             </Link>
           </div>
@@ -347,7 +347,7 @@ export default function BoostWellbeingGroupHealthPage() {
             reduce turnover, and build a healthier, more productive workforce.
           </p>
           <Link
-            href="/boostwellbeing/contact"
+            href="/contact"
             className="bg-gradient-to-r from-blue-600 to-green-600 text-white inline-flex items-center gap-2 px-8 py-4 text-lg mb-8 rounded-xl font-semibold hover:shadow-lg transition-all"
           >
             <Mail className="w-5 h-5" />
