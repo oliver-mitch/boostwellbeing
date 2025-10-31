@@ -4,13 +4,13 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'TurtleMoney - NZ\'s Smartest Financial Comparison',
-  description: 'Compare insurance and home loans in New Zealand. Real-time rates, AI recommendations, and personalized insights for smarter financial decisions.',
-  keywords: ['insurance comparison', 'home loans', 'New Zealand', 'financial advice', 'TurtleMoney'],
-  authors: [{ name: 'TurtleMoney' }],
+  title: 'BoostWellbeing - Transform Your Team\'s Health & Wellbeing',
+  description: 'Southern Cross group health insurance for NZ businesses. Comprehensive workplace wellbeing assessments and ROI-driven health solutions for HR managers and business owners.',
+  keywords: ['group health insurance', 'Southern Cross', 'workplace wellbeing', 'employee health', 'New Zealand', 'HR solutions', 'business health insurance'],
+  authors: [{ name: 'BoostWellbeing' }],
   openGraph: {
-    title: 'TurtleMoney - Smart Financial Comparison for Kiwis',
-    description: 'Better than LifeDirect or Squirrel. Real-time rates and AI-powered recommendations.',
+    title: 'BoostWellbeing - Group Health Insurance & Workplace Wellness',
+    description: 'Proven 2:1 ROI with Southern Cross group health insurance. Reduce sick days by 85% and boost productivity.',
     type: 'website',
     locale: 'en_NZ',
   },
