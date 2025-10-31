@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* TurtleMoney Brand Colors */
+  --color-primary: #1E8A72;       /* Trustworthy teal-green (turtle shell) */
+  --color-secondary: #FF9F40;     /* Warm orange (approachable) */
+  --color-accent: #4A6FA5;        /* Professional blue (trust) */
+  --color-success: #27AE60;       /* Green */
+  --color-warning: #F39C12;       /* Orange */
+  --color-error: #E74C3C;         /* Red */
+
+  /* Neutral palette */
+  --color-slate-50: #F8FAFC;
+  --color-slate-100: #F1F5F9;
+  --color-slate-200: #E2E8F0;
+  --color-slate-300: #CBD5E1;
+  --color-slate-400: #94A3B8;
+  --color-slate-500: #64748B;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1E293B;
+  --color-slate-900: #0F172A;
+}
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-slate-50 via-white to-slate-100 min-h-screen text-slate-900;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-slate-900;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Custom utility classes */
+  .container-turtle {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .gradient-turtle {
+    @apply bg-gradient-to-r from-turtle-green-500 to-brand-accent;
+  }
+
+  .gradient-turtle-text {
+    @apply bg-gradient-to-r from-turtle-green-500 to-brand-accent bg-clip-text text-transparent;
+  }
+
+  /* Card styles */
+  .card-turtle {
+    @apply bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg border border-slate-200/50 transition-all duration-300;
+  }
+
+  .card-turtle:hover {
+    @apply shadow-2xl;
+    border-color: rgba(30, 138, 114, 0.3);
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply px-6 py-3 bg-turtle-green-500 text-white font-semibold rounded-2xl hover:bg-turtle-green-600 transition-colors shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-turtle-orange-400 text-white font-semibold rounded-2xl hover:bg-turtle-orange-500 transition-colors shadow-lg;
+  }
+
+  .btn-accent {
+    @apply px-6 py-3 bg-brand-accent text-white font-semibold rounded-2xl hover:opacity-90 transition-colors shadow-lg;
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
