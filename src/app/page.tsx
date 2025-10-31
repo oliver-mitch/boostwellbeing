@@ -23,7 +23,7 @@ export default function BoostWellbeingHomePage() {
       {/* Navigation */}
       <nav className="container-turtle py-6">
         <div className="flex items-center justify-between">
-          <Link href="/boostwellbeing" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center">
               <Heart className="w-6 h-6 text-white" />
             </div>
@@ -32,16 +32,16 @@ export default function BoostWellbeingHomePage() {
             </span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
-            <Link href="/boostwellbeing/group-health" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
+            <Link href="/group-health" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
               Group Health
             </Link>
-            <Link href="/boostwellbeing/survey" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
+            <Link href="/survey" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
               Wellbeing Survey
             </Link>
-            <Link href="/boostwellbeing/contact" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
+            <Link href="/contact" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
               Contact
             </Link>
-            <Link href="/boostwellbeing/contact" className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-2.5 rounded-xl font-medium hover:shadow-lg transition-all">
+            <Link href="/contact" className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-2.5 rounded-xl font-medium hover:shadow-lg transition-all">
               Get a Quote
             </Link>
           </div>
@@ -74,14 +74,14 @@ export default function BoostWellbeingHomePage() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link
-              href="/boostwellbeing/survey"
+              href="/survey"
               className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center gap-3 hover:shadow-xl transition-all"
             >
               Take the Wellbeing Survey
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="/boostwellbeing/group-health"
+              href="/group-health"
               className="bg-white text-slate-700 border-2 border-slate-200 px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center gap-3 hover:border-blue-400 hover:text-blue-600 transition-all"
             >
               Explore Group Health
@@ -128,7 +128,7 @@ export default function BoostWellbeingHomePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <Link href="/boostwellbeing/survey" className="block group">
+              <Link href="/survey" className="block group">
                 <div className="relative card-turtle p-8 hover:shadow-2xl transition-all border-2 border-transparent group-hover:border-blue-400 h-full">
                   <div className="absolute top-4 right-4 bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">
                     FREE • 10 MINS
@@ -175,7 +175,7 @@ export default function BoostWellbeingHomePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <Link href="/boostwellbeing/group-health" className="block group">
+              <Link href="/group-health" className="block group">
                 <div className="relative card-turtle p-8 hover:shadow-2xl transition-all border-2 border-transparent group-hover:border-green-400 h-full">
                   <div className="absolute top-4 right-4 bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">
                     ROI: 2:1
@@ -340,14 +340,14 @@ export default function BoostWellbeingHomePage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/boostwellbeing/survey"
+              href="/survey"
               className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center gap-3 hover:shadow-xl transition-all"
             >
               Take Wellbeing Survey
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="/boostwellbeing/contact"
+              href="/contact"
               className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center gap-3 hover:bg-white/10 transition-all"
             >
               Request a Quote
