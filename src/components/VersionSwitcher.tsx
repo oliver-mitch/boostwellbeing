@@ -16,6 +16,7 @@ export default function VersionSwitcher() {
     if (pathname.startsWith('/v2c')) return 'v2c';
     if (pathname.startsWith('/v2d')) return 'v2d';
     if (pathname.startsWith('/v2e')) return 'v2e';
+    if (pathname.startsWith('/v2f')) return 'v2f';
     return null;
   };
 
@@ -31,7 +32,8 @@ export default function VersionSwitcher() {
     { id: 'v2b', name: 'Modern Minimal', color: 'bg-slate-600' },
     { id: 'v2c', name: 'Data-Driven', color: 'bg-emerald-600' },
     { id: 'v2d', name: 'Humanized Corporate', color: 'bg-gradient-to-r from-blue-500 to-green-500' },
-    { id: 'v2e', name: 'Bold & Dynamic', color: 'bg-gradient-to-r from-orange-500 to-pink-500' }
+    { id: 'v2e', name: 'Bold & Dynamic', color: 'bg-gradient-to-r from-orange-500 to-pink-500' },
+    { id: 'v2f', name: 'Video Background', color: 'bg-gradient-to-r from-purple-500 to-blue-500' }
   ];
 
   const currentVersionData = versions.find(v => v.id === currentVersion);

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Palette, Sparkles, BarChart3, Users, Zap } from 'lucide-react';
+import { ArrowRight, Palette, Sparkles, BarChart3, Users, Zap, Video } from 'lucide-react';
 
 export default function V2VersionSelector() {
   const versions = [
@@ -55,6 +55,16 @@ export default function V2VersionSelector() {
       textColor: 'text-orange-600',
       bgColor: 'bg-orange-50',
       features: ['Vibrant colors', 'Energetic', 'Bold typography', 'Eye-catching']
+    },
+    {
+      id: 'v2f',
+      name: 'Video Background',
+      description: 'Cinematic design with scroll-reactive video background and verified Southern Cross statistics',
+      icon: Video,
+      color: 'from-purple-500 to-blue-500',
+      textColor: 'text-purple-600',
+      bgColor: 'bg-purple-50',
+      features: ['Scroll-reactive video', 'Parallax effects', 'Verified stats', 'Cinematic feel']
     }
   ];
 
