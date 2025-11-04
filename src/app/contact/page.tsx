@@ -47,7 +47,6 @@ export default function BoostWellbeingContactPage() {
 
     // Simulate form submission (replace with actual API call)
     setTimeout(() => {
-      console.log('Form submitted:', formData);
       setStatus('success');
 
       // Reset form after success
