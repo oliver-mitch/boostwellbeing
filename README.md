@@ -28,3 +28,5 @@ NEXT_PUBLIC_API_URL=https://insureme-production.up.railway.app/api
 Auto-deploys to Vercel from main branch.
 
 Shares backend API with TurtleMoney.
+
+Last updated: November 10, 2025
