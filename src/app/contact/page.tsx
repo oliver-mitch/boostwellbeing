@@ -2,41 +2,25 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import {
-  Heart,
-  Mail,
-  Phone,
-  Building2,
-  CheckCircle,
-  Users,
-  Send,
-  MessageSquare,
-  User,
-  ArrowRight,
-  Shield,
-  Clock
-} from 'lucide-react';
+import { ArrowRight, Shield, CheckCircle, Building2, Mail, Phone, User, Users, MessageSquare, Send } from 'lucide-react';
 
 interface ContactFormData {
+  fullName: string;
   companyName: string;
-  contactName: string;
   email: string;
   phone: string;
   numberOfEmployees: string;
   message: string;
-  interest: 'group-health' | 'wellbeing' | 'both';
 }
 
-export default function BoostWellbeingContactPage() {
+export default function ContactPage() {
   const [formData, setFormData] = useState<ContactFormData>({
+    fullName: '',
     companyName: '',
-    contactName: '',
     email: '',
     phone: '',
     numberOfEmployees: '',
     message: '',
-    interest: 'both',
   });
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -53,13 +37,12 @@ export default function BoostWellbeingContactPage() {
       // Reset form after success
       setTimeout(() => {
         setFormData({
+          fullName: '',
           companyName: '',
-          contactName: '',
           email: '',
           phone: '',
           numberOfEmployees: '',
           message: '',
-          interest: 'both',
         });
         setStatus('idle');
       }, 3000);
@@ -74,78 +57,86 @@ export default function BoostWellbeingContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900">
       {/* Navigation */}
-      <nav className="container-turtle py-6">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center">
-              <Heart className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-              BoostWellbeing
-            </span>
-          </Link>
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="/group-health" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
-              Group Health
+      <nav className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-white/10">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center shadow-lg">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-2xl font-bold text-white">BoostWellbeing</span>
             </Link>
-            <Link href="/survey" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
-              Wellbeing Survey
-            </Link>
-            <Link href="/contact" className="text-blue-600 font-semibold">
-              Contact
-            </Link>
-            <Link href="/" className="text-slate-700 hover:text-blue-600 transition-colors">
-              ← Back Home
+
+            <Link
+              href="/"
+              className="text-white/80 hover:text-white transition-colors font-medium"
+            >
+              ← Back to Home
             </Link>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <div className="container-turtle py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium mb-6">
-            <Building2 className="w-4 h-4" />
-            Get Your Free Business Quote
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-4">
-            Let's Talk About Your Team's Wellbeing
-          </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
-            Schedule a free consultation with our HR benefits specialist to discuss how
-            Southern Cross Group Health Insurance can support your business.
-          </p>
-        </motion.div>
+      <section className="relative py-20">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-8 border border-white/20 text-white">
+              <Building2 className="w-4 h-4" />
+              Get Your Free Consultation
+            </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <div className="card-turtle p-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">Request a Quote</h2>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+              Let's Build a{' '}
+              <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+                Healthier Team Together
+              </span>
+            </h1>
+
+            <p className="text-xl text-white/90 leading-relaxed">
+              Schedule a free consultation to discover how Southern Cross workplace health insurance can transform your business
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Contact Form */}
+            <div className="bg-white rounded-2xl shadow-2xl p-8">
+              <h2 className="text-3xl font-bold text-slate-900 mb-6">Request Your Free Consultation</h2>
 
               {status === 'success' ? (
                 <div className="text-center py-12">
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle className="w-8 h-8 text-green-600" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Thank You!</h3>
-                  <p className="text-slate-600">
-                    We've received your request and will be in touch within 24 hours.
+                  <h3 className="text-2xl font-bold text-slate-900 mb-3">Thank You!</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    We'll contact you within 24 hours to schedule your consultation
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Full Name */}
+                  <div>
+                    <label htmlFor="fullName" className="block text-sm font-medium text-slate-700 mb-2">
+                      Full Name *
+                    </label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                      <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        required
+                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                        placeholder="John Smith"
+                      />
+                    </div>
+                  </div>
+
                   {/* Company Name */}
                   <div>
                     <label htmlFor="companyName" className="block text-sm font-medium text-slate-700 mb-2">
@@ -166,30 +157,10 @@ export default function BoostWellbeingContactPage() {
                     </div>
                   </div>
 
-                  {/* Contact Name */}
-                  <div>
-                    <label htmlFor="contactName" className="block text-sm font-medium text-slate-700 mb-2">
-                      Your Name *
-                    </label>
-                    <div className="relative">
-                      <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                      <input
-                        type="text"
-                        id="contactName"
-                        name="contactName"
-                        value={formData.contactName}
-                        onChange={handleChange}
-                        required
-                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                        placeholder="Your full name"
-                      />
-                    </div>
-                  </div>
-
                   {/* Email */}
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
-                      Email Address *
+                      Email *
                     </label>
                     <div className="relative">
                       <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
@@ -209,7 +180,7 @@ export default function BoostWellbeingContactPage() {
                   {/* Phone */}
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">
-                      Phone Number *
+                      Phone *
                     </label>
                     <div className="relative">
                       <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
@@ -242,32 +213,13 @@ export default function BoostWellbeingContactPage() {
                         className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none bg-white"
                       >
                         <option value="">Select range</option>
-                        <option value="15-25">15-25 employees</option>
+                        <option value="5-10">5-10 employees</option>
+                        <option value="11-25">11-25 employees</option>
                         <option value="26-50">26-50 employees</option>
                         <option value="51-100">51-100 employees</option>
-                        <option value="101-250">101-250 employees</option>
-                        <option value="251+">251+ employees</option>
+                        <option value="100+">100+ employees</option>
                       </select>
                     </div>
-                  </div>
-
-                  {/* Interest */}
-                  <div>
-                    <label htmlFor="interest" className="block text-sm font-medium text-slate-700 mb-2">
-                      I'm interested in *
-                    </label>
-                    <select
-                      id="interest"
-                      name="interest"
-                      value={formData.interest}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none bg-white"
-                    >
-                      <option value="both">Group Health Insurance & Wellbeing Survey</option>
-                      <option value="group-health">Group Health Insurance Only</option>
-                      <option value="wellbeing">Wellbeing Survey for My Team</option>
-                    </select>
                   </div>
 
                   {/* Message */}
@@ -289,11 +241,16 @@ export default function BoostWellbeingContactPage() {
                     </div>
                   </div>
 
+                  {/* Privacy Statement */}
+                  <p className="text-xs text-slate-500">
+                    Your information is secure and will only be used to provide your Southern Cross health insurance consultation
+                  </p>
+
                   {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="w-full bg-gradient-to-r from-blue-600 to-green-600 text-white py-4 px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-blue-500 to-green-500 text-white py-4 px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {status === 'loading' ? (
                       <>
@@ -303,145 +260,87 @@ export default function BoostWellbeingContactPage() {
                     ) : (
                       <>
                         <Send className="w-5 h-5" />
-                        Request Free Quote
+                        Get My Free Consultation
                       </>
                     )}
                   </button>
-
-                  <p className="text-xs text-slate-500 text-center">
-                    By submitting this form, you agree to be contacted by our team regarding your enquiry.
-                  </p>
                 </form>
               )}
             </div>
-          </motion.div>
 
-          {/* Contact Info & Benefits */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="space-y-6"
-          >
-            {/* What Happens Next */}
-            <div className="card-turtle p-8">
-              <h3 className="text-xl font-bold text-slate-900 mb-6">What happens next?</h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-blue-600">1</span>
+            {/* Info Panel */}
+            <div className="space-y-6">
+              {/* What You'll Get */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <h3 className="text-2xl font-bold text-white mb-6">What You'll Get</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="font-semibold text-white">Free 30-Minute Consultation</p>
+                      <p className="text-sm text-white/80">No obligation, no pressure – just expert advice</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-900 mb-1">We'll Review Your Request</h4>
-                    <p className="text-sm text-slate-600">
-                      Our HR benefits specialist will review your details within 24 hours
-                    </p>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="font-semibold text-white">Customized Plan Design</p>
+                      <p className="text-sm text-white/80">Tailored to your business needs and budget</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="font-semibold text-white">Transparent Pricing</p>
+                      <p className="text-sm text-white/80">Clear, upfront costs with no hidden fees</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="font-semibold text-white">Dedicated Account Manager</p>
+                      <p className="text-sm text-white/80">Ongoing support from day one</p>
+                    </div>
                   </div>
                 </div>
+              </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-blue-600">2</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-900 mb-1">Free Consultation Call</h4>
-                    <p className="text-sm text-slate-600">
-                      We'll schedule a 30-minute call to understand your needs and answer questions
-                    </p>
-                  </div>
-                </div>
+              {/* Trust Badge */}
+              <div className="bg-gradient-to-br from-blue-500/20 to-green-500/20 backdrop-blur-sm rounded-2xl p-8 border border-white/20 text-center">
+                <Shield className="w-16 h-16 text-white mx-auto mb-4" />
+                <h4 className="text-xl font-bold text-white mb-2">Trusted by 3,500+ NZ Businesses</h4>
+                <p className="text-white/80">
+                  Join businesses across New Zealand who chose Southern Cross for their team's health
+                </p>
+              </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-blue-600">3</span>
+              {/* Contact Info */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <h3 className="text-xl font-bold text-white mb-4">Questions? Get in Touch</h3>
+                <div className="space-y-3 text-white/80">
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-5 h-5 text-blue-400" />
+                    <a href="mailto:contact@boostwellbeing.co.nz" className="hover:text-white transition-colors">
+                      contact@boostwellbeing.co.nz
+                    </a>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-900 mb-1">Customized Quote</h4>
-                    <p className="text-sm text-slate-600">
-                      Receive a tailored quote showing investment, employee value, and ROI projections
-                    </p>
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-5 h-5 text-blue-400" />
+                    <span>Mon-Fri: 9am - 5pm NZST</span>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Key Benefits */}
-            <div className="card-turtle p-8 bg-gradient-to-br from-blue-50 to-green-50">
-              <h3 className="text-xl font-bold text-slate-900 mb-6">What you'll get</h3>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                  <span className="text-sm text-slate-700">Free consultation with HR benefits specialist</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                  <span className="text-sm text-slate-700">No-obligation customized quote</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                  <span className="text-sm text-slate-700">ROI projection and cost-benefit analysis</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                  <span className="text-sm text-slate-700">Implementation roadmap and timeline</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                  <span className="text-sm text-slate-700">Access to wellbeing survey for your team</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Details */}
-            <div className="card-turtle p-8">
-              <h3 className="text-xl font-bold text-slate-900 mb-6">Other ways to reach us</h3>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-blue-600" />
-                  <a href="mailto:hello@boostwellbeing.co.nz" className="text-slate-700 hover:text-blue-600 transition-colors">
-                    hello@boostwellbeing.co.nz
-                  </a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-blue-600" />
-                  <a href="tel:+64800BOOST" className="text-slate-700 hover:text-blue-600 transition-colors">
-                    0800 BOOST (26678)
-                  </a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Clock className="w-5 h-5 text-blue-600" />
-                  <span className="text-slate-700">Mon-Fri: 9am - 5pm NZST</span>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="card-turtle p-6 bg-gradient-to-r from-blue-600 to-green-600 text-white text-center">
-              <Shield className="w-10 h-10 mx-auto mb-3 opacity-90" />
-              <h3 className="font-bold mb-2">Haven't taken the survey yet?</h3>
-              <p className="text-sm text-blue-50 mb-4">
-                Get insights into your team's wellbeing first
-              </p>
-              <Link
-                href="/survey"
-                className="bg-white text-blue-600 px-6 py-2.5 rounded-lg font-semibold inline-flex items-center gap-2 hover:shadow-lg transition-all"
-              >
-                Take Wellbeing Survey
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 py-8 mt-20">
-        <div className="container-turtle">
-          <div className="text-center text-sm text-slate-600">
-            <p className="mb-2">
-              <strong>BoostWellbeing</strong> - Powered by Southern Cross Health Insurance
-            </p>
-            <p>© 2025 BoostWellbeing. All rights reserved.</p>
+      <footer className="relative bg-slate-900 text-white py-12 border-t border-white/10 mt-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center text-sm text-white/60">
+            <p>BoostWellbeing is an authorized partner helping businesses access Southern Cross Health Insurance workplace schemes.</p>
+            <p className="mt-4">&copy; 2025 BoostWellbeing. All rights reserved.</p>
           </div>
         </div>
       </footer>
