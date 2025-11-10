@@ -10,7 +10,7 @@ export default {
     extend: {
       colors: {
         brand: {
-          primary: '#1E8A72',   // Trustworthy teal-green (turtle shell)
+          primary: '#1E8A72',   // Trustworthy teal-green
           secondary: '#FF9F40', // Warm orange (approachable)
           accent: '#4A6FA5',    // Professional blue (trust)
         },

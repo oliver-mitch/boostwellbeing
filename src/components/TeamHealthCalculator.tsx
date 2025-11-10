@@ -65,7 +65,7 @@ export default function TeamHealthCalculator(): JSX.Element {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `turtlemoney-southerncross-quote-${Date.now()}.pdf`;
+      a.download = `boostwellbeing-southerncross-quote-${Date.now()}.pdf`;
       document.body.appendChild(a);
       a.click();
       a.remove();

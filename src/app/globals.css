@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  /* TurtleMoney Brand Colors */
-  --color-primary: #1E8A72;       /* Trustworthy teal-green (turtle shell) */
+  /* BoostWellbeing Brand Colors */
+  --color-primary: #1E8A72;       /* Trustworthy teal-green */
   --color-secondary: #FF9F40;     /* Warm orange (approachable) */
   --color-accent: #4A6FA5;        /* Professional blue (trust) */
   --color-success: #27AE60;       /* Green */
