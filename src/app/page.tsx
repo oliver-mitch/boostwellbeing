@@ -47,15 +47,15 @@ export default function HomePage() {
               <Link href="/" className="text-white/80 hover:text-white transition-colors font-medium">
                 Home
               </Link>
-              <Link href="/how-it-works" className="text-white/80 hover:text-white transition-colors font-medium">
+              <a href="#how-it-works" className="text-white/80 hover:text-white transition-colors font-medium">
                 How It Works
-              </Link>
-              <Link href="/case-studies" className="text-white/80 hover:text-white transition-colors font-medium">
+              </a>
+              <a href="#success-stories" className="text-white/80 hover:text-white transition-colors font-medium">
                 Case Studies
-              </Link>
-              <Link href="/resources" className="text-white/80 hover:text-white transition-colors font-medium">
+              </a>
+              <a href="#resources" className="text-white/80 hover:text-white transition-colors font-medium">
                 Resources
-              </Link>
+              </a>
               <Link href="/contact" className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-xl transition-all">
                 Get Started
               </Link>
@@ -502,7 +502,7 @@ export default function HomePage() {
       </section>
 
       {/* How It Works */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-50 to-white">
+      <section id="how-it-works" className="relative py-24 bg-gradient-to-br from-slate-50 to-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold text-slate-900 mb-4">
@@ -608,7 +608,7 @@ export default function HomePage() {
       </section>
 
       {/* Resources & Thought Leadership Section */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-50 to-white">
+      <section id="resources" className="relative py-24 bg-gradient-to-br from-slate-50 to-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold text-slate-900 mb-4">
@@ -863,9 +863,9 @@ export default function HomePage() {
               <h4 className="font-semibold mb-4">Navigation</h4>
               <div className="space-y-2 text-sm">
                 <Link href="/" className="block text-white/60 hover:text-white transition-colors">Home</Link>
-                <Link href="/how-it-works" className="block text-white/60 hover:text-white transition-colors">How It Works</Link>
-                <Link href="/case-studies" className="block text-white/60 hover:text-white transition-colors">Case Studies</Link>
-                <Link href="/resources" className="block text-white/60 hover:text-white transition-colors">Resources</Link>
+                <a href="#how-it-works" className="block text-white/60 hover:text-white transition-colors">How It Works</a>
+                <a href="#success-stories" className="block text-white/60 hover:text-white transition-colors">Case Studies</a>
+                <a href="#resources" className="block text-white/60 hover:text-white transition-colors">Resources</a>
               </div>
             </div>
 

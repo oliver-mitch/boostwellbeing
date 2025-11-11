@@ -1,0 +1,11 @@
+# robots.txt for www.boostwellbeing.co.nz
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.boostwellbeing.co.nz/sitemap.xml
+
+# Disallow admin/internal paths if any
+Disallow: /api/
+Disallow: /_next/
