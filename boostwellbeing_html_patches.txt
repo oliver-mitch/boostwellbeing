@@ -1,0 +1,18 @@
+
+<!-- ✅ Footer Patch -->
+<footer>
+  <a href="/privacy-policy" id="footer-privacy">Privacy Policy</a> |
+  <a href="/terms-of-service" id="footer-terms">Terms of Service</a>
+</footer>
+
+
+
+<!-- ✅ Navigation Patch -->
+<nav>
+  <ul>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#case-studies">Case Studies</a></li>
+    <li><a href="#resources">Resources</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
