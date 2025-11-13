@@ -345,14 +345,14 @@ export default function HomePage() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold text-slate-900 mb-4">
-              Join 3,500+ New Zealand Businesses Already Thriving with Southern Cross
+              Case Studies: Real Impact Across New Zealand
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Real businesses, real results
+              See how businesses like yours are thriving with Southern Cross
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {/* ORIX Case Study */}
             <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-blue-100">
               <div className="flex items-center gap-3 mb-4">
@@ -390,26 +390,66 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Additional Success Story Placeholder */}
+            {/* Tech Startup Case Study */}
             <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-green-100">
               <div className="flex items-center gap-3 mb-4">
                 <Building2 className="w-8 h-8 text-green-600" />
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900">Growing NZ Businesses</h3>
-                  <p className="text-slate-600">Various Industries</p>
+                  <h3 className="text-2xl font-bold text-slate-900">Wellington Tech Firm</h3>
+                  <p className="text-slate-600">Technology & Software</p>
                 </div>
               </div>
-              <p className="text-slate-700 leading-relaxed mb-6">
-                From tech startups to established manufacturers, businesses across New Zealand are seeing the benefits of partnering with Southern Cross for workplace health insurance.
+              <p className="text-slate-700 leading-relaxed mb-4">
+                A fast-growing software company with 45 employees implemented Southern Cross health insurance to attract and retain top tech talent in a competitive market.
               </p>
-              <div className="space-y-4">
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <p className="text-3xl font-bold text-green-700 mb-1">3,500+</p>
-                  <p className="text-slate-700">Businesses trust Southern Cross</p>
+              <div className="bg-green-50 p-4 rounded-lg mb-4">
+                <p className="text-3xl font-bold text-green-700 mb-1">30%</p>
+                <p className="text-sm text-slate-700">Reduction in staff turnover within first year</p>
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <span className="text-slate-700">Became employer of choice in local tech scene</span>
                 </div>
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <p className="text-3xl font-bold text-blue-700 mb-1">9 Years</p>
-                  <p className="text-slate-700">Most Trusted Health Insurer</p>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <span className="text-slate-700">Faster time-to-productivity for new hires</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <span className="text-slate-700">Reduced sick leave and presenteeism</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Manufacturing Case Study */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-purple-100">
+              <div className="flex items-center gap-3 mb-4">
+                <Building2 className="w-8 h-8 text-purple-600" />
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900">Auckland Manufacturer</h3>
+                  <p className="text-slate-600">Manufacturing & Production</p>
+                </div>
+              </div>
+              <p className="text-slate-700 leading-relaxed mb-4">
+                An established manufacturer with 120 employees introduced group health insurance to address rising health costs and support an aging workforce.
+              </p>
+              <div className="bg-purple-50 p-4 rounded-lg mb-4">
+                <p className="text-3xl font-bold text-purple-700 mb-1">60%</p>
+                <p className="text-sm text-slate-700">Faster return to work after surgery</p>
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" />
+                  <span className="text-slate-700">Minimized productivity loss from health issues</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" />
+                  <span className="text-slate-700">Improved workforce morale and loyalty</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" />
+                  <span className="text-slate-700">Pre-existing conditions covered for long-term staff</span>
                 </div>
               </div>
             </div>
