@@ -14,7 +14,15 @@
       "Bash(git pull:*)",
       "Bash(git log:*)",
       "Bash(git branch:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git merge:*)",
+      "Bash(git cherry-pick:*)",
+      "Bash(railway --version:*)",
+      "Bash(railway status:*)",
+      "Bash(gh repo list:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []
