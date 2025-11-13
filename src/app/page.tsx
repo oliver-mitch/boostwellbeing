@@ -638,13 +638,15 @@ export default function HomePage() {
                 <p className="text-sm text-slate-600 mb-6">
                   Access insights from the Southern Cross Healthy Futures Report Business Edition – research from 1,463 employees revealing workplace health attitudes and behaviors.
                 </p>
-                <Link
-                  href="/resources"
+                <a
+                  href="https://mc-fec8b19f-c7fd-4e56-8bfe-1850-cdn-endpoint.azureedge.net/society/-/media/landing-pages/healthy-futures/healthy_futures_business_report_2024.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors"
                 >
-                  View Key Findings
+                  Download Report
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </a>
               </div>
             </div>
 
@@ -666,13 +668,15 @@ export default function HomePage() {
                 <p className="text-sm text-slate-600 mb-6">
                   Learn from award-winning businesses using wellbeing as a core business strategy and thriving because of it.
                 </p>
-                <Link
-                  href="/resources"
+                <a
+                  href="https://www.southerncross.co.nz/society/business/wayfinder-awards"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-purple-600 font-semibold hover:text-purple-700 transition-colors"
                 >
                   Explore Success Stories
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </a>
               </div>
             </div>
 
@@ -694,13 +698,15 @@ export default function HomePage() {
                 <p className="text-sm text-slate-600 mb-6">
                   Join fellow business leaders at Gather conference featuring thought leaders and wellbeing experts sharing the latest insights.
                 </p>
-                <Link
-                  href="/resources"
+                <a
+                  href="https://www.southerncross.co.nz/society/business/gather-together"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 transition-colors"
                 >
                   Learn More
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </a>
               </div>
             </div>
           </div>
