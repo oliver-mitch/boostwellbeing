@@ -1,0 +1,44 @@
+===============================================================================
+COPY THIS PROMPT TO CLAUDE CODE WEB TO COMPLETE PLANSELECTOR INTEGRATION
+===============================================================================
+
+I need to complete the planSelector integration for the BoostWellbeing website.
+
+CONTEXT:
+- The planSelector is a React health insurance plan selector tool
+- It's located in ../planSelector directory (already cloned)
+- Foundation is set up: authentication, protected routes, rate data copied
+- I need to migrate the React components to the Next.js portal
+
+TASK:
+Follow the implementation plan in TODO_PLANSELECTOR.md and
+PLANSELECTOR_INTEGRATION_PLAN.md.
+
+START WITH:
+Phase 1: Component Migration
+- Task 1.1: Create type definitions at src/types/portal.ts
+- Task 1.2: Migrate PlanSelector component
+- Task 1.3: Migrate FamilyMembers component
+- Task 1.4: Migrate CostSummary component
+- Task 1.5: Create main plan selector page
+
+REQUIREMENTS:
+- All components need 'use client' directive (Next.js requirement)
+- Update all imports to use @/ paths (not ../ paths)
+- Import from @/data/rateData (already exists)
+- Test each component after migration
+- Keep the same functionality as the original React app
+
+FILES TO MIGRATE:
+Source: ../planSelector/src/components/
+Target: src/components/portal/
+
+After completing Phase 1, move to Phase 2 (Supabase) or Phase 3 (Auth)
+depending on priorities.
+
+Check TODO_PLANSELECTOR.md for the complete checklist and mark items as you
+complete them.
+
+Ask me if you need clarification on any requirements or encounter issues.
+
+===============================================================================
