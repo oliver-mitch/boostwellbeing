@@ -22,7 +22,11 @@
       "Bash(railway status:*)",
       "Bash(gh repo list:*)",
       "Bash(npm install:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(supabase --version:*)",
+      "Bash(scoop:*)",
+      "Bash(openssl rand:*)",
+      "Bash(npx next build)"
     ],
     "deny": [],
     "ask": []

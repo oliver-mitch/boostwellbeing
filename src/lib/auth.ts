@@ -1,5 +1,7 @@
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { supabase } from './supabase';
+import bcrypt from 'bcryptjs';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -10,16 +12,42 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        // For now, we'll use a simple hardcoded check
-        // TODO: Replace with proper database authentication
-        if (credentials?.email === 'client@boostwellbeing.co.nz' && credentials?.password === 'temppassword') {
-          return {
-            id: '1',
-            email: credentials.email,
-            name: 'Client Portal User',
-          };
+        if (!credentials?.email || !credentials?.password) {
+          return null;
         }
-        return null;
+
+        try {
+          // Query user from database
+          const { data: user, error } = await supabase
+            .from('portal_users')
+            .select('id, email, name, is_admin, company_name, password_hash')
+            .eq('email', credentials.email)
+            .single();
+
+          if (error || !user) {
+            console.error('User not found:', error);
+            return null;
+          }
+
+          // Verify password
+          const isValidPassword = await bcrypt.compare(credentials.password, user.password_hash || '');
+
+          if (!isValidPassword) {
+            console.error('Invalid password');
+            return null;
+          }
+
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name || user.email,
+            isAdmin: user.is_admin || false,
+            companyName: user.company_name || '',
+          };
+        } catch (err) {
+          console.error('Auth error:', err);
+          return null;
+        }
       }
     })
   ],
@@ -30,12 +58,16 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.isAdmin = (user as any).isAdmin;
+        token.companyName = (user as any).companyName;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id as string;
+        (session.user as any).isAdmin = token.isAdmin;
+        (session.user as any).companyName = token.companyName;
       }
       return session;
     }
