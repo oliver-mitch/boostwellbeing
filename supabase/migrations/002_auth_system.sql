@@ -43,16 +43,16 @@ CREATE POLICY "Anyone can use invite" ON invite_tokens
   FOR UPDATE USING (true);
 
 -- Create default admin user (you can change the password later)
--- Password is hashed version of 'admin123' - CHANGE THIS!
+-- Password: AdminPass123!
 INSERT INTO portal_users (email, name, is_admin, company_name, password_hash)
 VALUES (
   'admin@boostwellbeing.co.nz',
   'Admin User',
   true,
   'BoostWellbeing',
-  '$2a$10$rQnB1GkJHp.i8qKE8qKE8qKE8qKE8qKE8qKE8qKE8qKE8qKE8qKE8'
+  '$2b$10$rA1gqBgjReyRaMWtqePujOFIKB.7wG6hETzfuipaQxjARGlqf/Jhy'
 )
-ON CONFLICT (email) DO UPDATE SET is_admin = true;
+ON CONFLICT (email) DO UPDATE SET is_admin = true, password_hash = '$2b$10$rA1gqBgjReyRaMWtqePujOFIKB.7wG6hETzfuipaQxjARGlqf/Jhy';
 
 -- Update RLS policies to allow public registration with invite
 CREATE POLICY "Anyone can register with invite" ON portal_users
