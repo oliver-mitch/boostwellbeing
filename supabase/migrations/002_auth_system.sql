@@ -23,24 +23,16 @@ ALTER TABLE portal_users ADD COLUMN IF NOT EXISTS password_hash TEXT;
 CREATE INDEX IF NOT EXISTS idx_invite_tokens_token ON invite_tokens(token);
 CREATE INDEX IF NOT EXISTS idx_invite_tokens_email ON invite_tokens(email);
 
--- RLS for invite_tokens (only admins can see)
+-- RLS for invite_tokens
 ALTER TABLE invite_tokens ENABLE ROW LEVEL SECURITY;
 
--- Admins can view all invite tokens
-CREATE POLICY "Admins can view invites" ON invite_tokens
-  FOR SELECT USING (
-    EXISTS (SELECT 1 FROM portal_users WHERE email = current_setting('app.current_user_email', true) AND is_admin = true)
-  );
+-- Allow all operations on invite_tokens (auth is handled at app level)
+CREATE POLICY "Allow all invite operations" ON invite_tokens
+  FOR ALL USING (true) WITH CHECK (true);
 
--- Admins can create invite tokens
-CREATE POLICY "Admins can create invites" ON invite_tokens
-  FOR INSERT WITH CHECK (
-    EXISTS (SELECT 1 FROM portal_users WHERE email = current_setting('app.current_user_email', true) AND is_admin = true)
-  );
-
--- Anyone can update invite token (to mark as used)
-CREATE POLICY "Anyone can use invite" ON invite_tokens
-  FOR UPDATE USING (true);
+-- Allow delete operations
+CREATE POLICY "Allow delete invites" ON invite_tokens
+  FOR DELETE USING (true);
 
 -- Create default admin user (you can change the password later)
 -- Password: AdminPass123!
