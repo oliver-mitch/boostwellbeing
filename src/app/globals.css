@@ -4,14 +4,23 @@
 
 :root {
   /* BoostWellbeing Brand Colors */
-  --color-primary: #1E8A72;       /* Trustworthy teal-green */
-  --color-secondary: #FF9F40;     /* Warm orange (approachable) */
-  --color-accent: #4A6FA5;        /* Professional blue (trust) */
-  --color-success: #27AE60;       /* Green */
+  --color-blue: #4D90DE;          /* Primary blue - trust, care, professionalism */
+  --color-teal: #21B1A6;          /* Teal - freshness, wellbeing, growth */
+  --color-dark: #904258;          /* Dark - depth, sophistication, warmth */
+  --color-blue-light: #6BA4E6;
+  --color-blue-dark: #3A7AC8;
+  --color-teal-light: #3DC9BD;
+  --color-teal-dark: #1A8F85;
+  --color-dark-light: #A65770;
+  --color-dark-darker: #6B3344;
+
+  /* System colors */
+  --color-success: #21B1A6;       /* Teal */
   --color-warning: #F39C12;       /* Orange */
   --color-error: #E74C3C;         /* Red */
 
   /* Neutral palette */
+  --color-white: #FFFFFF;
   --color-slate-50: #F8FAFC;
   --color-slate-100: #F1F5F9;
   --color-slate-200: #E2E8F0;
@@ -41,39 +50,35 @@
 
 @layer components {
   /* Custom utility classes */
-  .container-turtle {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  .gradient-brand {
+    @apply bg-gradient-to-r from-brand-blue to-brand-teal;
   }
 
-  .gradient-turtle {
-    @apply bg-gradient-to-r from-turtle-green-500 to-brand-accent;
-  }
-
-  .gradient-turtle-text {
-    @apply bg-gradient-to-r from-turtle-green-500 to-brand-accent bg-clip-text text-transparent;
+  .gradient-brand-text {
+    @apply bg-gradient-to-r from-brand-blue to-brand-teal bg-clip-text text-transparent;
   }
 
   /* Card styles */
-  .card-turtle {
-    @apply bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg border border-slate-200/50 transition-all duration-300;
+  .card-brand {
+    @apply bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200/50 transition-all duration-300;
   }
 
-  .card-turtle:hover {
+  .card-brand:hover {
     @apply shadow-2xl;
-    border-color: rgba(30, 138, 114, 0.3);
+    border-color: rgba(77, 144, 222, 0.3);
   }
 
   /* Button styles */
   .btn-primary {
-    @apply px-6 py-3 bg-turtle-green-500 text-white font-semibold rounded-2xl hover:bg-turtle-green-600 transition-colors shadow-lg;
+    @apply px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-brand-blue-dark transition-colors shadow-lg;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 bg-turtle-orange-400 text-white font-semibold rounded-2xl hover:bg-turtle-orange-500 transition-colors shadow-lg;
+    @apply px-6 py-3 bg-brand-teal text-white font-semibold rounded-lg hover:bg-brand-teal-dark transition-colors shadow-lg;
   }
 
   .btn-accent {
-    @apply px-6 py-3 bg-brand-accent text-white font-semibold rounded-2xl hover:opacity-90 transition-colors shadow-lg;
+    @apply px-6 py-3 bg-brand-dark text-white font-semibold rounded-lg hover:bg-brand-dark-light transition-colors shadow-lg;
   }
 }
 

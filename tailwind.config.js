@@ -10,36 +10,16 @@ export default {
     extend: {
       colors: {
         brand: {
-          primary: '#1E8A72',   // Trustworthy teal-green
-          secondary: '#FF9F40', // Warm orange (approachable)
-          accent: '#4A6FA5',    // Professional blue (trust)
+          blue: '#4D90DE',      // Primary blue - trust, care, professionalism
+          teal: '#21B1A6',      // Teal - freshness, wellbeing, growth
+          dark: '#904258',      // Dark - depth, sophistication, warmth
+          'blue-light': '#6BA4E6',
+          'blue-dark': '#3A7AC8',
+          'teal-light': '#3DC9BD',
+          'teal-dark': '#1A8F85',
+          'dark-light': '#A65770',
+          'dark-darker': '#6B3344',
         },
-        turtle: {
-          green: {
-            50: '#F0FDF4',
-            100: '#DCFCE7',
-            200: '#BBF7D0',
-            300: '#86EFAC',
-            400: '#4ADE80',
-            500: '#1E8A72',  // Primary
-            600: '#166858',
-            700: '#0F4941',
-            800: '#0A332E',
-            900: '#052019',
-          },
-          orange: {
-            50: '#FFF7ED',
-            100: '#FFEDD5',
-            200: '#FED7AA',
-            300: '#FDBA74',
-            400: '#FF9F40',  // Secondary
-            500: '#F97316',
-            600: '#EA580C',
-            700: '#C2410C',
-            800: '#9A3412',
-            900: '#7C2D12',
-          },
-        }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

@@ -12,7 +12,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 bg-gradient-to-br from-brand-blue to-brand-teal rounded-lg flex items-center justify-center shadow-lg">
                 <Shield className="w-6 h-6 text-white" />
               </div>
               <div className="flex flex-col">
@@ -53,7 +53,7 @@ export default function AboutPage() {
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
               <div className="grid lg:grid-cols-3 gap-8 p-8">
                 <div className="lg:col-span-1">
-                  <div className="w-48 h-48 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto shadow-xl">
+                  <div className="w-48 h-48 bg-gradient-to-br from-brand-blue to-brand-blue-light rounded-2xl flex items-center justify-center mx-auto shadow-xl">
                     <Users className="w-24 h-24 text-white" />
                   </div>
                   <div className="text-center mt-6">
@@ -81,7 +81,7 @@ export default function AboutPage() {
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
               <div className="grid lg:grid-cols-3 gap-8 p-8">
                 <div className="lg:col-span-1">
-                  <div className="w-48 h-48 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto shadow-xl">
+                  <div className="w-48 h-48 bg-gradient-to-br from-brand-teal to-brand-teal-light rounded-2xl flex items-center justify-center mx-auto shadow-xl">
                     <Heart className="w-24 h-24 text-white" />
                   </div>
                   <div className="text-center mt-6">
@@ -146,7 +146,7 @@ export default function AboutPage() {
             </h3>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-green-500 text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-teal text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all"
             >
               Get Your Free Consultation
               <ArrowRight className="w-5 h-5" />

@@ -37,7 +37,7 @@ export default function HomePage() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 bg-gradient-to-br from-brand-blue to-brand-teal rounded-lg flex items-center justify-center shadow-lg">
                 <Shield className="w-6 h-6 text-white" />
               </div>
               <div className="flex flex-col">
@@ -59,7 +59,7 @@ export default function HomePage() {
               <Link href="/about" className="text-white/80 hover:text-white transition-colors font-medium">
                 About Us
               </Link>
-              <Link href="/contact" className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-xl transition-all">
+              <Link href="/contact" className="bg-gradient-to-r from-brand-blue to-brand-teal text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-xl transition-all">
                 Get Started
               </Link>
             </div>
@@ -78,7 +78,7 @@ export default function HomePage() {
 
             <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight text-white">
               Build a Healthier, More Productive Team with{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-brand-blue to-brand-teal bg-clip-text text-transparent">
                 Southern Cross
               </span>
               {' '}– Guided by BoostWellbeing
@@ -91,7 +91,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-green-500 text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all"
+                className="group inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-teal text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all"
               >
                 Get Your Free Consultation
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -132,7 +132,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
             {/* Pillar 1: Simple Process */}
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <div className="w-20 h-20 bg-gradient-to-br from-brand-blue to-brand-blue-light rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <CheckCircle className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Simple Process</h3>
@@ -143,7 +143,7 @@ export default function HomePage() {
 
             {/* Pillar 2: Personal Support */}
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <div className="w-20 h-20 bg-gradient-to-br from-brand-teal to-brand-teal-light rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Users className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Personal Support</h3>
@@ -154,7 +154,7 @@ export default function HomePage() {
 
             {/* Pillar 3: Trusted Partner */}
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <div className="w-20 h-20 bg-gradient-to-br from-brand-dark to-brand-dark-light rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Shield className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Trusted Partner</h3>
@@ -180,8 +180,8 @@ export default function HomePage() {
 
           <div className="grid lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
             {/* Pillar 1: Trust & Financial Strength */}
-            <div className="bg-white p-10 rounded-2xl shadow-lg border-2 border-blue-100">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+            <div className="bg-white p-10 rounded-2xl shadow-lg border-2 border-brand-blue/20">
+              <div className="w-16 h-16 bg-gradient-to-br from-brand-blue to-brand-blue-light rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                 <Award className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-3xl font-bold text-slate-900 mb-4">New Zealand Owned, Not-for-Profit</h3>
@@ -200,8 +200,8 @@ export default function HomePage() {
             </div>
 
             {/* Pillar 2: Comprehensive Team Protection */}
-            <div className="bg-white p-10 rounded-2xl shadow-lg border-2 border-green-100">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+            <div className="bg-white p-10 rounded-2xl shadow-lg border-2 border-brand-teal/20">
+              <div className="w-16 h-16 bg-gradient-to-br from-brand-teal to-brand-teal-light rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                 <Shield className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-3xl font-bold text-slate-900 mb-4">More Than Just Insurance</h3>
@@ -238,8 +238,8 @@ export default function HomePage() {
             </div>
 
             {/* Pillar 3: BeingWellPlus */}
-            <div className="bg-white p-10 rounded-2xl shadow-lg border-2 border-purple-100">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+            <div className="bg-white p-10 rounded-2xl shadow-lg border-2 border-brand-dark/20">
+              <div className="w-16 h-16 bg-gradient-to-br from-brand-dark to-brand-dark-light rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                 <Users className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-3xl font-bold text-slate-900 mb-4">BeingWellPlus – Your Workplace Wellness Hub</h3>
@@ -283,8 +283,8 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {/* Benefit 1: Reduced Productivity Loss */}
-            <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border-2 border-blue-100">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+            <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border-2 border-brand-blue/20">
+              <div className="w-16 h-16 bg-gradient-to-br from-brand-blue to-brand-blue-light rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                 <TrendingUp className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Cut Waiting Times in Half</h3>
@@ -309,8 +309,8 @@ export default function HomePage() {
             </div>
 
             {/* Benefit 2: Talent Attraction & Retention */}
-            <div className="bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl border-2 border-green-100">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+            <div className="bg-gradient-to-br from-brand-teal/5 to-white p-8 rounded-2xl border-2 border-brand-teal/20">
+              <div className="w-16 h-16 bg-gradient-to-br from-brand-teal to-brand-teal-light rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                 <Users className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Win the War for Talent</h3>
@@ -334,8 +334,8 @@ export default function HomePage() {
             </div>
 
             {/* Benefit 3: Cost Control & Transparency */}
-            <div className="bg-gradient-to-br from-purple-50 to-white p-8 rounded-2xl border-2 border-purple-100">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+            <div className="bg-gradient-to-br from-brand-dark/5 to-white p-8 rounded-2xl border-2 border-brand-dark/20">
+              <div className="w-16 h-16 bg-gradient-to-br from-brand-dark to-brand-dark-light rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                 <Shield className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Control Costs, Maximize Value</h3>
@@ -359,8 +359,8 @@ export default function HomePage() {
             </div>
 
             {/* Benefit 4: Workplace Culture & Engagement */}
-            <div className="bg-gradient-to-br from-orange-50 to-white p-8 rounded-2xl border-2 border-orange-100">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+            <div className="bg-gradient-to-br from-brand-dark/5 to-white p-8 rounded-2xl border-2 border-brand-dark/20">
+              <div className="w-16 h-16 bg-gradient-to-br from-brand-dark to-brand-dark-light rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                 <Award className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Build a People-First Culture</h3>
@@ -400,7 +400,7 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {/* ORIX Case Study */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-blue-100">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-blue/20">
               <div className="flex items-center gap-3 mb-4">
                 <Building2 className="w-8 h-8 text-blue-600" />
                 <div>
@@ -437,7 +437,7 @@ export default function HomePage() {
             </div>
 
             {/* Tech Startup Case Study */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-green-100">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-teal/20">
               <div className="flex items-center gap-3 mb-4">
                 <Building2 className="w-8 h-8 text-green-600" />
                 <div>
@@ -469,7 +469,7 @@ export default function HomePage() {
             </div>
 
             {/* Manufacturing Case Study */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-purple-100">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-dark/20">
               <div className="flex items-center gap-3 mb-4">
                 <Building2 className="w-8 h-8 text-purple-600" />
                 <div>
@@ -601,9 +601,9 @@ export default function HomePage() {
 
           <div className="max-w-5xl mx-auto space-y-8">
             {/* Step 1 */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-blue-100">
+            <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-brand-blue/20">
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
+                <div className="w-16 h-16 bg-gradient-to-br from-brand-blue to-brand-blue-light rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
                   <span className="text-3xl font-bold text-white">1</span>
                 </div>
                 <div className="flex-1">
@@ -621,9 +621,9 @@ export default function HomePage() {
             </div>
 
             {/* Step 2 */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-green-100">
+            <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-brand-teal/20">
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
+                <div className="w-16 h-16 bg-gradient-to-br from-brand-teal to-brand-teal-light rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
                   <span className="text-3xl font-bold text-white">2</span>
                 </div>
                 <div className="flex-1">
@@ -641,9 +641,9 @@ export default function HomePage() {
             </div>
 
             {/* Step 3 */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-purple-100">
+            <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-brand-dark/20">
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
+                <div className="w-16 h-16 bg-gradient-to-br from-brand-dark to-brand-dark-light rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
                   <span className="text-3xl font-bold text-white">3</span>
                 </div>
                 <div className="flex-1">
@@ -661,9 +661,9 @@ export default function HomePage() {
             </div>
 
             {/* Step 4 */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-orange-100">
+            <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-brand-dark/20">
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
+                <div className="w-16 h-16 bg-gradient-to-br from-brand-dark to-brand-dark-light rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
                   <span className="text-3xl font-bold text-white">4</span>
                 </div>
                 <div className="flex-1">
@@ -684,7 +684,7 @@ export default function HomePage() {
           <div className="text-center mt-12">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-green-500 text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-xl transition-all"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-teal text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-xl transition-all"
             >
               Get Your Free Consultation
               <PhoneCall className="w-5 h-5" />
@@ -707,8 +707,8 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Resource 1: Healthy Futures Report */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-blue-100 hover:shadow-xl transition-shadow">
-              <div className="h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-brand-blue/20 hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-brand-blue to-brand-blue-light flex items-center justify-center">
                 <img
                   src="https://mc-fec8b19f-c7fd-4e56-8bfe-1850-cdn-endpoint.azureedge.net/society/-/media/southern-cross-health-society/health-insurance/images/business/healthy_futures_1.png"
                   alt="Healthy Futures Report"
@@ -737,8 +737,8 @@ export default function HomePage() {
             </div>
 
             {/* Resource 2: Wayfinder Awards */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-purple-100 hover:shadow-xl transition-shadow">
-              <div className="h-48 bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-brand-dark/20 hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-brand-dark to-brand-dark-light flex items-center justify-center">
                 <img
                   src="https://mc-fec8b19f-c7fd-4e56-8bfe-1850-cdn-endpoint.azureedge.net/society/-/media/southern-cross-health-society/health-insurance/images/business/wayfinder_awards.png"
                   alt="Wayfinder Awards"
@@ -767,8 +767,8 @@ export default function HomePage() {
             </div>
 
             {/* Resource 3: Gather Conference */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-green-100 hover:shadow-xl transition-shadow">
-              <div className="h-48 bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-brand-teal/20 hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-brand-teal to-brand-teal-light flex items-center justify-center">
                 <img
                   src="https://mc-fec8b19f-c7fd-4e56-8bfe-1850-cdn-endpoint.azureedge.net/society/-/media/southern-cross-health-society/health-insurance/images/business/gather_3.png"
                   alt="Gather Conference"
@@ -910,7 +910,7 @@ export default function HomePage() {
       </section>
 
       {/* Final CTA */}
-      <section className="relative py-32 bg-gradient-to-br from-blue-600 via-blue-500 to-green-500">
+      <section className="relative py-32 bg-gradient-to-br from-brand-blue via-brand-blue-light to-brand-teal">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
@@ -957,7 +957,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-brand-blue to-brand-teal rounded-lg flex items-center justify-center">
                   <Shield className="w-6 h-6 text-white" />
                 </div>
                 <span className="text-xl font-bold">BoostWellbeing</span>

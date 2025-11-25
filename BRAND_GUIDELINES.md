@@ -79,9 +79,36 @@ We help businesses easily bring Southern Cross workplace health insurance to the
 
 ### Colour Palette
 
-- **Soft, calming blues** (trust, care, health)
-- **Warm neutrals** (approachable, grounded)
-- **Accent green or teal** (freshness, wellbeing)
+**Primary Colors:**
+- **Blue**: `rgb(77, 144, 222)` / `#4D90DE` - Trust, care, professionalism
+- **Teal**: `rgb(33, 177, 166)` / `#21B1A6` - Freshness, wellbeing, growth
+- **Dark**: `rgb(144, 66, 88)` / `#904258` - Depth, sophistication, warmth
+
+**Neutral Colors:**
+- **White**: `#FFFFFF` - Clean, clear, approachable
+- **Grey**: Various shades for text and backgrounds
+
+### Color Usage Guidelines
+
+- **Blue** as primary action color (CTAs, buttons, key elements)
+- **Teal** for secondary actions and wellbeing-focused content
+- **Dark** for premium features, accents, and depth
+- **White** for backgrounds and breathing space
+- **Grey** for text hierarchy and subtle elements
+
+### Typography
+
+**Primary Font:** Inter (system-ui fallback)
+- Clean, modern, highly readable
+- Used for body text, headings, and UI elements
+
+**Monospace Font:** JetBrains Mono (for code/data if needed)
+- Technical precision when displaying data or portal elements
+
+**Font Weights:**
+- Regular (400) - body text
+- Semibold (600) - subheadings, emphasis
+- Bold (700) - headings, CTAs
 
 ### Photography Style
 
