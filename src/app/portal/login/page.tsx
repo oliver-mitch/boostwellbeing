@@ -5,6 +5,7 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Shield, Lock, Mail } from 'lucide-react';
 import Link from 'next/link';
+import { BoostIcon } from '@/components/icons/BoostIcon';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -42,10 +43,10 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center shadow-lg">
-              <Shield className="w-7 h-7 text-white" />
+            <div className="w-12 h-12 bg-brand-blue rounded-lg flex items-center justify-center shadow-lg">
+              <BoostIcon className="w-7 h-7 text-white" />
             </div>
-            <span className="text-3xl font-bold text-white">BoostWellbeing</span>
+            <span className="text-3xl font-bold text-white"><span className="text-brand-blue">Boost</span>Wellbeing</span>
           </Link>
           <h1 className="text-2xl font-bold text-white mb-2">Client Portal</h1>
           <p className="text-slate-400">Sign in to access your health plan selector</p>

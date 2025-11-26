@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Shield, TrendingUp, Users, Award, CheckCircle, Building2, PhoneCall, Star } from 'lucide-react';
+import { BoostIcon } from '@/components/icons/BoostIcon';
 import ScrollVideoBackground from '@/components/ScrollVideoBackground';
 import { verifiedStats } from '@/data/southern-cross-stats';
 import Head from 'next/head';
@@ -37,11 +38,14 @@ export default function HomePage() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-brand-blue to-brand-teal rounded-lg flex items-center justify-center shadow-lg">
-                <Shield className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center shadow-lg">
+                <BoostIcon className="w-6 h-6 text-white" />
               </div>
               <div className="flex flex-col">
-                <span className="text-2xl font-bold text-white">BoostWellbeing</span>
+                <span className="text-2xl font-bold">
+                  <span className="text-brand-blue">Boost</span>
+                  <span className="text-white">Wellbeing</span>
+                </span>
                 <span className="text-xs text-white/70 font-medium">Better Health Starts at Work</span>
               </div>
             </Link>
@@ -59,7 +63,10 @@ export default function HomePage() {
               <Link href="/about" className="text-white/80 hover:text-white transition-colors font-medium">
                 About Us
               </Link>
-              <Link href="/contact" className="bg-gradient-to-r from-brand-blue to-brand-teal text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-xl transition-all">
+              <Link href="/portal/login" className="text-white/80 hover:text-white transition-colors font-medium">
+                Client Login
+              </Link>
+              <Link href="/contact" className="bg-brand-blue hover:bg-brand-blue-dark text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-xl transition-all">
                 Get Started
               </Link>
             </div>
@@ -77,11 +84,7 @@ export default function HomePage() {
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight text-white">
-              Build a Healthier, More Productive Team with{' '}
-              <span className="bg-gradient-to-r from-brand-blue to-brand-teal bg-clip-text text-transparent">
-                Southern Cross
-              </span>
-              {' '}– Guided by BoostWellbeing
+              Build a Healthier, More Productive Team with Southern Cross – Guided by <span className="text-brand-blue">Boost</span>Wellbeing
             </h1>
 
             <p className="text-xl md:text-2xl mb-12 text-white/90 leading-relaxed max-w-4xl mx-auto">
@@ -91,7 +94,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-teal text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all"
+                className="group inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all"
               >
                 Get Your Free Consultation
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -132,7 +135,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
             {/* Pillar 1: Simple Process */}
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-brand-blue to-brand-blue-light rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <div className="w-20 h-20 bg-brand-blue rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <CheckCircle className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Simple Process</h3>
@@ -143,7 +146,7 @@ export default function HomePage() {
 
             {/* Pillar 2: Personal Support */}
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-brand-teal to-brand-teal-light rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <div className="w-20 h-20 bg-brand-teal rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Users className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Personal Support</h3>
@@ -154,7 +157,7 @@ export default function HomePage() {
 
             {/* Pillar 3: Trusted Partner */}
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-brand-dark to-brand-dark-light rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <div className="w-20 h-20 bg-brand-dark rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Shield className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Trusted Partner</h3>
@@ -181,8 +184,8 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
             {/* Pillar 1: Trust & Financial Strength */}
             <div className="bg-white p-10 rounded-2xl shadow-lg border-2 border-brand-blue/20">
-              <div className="w-16 h-16 bg-gradient-to-br from-brand-blue to-brand-blue-light rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <Award className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-brand-blue rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <Award className="w-8 h-8 text-brand-blue" />
               </div>
               <h3 className="text-3xl font-bold text-slate-900 mb-4">New Zealand Owned, Not-for-Profit</h3>
               <p className="text-slate-700 leading-relaxed mb-6">
@@ -201,37 +204,37 @@ export default function HomePage() {
 
             {/* Pillar 2: Comprehensive Team Protection */}
             <div className="bg-white p-10 rounded-2xl shadow-lg border-2 border-brand-teal/20">
-              <div className="w-16 h-16 bg-gradient-to-br from-brand-teal to-brand-teal-light rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <Shield className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-brand-teal rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <Shield className="w-8 h-8 text-brand-blue" />
               </div>
               <h3 className="text-3xl font-bold text-slate-900 mb-4">More Than Just Insurance</h3>
               <ul className="space-y-3 text-slate-700">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Range of plans tailored to different business sizes and budgets</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Group scheme pricing advantages</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Possible cover for pre-existing conditions</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Digital onboarding for seamless employee experience</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Easy claiming options</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Award-winning NZ-based customer service</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Dedicated Account Manager for ongoing support</span>
                 </li>
               </ul>
@@ -239,8 +242,8 @@ export default function HomePage() {
 
             {/* Pillar 3: BeingWellPlus */}
             <div className="bg-white p-10 rounded-2xl shadow-lg border-2 border-brand-dark/20">
-              <div className="w-16 h-16 bg-gradient-to-br from-brand-dark to-brand-dark-light rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <Users className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-brand-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <Users className="w-8 h-8 text-brand-blue" />
               </div>
               <h3 className="text-3xl font-bold text-slate-900 mb-4">BeingWellPlus – Your Workplace Wellness Hub</h3>
               <p className="text-slate-700 leading-relaxed mb-6">
@@ -248,19 +251,19 @@ export default function HomePage() {
               </p>
               <div className="space-y-3 text-slate-700">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Wellbeing modules to enhance employee experience, engagement, and culture</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Expert-led webinars to guide your workplace wellbeing journey</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Access to Healthy Futures research reports with workforce health insights</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Invitations to Gather conference featuring thought leaders and wellbeing experts</span>
                 </div>
               </div>
@@ -283,24 +286,24 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {/* Benefit 1: Reduced Productivity Loss */}
-            <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border-2 border-brand-blue/20">
-              <div className="w-16 h-16 bg-gradient-to-br from-brand-blue to-brand-blue-light rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <TrendingUp className="w-8 h-8 text-white" />
+            <div className="bg-gradient-to-br from-brand-blue/5 to-white p-8 rounded-2xl border-2 border-brand-blue/20">
+              <div className="w-16 h-16 bg-brand-blue rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <TrendingUp className="w-8 h-8 text-brand-blue" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Cut Waiting Times in Half</h3>
-              <div className="bg-blue-100 rounded-lg p-4 mb-4">
-                <p className="text-4xl font-bold text-blue-700 mb-1">50%</p>
-                <p className="text-sm text-blue-900">Less time on waiting lists</p>
+              <div className="bg-brand-blue/10 rounded-lg p-4 mb-4">
+                <p className="text-4xl font-bold text-brand-blue mb-1">50%</p>
+                <p className="text-sm text-white">Less time on waiting lists</p>
               </div>
               <p className="text-slate-700 leading-relaxed mb-4">
                 Employees with health insurance spend less than half the time on waiting lists for elective surgery. That's fewer projects derailed, less firefighting for managers, and more predictable resourcing.
               </p>
               <div className="space-y-2">
-                <div className="flex items-start gap-2 text-blue-700 font-semibold text-sm">
+                <div className="flex items-start gap-2 text-slate-700 font-semibold text-sm">
                   <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                   <span>Reduced sick leave and faster project delivery</span>
                 </div>
-                <div className="flex items-start gap-2 text-blue-700 font-semibold text-sm">
+                <div className="flex items-start gap-2 text-slate-700 font-semibold text-sm">
                   <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                   <span>Less disruption to team workflows</span>
                 </div>
@@ -310,23 +313,23 @@ export default function HomePage() {
 
             {/* Benefit 2: Talent Attraction & Retention */}
             <div className="bg-gradient-to-br from-brand-teal/5 to-white p-8 rounded-2xl border-2 border-brand-teal/20">
-              <div className="w-16 h-16 bg-gradient-to-br from-brand-teal to-brand-teal-light rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <Users className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-brand-teal rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <Users className="w-8 h-8 text-brand-blue" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Win the War for Talent</h3>
               <p className="text-slate-700 leading-relaxed mb-6">
                 In New Zealand's competitive job market, offering Southern Cross health insurance signals that you invest in your people's wellbeing. This reduces costly recruitment spend and staff replacement costs.
               </p>
               <div className="space-y-2">
-                <div className="flex items-start gap-2 text-green-700 font-semibold text-sm">
+                <div className="flex items-start gap-2 text-slate-700 font-semibold text-sm">
                   <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                   <span>Lower recruitment and hiring costs</span>
                 </div>
-                <div className="flex items-start gap-2 text-green-700 font-semibold text-sm">
+                <div className="flex items-start gap-2 text-slate-700 font-semibold text-sm">
                   <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                   <span>Reduced staff turnover saves training investment</span>
                 </div>
-                <div className="flex items-start gap-2 text-green-700 font-semibold text-sm">
+                <div className="flex items-start gap-2 text-slate-700 font-semibold text-sm">
                   <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                   <span>Attract top talent in competitive markets</span>
                 </div>
@@ -335,23 +338,23 @@ export default function HomePage() {
 
             {/* Benefit 3: Cost Control & Transparency */}
             <div className="bg-gradient-to-br from-brand-dark/5 to-white p-8 rounded-2xl border-2 border-brand-dark/20">
-              <div className="w-16 h-16 bg-gradient-to-br from-brand-dark to-brand-dark-light rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <Shield className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-brand-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <Shield className="w-8 h-8 text-brand-blue" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Control Costs, Maximize Value</h3>
               <p className="text-slate-700 leading-relaxed mb-6">
                 Group scheme pricing gives you better value than individual plans. Predictable premiums and transparent reporting mean you can budget confidently and demonstrate ROI to leadership.
               </p>
               <div className="space-y-2">
-                <div className="flex items-start gap-2 text-purple-700 font-semibold text-sm">
+                <div className="flex items-start gap-2 text-slate-700 font-semibold text-sm">
                   <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                   <span>Predictable costs for long-term financial planning</span>
                 </div>
-                <div className="flex items-start gap-2 text-purple-700 font-semibold text-sm">
+                <div className="flex items-start gap-2 text-slate-700 font-semibold text-sm">
                   <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                   <span>Transparent utilization data for ROI tracking</span>
                 </div>
-                <div className="flex items-start gap-2 text-purple-700 font-semibold text-sm">
+                <div className="flex items-start gap-2 text-slate-700 font-semibold text-sm">
                   <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                   <span>Sustainability through group pricing advantages</span>
                 </div>
@@ -360,23 +363,23 @@ export default function HomePage() {
 
             {/* Benefit 4: Workplace Culture & Engagement */}
             <div className="bg-gradient-to-br from-brand-dark/5 to-white p-8 rounded-2xl border-2 border-brand-dark/20">
-              <div className="w-16 h-16 bg-gradient-to-br from-brand-dark to-brand-dark-light rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <Award className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-brand-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <Award className="w-8 h-8 text-brand-blue" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Build a People-First Culture</h3>
               <p className="text-slate-700 leading-relaxed mb-6">
                 Organizations that prioritize employee health and wellbeing see improved engagement, reduced absenteeism, and stronger company culture. Access to BeingWellPlus resources helps you create meaningful wellbeing initiatives that resonate with your team.
               </p>
               <div className="space-y-2">
-                <div className="flex items-start gap-2 text-orange-700 font-semibold text-sm">
+                <div className="flex items-start gap-2 text-slate-700 font-semibold text-sm">
                   <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                   <span>Enhanced employee engagement and morale</span>
                 </div>
-                <div className="flex items-start gap-2 text-orange-700 font-semibold text-sm">
+                <div className="flex items-start gap-2 text-slate-700 font-semibold text-sm">
                   <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                   <span>Reduced absenteeism and presenteeism</span>
                 </div>
-                <div className="flex items-start gap-2 text-orange-700 font-semibold text-sm">
+                <div className="flex items-start gap-2 text-slate-700 font-semibold text-sm">
                   <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                   <span>Access to comprehensive wellbeing resources</span>
                 </div>
@@ -402,7 +405,7 @@ export default function HomePage() {
             {/* ORIX Case Study */}
             <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-blue/20">
               <div className="flex items-center gap-3 mb-4">
-                <Building2 className="w-8 h-8 text-blue-600" />
+                <Building2 className="w-8 h-8 text-brand-blue" />
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900">ORIX New Zealand</h3>
                   <p className="text-slate-600">Financial Services</p>
@@ -422,15 +425,15 @@ export default function HomePage() {
               </p>
               <div className="space-y-2">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span className="text-slate-700">90 staff across four offices covered</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span className="text-slate-700">Improved engagement scores and lower turnover</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span className="text-slate-700">Stronger EVP story in recruitment</span>
                 </div>
               </div>
@@ -439,7 +442,7 @@ export default function HomePage() {
             {/* Tech Startup Case Study */}
             <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-teal/20">
               <div className="flex items-center gap-3 mb-4">
-                <Building2 className="w-8 h-8 text-green-600" />
+                <Building2 className="w-8 h-8 text-brand-blue" />
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900">Wellington Tech Firm</h3>
                   <p className="text-slate-600">Technology & Software</p>
@@ -448,21 +451,21 @@ export default function HomePage() {
               <p className="text-slate-700 leading-relaxed mb-4">
                 A fast-growing software company with 45 employees implemented Southern Cross health insurance to attract and retain top tech talent in a competitive market.
               </p>
-              <div className="bg-green-50 p-4 rounded-lg mb-4">
-                <p className="text-3xl font-bold text-green-700 mb-1">30%</p>
+              <div className="bg-brand-teal/5 p-4 rounded-lg mb-4">
+                <p className="text-3xl font-bold text-brand-blue mb-1">30%</p>
                 <p className="text-sm text-slate-700">Reduction in staff turnover within first year</p>
               </div>
               <div className="space-y-2">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span className="text-slate-700">Became employer of choice in local tech scene</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span className="text-slate-700">Faster time-to-productivity for new hires</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span className="text-slate-700">Reduced sick leave and presenteeism</span>
                 </div>
               </div>
@@ -471,7 +474,7 @@ export default function HomePage() {
             {/* Manufacturing Case Study */}
             <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-dark/20">
               <div className="flex items-center gap-3 mb-4">
-                <Building2 className="w-8 h-8 text-purple-600" />
+                <Building2 className="w-8 h-8 text-brand-blue" />
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900">Auckland Manufacturer</h3>
                   <p className="text-slate-600">Manufacturing & Production</p>
@@ -480,70 +483,24 @@ export default function HomePage() {
               <p className="text-slate-700 leading-relaxed mb-4">
                 An established manufacturer with 120 employees introduced group health insurance to address rising health costs and support an aging workforce.
               </p>
-              <div className="bg-purple-50 p-4 rounded-lg mb-4">
-                <p className="text-3xl font-bold text-purple-700 mb-1">60%</p>
+              <div className="bg-brand-dark/5 p-4 rounded-lg mb-4">
+                <p className="text-3xl font-bold text-brand-blue mb-1">60%</p>
                 <p className="text-sm text-slate-700">Faster return to work after surgery</p>
               </div>
               <div className="space-y-2">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span className="text-slate-700">Minimized productivity loss from health issues</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span className="text-slate-700">Improved workforce morale and loyalty</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span className="text-slate-700">Pre-existing conditions covered for long-term staff</span>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Awards & Recognition Section */}
-      <section className="relative py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              Awards & Recognition
-            </h2>
-            <p className="text-xl text-slate-600">
-              Celebrating excellence in health insurance and workplace wellbeing
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {/* Reader's Digest Most Trusted */}
-            <div className="text-center">
-              <div className="w-32 h-32 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <Star className="w-16 h-16 fill-yellow-500 text-yellow-500" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Reader's Digest</h3>
-              <p className="text-slate-700 font-semibold mb-1">Most Trusted Health Insurer</p>
-              <p className="text-sm text-slate-600">9 Years Running (2017-2025)</p>
-            </div>
-
-            {/* Reader's Digest Quality Service */}
-            <div className="text-center">
-              <div className="w-32 h-32 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <Award className="w-16 h-16 text-green-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Reader's Digest</h3>
-              <p className="text-slate-700 font-semibold mb-1">Quality Service Award</p>
-              <p className="text-sm text-slate-600">Health Insurance Winner 2025</p>
-            </div>
-
-            {/* Wayfinder Awards */}
-            <div className="text-center">
-              <div className="w-32 h-32 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <Users className="w-16 h-16 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Wayfinder Awards</h3>
-              <p className="text-slate-700 font-semibold mb-1">Celebrating Visionary Leaders</p>
-              <p className="text-sm text-slate-600">People-First Workplace Wellbeing</p>
             </div>
           </div>
         </div>
@@ -603,17 +560,17 @@ export default function HomePage() {
             {/* Step 1 */}
             <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-brand-blue/20">
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-brand-blue to-brand-blue-light rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
+                <div className="w-16 h-16 bg-brand-blue rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
                   <span className="text-3xl font-bold text-white">1</span>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">Consultation & Analysis</h3>
-                  <p className="text-lg font-semibold text-blue-700 mb-3">We Understand Your Workforce</p>
+                  <p className="text-lg font-semibold text-brand-blue mb-3">We Understand Your Workforce</p>
                   <p className="text-slate-700 leading-relaxed mb-4">
                     In your free consultation, we analyze your workforce requirements, company size, and budget. Minimum 5 employees needed to qualify for group scheme pricing.
                   </p>
                   <div className="flex items-center gap-2 text-slate-600">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
                     <span className="font-semibold">Timeline: 30-minute call</span>
                   </div>
                 </div>
@@ -623,17 +580,17 @@ export default function HomePage() {
             {/* Step 2 */}
             <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-brand-teal/20">
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-brand-teal to-brand-teal-light rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
+                <div className="w-16 h-16 bg-brand-teal rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
                   <span className="text-3xl font-bold text-white">2</span>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">Tailored Plan Design</h3>
-                  <p className="text-lg font-semibold text-green-700 mb-3">Your Dedicated Account Manager Designs Your Scheme</p>
+                  <p className="text-lg font-semibold text-brand-blue mb-3">Your Dedicated Account Manager Designs Your Scheme</p>
                   <p className="text-slate-700 leading-relaxed mb-4">
                     We create a customized Southern Cross health insurance plan that fits your business needs and budget. Choose from a range of coverage levels and options, including possible cover for pre-existing conditions.
                   </p>
                   <div className="flex items-center gap-2 text-slate-600">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-teal/50 rounded-full"></div>
                     <span className="font-semibold">Timeline: 2-3 days</span>
                   </div>
                 </div>
@@ -643,17 +600,17 @@ export default function HomePage() {
             {/* Step 3 */}
             <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-brand-dark/20">
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-brand-dark to-brand-dark-light rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
+                <div className="w-16 h-16 bg-brand-dark rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
                   <span className="text-3xl font-bold text-white">3</span>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">Digital Onboarding</h3>
-                  <p className="text-lg font-semibold text-purple-700 mb-3">Seamless Employee Enrollment</p>
+                  <p className="text-lg font-semibold text-brand-blue mb-3">Seamless Employee Enrollment</p>
                   <p className="text-slate-700 leading-relaxed mb-4">
                     Your team members complete a simple digital onboarding process. We provide all communication materials and enrollment support to make it effortless.
                   </p>
                   <div className="flex items-center gap-2 text-slate-600">
-                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-dark/50 rounded-full"></div>
                     <span className="font-semibold">Timeline: 1-2 days</span>
                   </div>
                 </div>
@@ -663,17 +620,17 @@ export default function HomePage() {
             {/* Step 4 */}
             <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-brand-dark/20">
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-brand-dark to-brand-dark-light rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
+                <div className="w-16 h-16 bg-brand-dark rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
                   <span className="text-3xl font-bold text-white">4</span>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">Ongoing Support & Insights</h3>
-                  <p className="text-lg font-semibold text-orange-700 mb-3">Continuous Partnership</p>
+                  <p className="text-lg font-semibold text-brand-blue mb-3">Continuous Partnership</p>
                   <p className="text-slate-700 leading-relaxed mb-4">
                     Your dedicated Account Manager provides ongoing support, reporting, and insights. Access BeingWellPlus resources and participate in Southern Cross business initiatives like the Gather conference and Wayfinder Awards.
                   </p>
                   <div className="flex items-center gap-2 text-slate-600">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-dark rounded-full"></div>
                     <span className="font-semibold">Timeline: Ongoing</span>
                   </div>
                 </div>
@@ -684,117 +641,11 @@ export default function HomePage() {
           <div className="text-center mt-12">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-teal text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-xl transition-all"
+              className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-xl transition-all"
             >
               Get Your Free Consultation
               <PhoneCall className="w-5 h-5" />
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Resources & Thought Leadership Section */}
-      <section id="resources" className="relative py-24 bg-gradient-to-br from-slate-50 to-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-slate-900 mb-4">
-              Resources & Insights
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              We use Southern Cross Healthy Futures research to help you make evidence-based wellbeing decisions
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Resource 1: Healthy Futures Report */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-brand-blue/20 hover:shadow-xl transition-shadow">
-              <div className="h-48 bg-gradient-to-br from-brand-blue to-brand-blue-light flex items-center justify-center">
-                <img
-                  src="https://mc-fec8b19f-c7fd-4e56-8bfe-1850-cdn-endpoint.azureedge.net/society/-/media/southern-cross-health-society/health-insurance/images/business/healthy_futures_1.png"
-                  alt="Healthy Futures Report"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">Healthy Futures Report</h3>
-                <p className="text-slate-700 leading-relaxed mb-4">
-                  Understand New Zealand Workforce Health Trends
-                </p>
-                <p className="text-sm text-slate-600 mb-6">
-                  Access insights from the Southern Cross Healthy Futures Report Business Edition – research from 1,463 employees revealing workplace health attitudes and behaviors.
-                </p>
-                <a
-                  href="https://mc-fec8b19f-c7fd-4e56-8bfe-1850-cdn-endpoint.azureedge.net/society/-/media/landing-pages/healthy-futures/healthy_futures_business_report_2024.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors"
-                >
-                  Download Report
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-
-            {/* Resource 2: Wayfinder Awards */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-brand-dark/20 hover:shadow-xl transition-shadow">
-              <div className="h-48 bg-gradient-to-br from-brand-dark to-brand-dark-light flex items-center justify-center">
-                <img
-                  src="https://mc-fec8b19f-c7fd-4e56-8bfe-1850-cdn-endpoint.azureedge.net/society/-/media/southern-cross-health-society/health-insurance/images/business/wayfinder_awards.png"
-                  alt="Wayfinder Awards"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">Wayfinder Awards</h3>
-                <p className="text-slate-700 leading-relaxed mb-4">
-                  See What's Possible
-                </p>
-                <p className="text-sm text-slate-600 mb-6">
-                  Learn from award-winning businesses using wellbeing as a core business strategy and thriving because of it.
-                </p>
-                <a
-                  href="https://www.southerncross.co.nz/society/business/wayfinder-awards"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-purple-600 font-semibold hover:text-purple-700 transition-colors"
-                >
-                  Explore Success Stories
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-
-            {/* Resource 3: Gather Conference */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-brand-teal/20 hover:shadow-xl transition-shadow">
-              <div className="h-48 bg-gradient-to-br from-brand-teal to-brand-teal-light flex items-center justify-center">
-                <img
-                  src="https://mc-fec8b19f-c7fd-4e56-8bfe-1850-cdn-endpoint.azureedge.net/society/-/media/southern-cross-health-society/health-insurance/images/business/gather_3.png"
-                  alt="Gather Conference"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">Gather Conference</h3>
-                <p className="text-slate-700 leading-relaxed mb-4">
-                  Connect with Thought Leaders
-                </p>
-                <p className="text-sm text-slate-600 mb-6">
-                  Join fellow business leaders at Gather conference featuring thought leaders and wellbeing experts sharing the latest insights.
-                </p>
-                <a
-                  href="https://www.southerncross.co.nz/society/business/gather-together"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 transition-colors"
-                >
-                  Learn More
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -868,30 +719,30 @@ export default function HomePage() {
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>BeingWellPlus resource hub with wellbeing modules and expert webinars</span>
                 </li>
                 <li className="flex items-start gap-2 text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Dedicated Account Manager for ongoing support</span>
                 </li>
                 <li className="flex items-start gap-2 text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Reporting and insights on utilization</span>
                 </li>
                 <li className="flex items-start gap-2 text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Access to Gather conference</span>
                 </li>
                 <li className="flex items-start gap-2 text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
                   <span>Wayfinder Awards participation opportunities</span>
                 </li>
               </ul>
             </div>
 
             {/* FAQ 8 - New */}
-            <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border-2 border-blue-200">
+            <div className="bg-gradient-to-br from-brand-blue/5 to-white p-8 rounded-2xl border-2 border-brand-blue/20">
               <h3 className="text-xl font-bold text-slate-900 mb-3">Why work with BoostWellbeing instead of approaching Southern Cross directly?</h3>
               <p className="text-slate-700 leading-relaxed">
                 We're here to translate the world of health insurance into plain language and practical decisions. We help you choose the right Southern Cross plan, communicate it to your people, and connect it into your wider wellbeing strategy – so it feels like part of your culture, not just another form to fill in.
@@ -899,7 +750,7 @@ export default function HomePage() {
             </div>
 
             {/* FAQ 9 - New */}
-            <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border-2 border-blue-200">
+            <div className="bg-gradient-to-br from-brand-blue/5 to-white p-8 rounded-2xl border-2 border-brand-blue/20">
               <h3 className="text-xl font-bold text-slate-900 mb-3">How does BoostWellbeing support us beyond signing the policy?</h3>
               <p className="text-slate-700 leading-relaxed">
                 You'll work directly with Oliver or Ashley from start to finish. We provide ongoing support with employee communications, onboarding new staff to the scheme, and connecting you to BeingWellPlus resources. We're here to make sure your health insurance actually gets used and valued by your team.
@@ -910,7 +761,7 @@ export default function HomePage() {
       </section>
 
       {/* Final CTA */}
-      <section className="relative py-32 bg-gradient-to-br from-brand-blue via-brand-blue-light to-brand-teal">
+      <section className="relative py-32 bg-brand-blue">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
@@ -938,7 +789,7 @@ export default function HomePage() {
 
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 bg-white text-blue-600 px-12 py-6 rounded-lg font-bold text-xl hover:bg-blue-50 transition-all shadow-2xl"
+              className="inline-flex items-center gap-3 bg-white text-brand-blue px-12 py-6 rounded-lg font-bold text-xl hover:bg-brand-blue/10 transition-all shadow-2xl"
             >
               Schedule Your Free Consultation
               <ArrowRight className="w-6 h-6" />
@@ -957,10 +808,13 @@ export default function HomePage() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-brand-blue to-brand-teal rounded-lg flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center">
+                  <BoostIcon className="w-6 h-6 text-white" />
                 </div>
-                <span className="text-xl font-bold">BoostWellbeing</span>
+                <span className="text-xl font-bold">
+                  <span className="text-brand-blue">Boost</span>
+                  <span className="text-white">Wellbeing</span>
+                </span>
               </div>
               <p className="text-sm text-white/60">
                 In partnership with Southern Cross Health Society

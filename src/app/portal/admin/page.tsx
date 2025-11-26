@@ -8,6 +8,7 @@ import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import bcrypt from 'bcryptjs';
+import { BoostIcon } from '@/components/icons/BoostIcon';
 
 interface InviteToken {
   id: string;
@@ -164,8 +165,8 @@ export default function AdminPage() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-orange-500 rounded-lg flex items-center justify-center shadow-lg">
-                <Shield className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 bg-brand-dark rounded-lg flex items-center justify-center shadow-lg">
+                <BoostIcon className="w-6 h-6 text-white" />
               </div>
               <span className="text-2xl font-bold text-slate-800">Admin Portal</span>
             </Link>

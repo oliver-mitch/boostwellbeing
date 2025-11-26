@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Shield, CheckCircle, Building2, Mail, Phone, User, Users, MessageSquare, Send } from 'lucide-react';
+import { BoostIcon } from '@/components/icons/BoostIcon';
 
 interface ContactFormData {
   fullName: string;
@@ -63,10 +64,13 @@ export default function ContactPage() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-brand-blue to-brand-teal rounded-lg flex items-center justify-center shadow-lg">
-                <Shield className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center shadow-lg">
+                <BoostIcon className="w-6 h-6 text-white" />
               </div>
-              <span className="text-2xl font-bold text-white">BoostWellbeing</span>
+              <span className="text-2xl font-bold">
+                <span className="text-brand-blue">Boost</span>
+                <span className="text-white">Wellbeing</span>
+              </span>
             </Link>
 
             <Link
@@ -89,10 +93,7 @@ export default function ContactPage() {
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-              Let's Build a{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-                Healthier Team Together
-              </span>
+              Let's Build a Healthier Team Together
             </h1>
 
             <p className="text-xl text-white/90 leading-relaxed">
@@ -250,7 +251,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="w-full bg-gradient-to-r from-brand-blue to-brand-teal text-white py-4 px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-brand-blue hover:bg-brand-blue-dark text-white py-4 px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {status === 'loading' ? (
                       <>
@@ -306,7 +307,7 @@ export default function ContactPage() {
               </div>
 
               {/* Trust Badge */}
-              <div className="bg-gradient-to-br from-blue-500/20 to-green-500/20 backdrop-blur-sm rounded-2xl p-8 border border-white/20 text-center">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 text-center">
                 <Shield className="w-16 h-16 text-white mx-auto mb-4" />
                 <h4 className="text-xl font-bold text-white mb-2">Trusted by 3,500+ NZ Businesses</h4>
                 <p className="text-white/80">

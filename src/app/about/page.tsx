@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Shield, ArrowRight, Users, Heart, CheckCircle } from 'lucide-react';
+import { ArrowRight, Users, Heart, CheckCircle } from 'lucide-react';
+import { BoostIcon } from '@/components/icons/BoostIcon';
 
 export default function AboutPage() {
   return (
@@ -12,11 +13,14 @@ export default function AboutPage() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-brand-blue to-brand-teal rounded-lg flex items-center justify-center shadow-lg">
-                <Shield className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center shadow-lg">
+                <BoostIcon className="w-6 h-6 text-white" />
               </div>
               <div className="flex flex-col">
-                <span className="text-2xl font-bold text-white">BoostWellbeing</span>
+                <span className="text-2xl font-bold">
+                  <span className="text-brand-blue">Boost</span>
+                  <span className="text-white">Wellbeing</span>
+                </span>
                 <span className="text-xs text-white/70 font-medium">Better Health Starts at Work</span>
               </div>
             </Link>
@@ -36,10 +40,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-              Meet the{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-                BoostWellbeing Team
-              </span>
+              Meet the <span className="text-brand-blue">Boost</span>Wellbeing Team
             </h1>
 
             <p className="text-xl text-white/90 leading-relaxed">
@@ -53,12 +54,12 @@ export default function AboutPage() {
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
               <div className="grid lg:grid-cols-3 gap-8 p-8">
                 <div className="lg:col-span-1">
-                  <div className="w-48 h-48 bg-gradient-to-br from-brand-blue to-brand-blue-light rounded-2xl flex items-center justify-center mx-auto shadow-xl">
+                  <div className="w-48 h-48 bg-brand-blue rounded-2xl flex items-center justify-center mx-auto shadow-xl">
                     <Users className="w-24 h-24 text-white" />
                   </div>
                   <div className="text-center mt-6">
                     <h3 className="text-2xl font-bold text-slate-900">Oliver Mitch</h3>
-                    <p className="text-blue-600 font-semibold">Co-Founder, BoostWellbeing</p>
+                    <p className="text-slate-600 font-semibold">Co-Founder, <span className="text-brand-blue">Boost</span>Wellbeing</p>
                   </div>
                 </div>
                 <div className="lg:col-span-2">
@@ -81,12 +82,12 @@ export default function AboutPage() {
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
               <div className="grid lg:grid-cols-3 gap-8 p-8">
                 <div className="lg:col-span-1">
-                  <div className="w-48 h-48 bg-gradient-to-br from-brand-teal to-brand-teal-light rounded-2xl flex items-center justify-center mx-auto shadow-xl">
+                  <div className="w-48 h-48 bg-brand-teal rounded-2xl flex items-center justify-center mx-auto shadow-xl">
                     <Heart className="w-24 h-24 text-white" />
                   </div>
                   <div className="text-center mt-6">
                     <h3 className="text-2xl font-bold text-slate-900">Ashley Griffiths</h3>
-                    <p className="text-green-600 font-semibold">Co-Founder, BoostWellbeing</p>
+                    <p className="text-slate-600 font-semibold">Co-Founder, <span className="text-brand-blue">Boost</span>Wellbeing</p>
                   </div>
                 </div>
                 <div className="lg:col-span-2">
@@ -146,7 +147,7 @@ export default function AboutPage() {
             </h3>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-teal text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all"
+              className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all"
             >
               Get Your Free Consultation
               <ArrowRight className="w-5 h-5" />

@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { Shield, Heart, LogOut } from 'lucide-react';
 import { signOut } from 'next-auth/react';
 import Link from 'next/link';
+import { BoostIcon } from '@/components/icons/BoostIcon';
 
 export default function PortalPage() {
   const { data: session, status } = useSession();
@@ -39,10 +40,10 @@ export default function PortalPage() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center shadow-lg">
-                <Shield className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center shadow-lg">
+                <BoostIcon className="w-6 h-6 text-white" />
               </div>
-              <span className="text-2xl font-bold text-slate-800">BoostWellbeing</span>
+              <span className="text-2xl font-bold text-slate-800"><span className="text-brand-blue">Boost</span>Wellbeing</span>
             </Link>
 
             <div className="flex items-center gap-4">
