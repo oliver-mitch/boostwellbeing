@@ -22,6 +22,17 @@ export default function ScrollVideoBackground({
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
+    // Load video metadata
+    if (videoRef.current) {
+      videoRef.current.load();
+      videoRef.current.addEventListener('loadedmetadata', () => {
+        console.log('Video loaded:', videoSrc);
+      });
+      videoRef.current.addEventListener('error', (e) => {
+        console.error('Video error:', e);
+      });
+    }
+
     const handleScroll = () => {
       if (!containerRef.current) return;
 
@@ -64,7 +75,7 @@ export default function ScrollVideoBackground({
     return () => {
       window.removeEventListener('scroll', throttledScroll);
     };
-  }, []);
+  }, [videoSrc]);
 
   // Parallax transform
   const parallaxTransform = `translateY(${scrollProgress * 100 * parallaxSpeed}px)`;

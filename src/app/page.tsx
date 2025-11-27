@@ -27,7 +27,7 @@ export default function HomePage() {
       <div className="min-h-screen bg-slate-900">
         {/* Scroll-Reactive Video Background */}
         <ScrollVideoBackground
-        videoSrc="https://assets.mixkit.co/videos/preview/mixkit-business-people-working-in-an-office-4966-large.mp4"
+        videoSrc="/videos/office-background.mp4"
         opacity={0.25}
         blur={true}
         parallaxSpeed={0.3}
