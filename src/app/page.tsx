@@ -78,11 +78,6 @@ export default function HomePage() {
       <section className="relative py-32">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-8 border border-white/20 text-white">
-              <Building2 className="w-4 h-4" />
-              In partnership with Southern Cross Health Society
-            </div>
-
             <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight text-white">
               Build a Healthier, More Productive Team with Southern Cross – Guided by <span className="text-brand-blue">Boost</span>Wellbeing
             </h1>

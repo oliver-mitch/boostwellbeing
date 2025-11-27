@@ -67,10 +67,13 @@ export default function ContactPage() {
               <div className="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center shadow-lg">
                 <BoostIcon className="w-6 h-6 text-white" />
               </div>
-              <span className="text-2xl font-bold">
-                <span className="text-brand-blue">Boost</span>
-                <span className="text-white">Wellbeing</span>
-              </span>
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold">
+                  <span className="text-brand-blue">Boost</span>
+                  <span className="text-white">Wellbeing</span>
+                </span>
+                <span className="text-xs text-white/70 font-medium">Better Health Starts at Work</span>
+              </div>
             </Link>
 
             <Link
@@ -87,11 +90,6 @@ export default function ContactPage() {
       <section className="relative py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-8 border border-white/20 text-white">
-              <Building2 className="w-4 h-4" />
-              Get Your Free Consultation
-            </div>
-
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
               Let's Build a Healthier Team Together
             </h1>
