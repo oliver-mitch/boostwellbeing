@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Shield, CheckCircle, Building2, Mail, Phone, User, Users, MessageSquare, Send } from 'lucide-react';
 import { BoostIcon } from '@/components/icons/BoostIcon';
+import ScrollVideoBackground from '@/components/ScrollVideoBackground';
 
 interface ContactFormData {
   fullName: string;
@@ -58,7 +59,15 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900">
+    <div className="min-h-screen bg-slate-900">
+      {/* Scroll-Reactive Video Background */}
+      <ScrollVideoBackground
+        videoSrc="/videos/office-background.mp4"
+        opacity={0.25}
+        blur={true}
+        parallaxSpeed={0.3}
+      />
+
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-6 py-4">
