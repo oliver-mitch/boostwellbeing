@@ -180,7 +180,7 @@ export default function HomePage() {
             {/* Pillar 1: Trust & Financial Strength */}
             <div className="bg-white p-10 rounded-2xl shadow-lg border-2 border-brand-blue/20">
               <div className="w-16 h-16 bg-brand-blue rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <Award className="w-8 h-8 text-brand-blue" />
+                <Award className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-3xl font-bold text-slate-900 mb-4">New Zealand Owned, Not-for-Profit</h3>
               <p className="text-slate-700 leading-relaxed mb-6">
@@ -200,7 +200,7 @@ export default function HomePage() {
             {/* Pillar 2: Comprehensive Team Protection */}
             <div className="bg-white p-10 rounded-2xl shadow-lg border-2 border-brand-teal/20">
               <div className="w-16 h-16 bg-brand-teal rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <Shield className="w-8 h-8 text-brand-blue" />
+                <Shield className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-3xl font-bold text-slate-900 mb-4">More Than Just Insurance</h3>
               <ul className="space-y-3 text-slate-700">
@@ -283,7 +283,7 @@ export default function HomePage() {
             {/* Benefit 1: Reduced Productivity Loss */}
             <div className="bg-gradient-to-br from-brand-blue/5 to-white p-8 rounded-2xl border-2 border-brand-blue/20">
               <div className="w-16 h-16 bg-brand-blue rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <TrendingUp className="w-8 h-8 text-brand-blue" />
+                <TrendingUp className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Cut Waiting Times in Half</h3>
               <div className="bg-brand-blue/10 rounded-lg p-4 mb-4">
@@ -309,7 +309,7 @@ export default function HomePage() {
             {/* Benefit 2: Talent Attraction & Retention */}
             <div className="bg-gradient-to-br from-brand-teal/5 to-white p-8 rounded-2xl border-2 border-brand-teal/20">
               <div className="w-16 h-16 bg-brand-teal rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                <Users className="w-8 h-8 text-brand-blue" />
+                <Users className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Win the War for Talent</h3>
               <p className="text-slate-700 leading-relaxed mb-6">
