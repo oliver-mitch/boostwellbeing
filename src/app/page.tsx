@@ -434,66 +434,66 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Tech Startup Case Study */}
+            {/* Beca Case Study */}
             <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-teal/20">
               <div className="flex items-center gap-3 mb-4">
                 <Building2 className="w-8 h-8 text-brand-blue" />
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900">Wellington Tech Firm</h3>
-                  <p className="text-slate-600">Technology & Software</p>
+                  <h3 className="text-2xl font-bold text-slate-900">Beca</h3>
+                  <p className="text-slate-600">Engineering & Professional Services</p>
                 </div>
               </div>
               <p className="text-slate-700 leading-relaxed mb-4">
-                A fast-growing software company with 45 employees implemented Southern Cross health insurance to attract and retain top tech talent in a competitive market.
+                Aotearoa's largest professional services consultancy partnered with Southern Cross to provide comprehensive health coverage for employees and their families across multiple locations.
               </p>
               <div className="bg-brand-teal/5 p-4 rounded-lg mb-4">
-                <p className="text-3xl font-bold text-brand-blue mb-1">30%</p>
-                <p className="text-sm text-slate-700">Reduction in staff turnover within first year</p>
+                <p className="text-2xl font-bold text-brand-blue mb-1">"A true partner"</p>
+                <p className="text-sm text-slate-700">— Chloe Stewart Tyson</p>
               </div>
               <div className="space-y-2">
                 <div className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
-                  <span className="text-slate-700">Became employer of choice in local tech scene</span>
+                  <span className="text-slate-700">Immediate specialist care when employees need it most</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
-                  <span className="text-slate-700">Faster time-to-productivity for new hires</span>
+                  <span className="text-slate-700">Critical pediatric care for employees' families</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
-                  <span className="text-slate-700">Reduced sick leave and presenteeism</span>
+                  <span className="text-slate-700">Improved talent attraction and staff loyalty</span>
                 </div>
               </div>
             </div>
 
-            {/* Manufacturing Case Study */}
+            {/* Ravensdown Case Study */}
             <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-dark/20">
               <div className="flex items-center gap-3 mb-4">
                 <Building2 className="w-8 h-8 text-brand-blue" />
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900">Auckland Manufacturer</h3>
-                  <p className="text-slate-600">Manufacturing & Production</p>
+                  <h3 className="text-2xl font-bold text-slate-900">Ravensdown</h3>
+                  <p className="text-slate-600">Agriculture & Fertiliser</p>
                 </div>
               </div>
               <p className="text-slate-700 leading-relaxed mb-4">
-                An established manufacturer with 120 employees introduced group health insurance to address rising health costs and support an aging workforce.
+                New Zealand's largest fertiliser supplier provides fully subsidised Southern Cross health insurance to 600+ employees and their families across NZ and Australia.
               </p>
               <div className="bg-brand-dark/5 p-4 rounded-lg mb-4">
-                <p className="text-3xl font-bold text-brand-blue mb-1">60%</p>
-                <p className="text-sm text-slate-700">Faster return to work after surgery</p>
+                <p className="text-2xl font-bold text-brand-blue mb-1">600+ employees</p>
+                <p className="text-sm text-slate-700">Fully subsidised coverage including families</p>
               </div>
               <div className="space-y-2">
                 <div className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
-                  <span className="text-slate-700">Minimized productivity loss from health issues</span>
+                  <span className="text-slate-700">Strong employee retention in competitive market</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
-                  <span className="text-slate-700">Improved workforce morale and loyalty</span>
+                  <span className="text-slate-700">Rapid access to treatment for serious conditions</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
-                  <span className="text-slate-700">Pre-existing conditions covered for long-term staff</span>
+                  <span className="text-slate-700">"A benefit you don't give up lightly" — Tracey Paterson, GM HR</span>
                 </div>
               </div>
             </div>
