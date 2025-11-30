@@ -416,7 +416,7 @@ export default function HomePage() {
                 </div>
               </div>
               <p className="text-slate-700 leading-relaxed mb-4">
-                With support from BoostWellbeing and Southern Cross, ORIX NZ designed a comprehensive wellbeing scheme that won national recognition.
+                ORIX NZ designed a comprehensive wellbeing scheme with Southern Cross that won national recognition for excellence in workplace wellbeing.
               </p>
               <div className="space-y-2">
                 <div className="flex items-start gap-2">
