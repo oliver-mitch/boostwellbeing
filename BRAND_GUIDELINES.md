@@ -82,7 +82,7 @@ We help businesses easily bring Southern Cross workplace health insurance to the
 **Primary Colors:**
 - **Blue**: `rgb(77, 144, 222)` / `#4D90DE` - Trust, care, professionalism
 - **Teal**: `rgb(33, 177, 166)` / `#21B1A6` - Freshness, wellbeing, growth
-- **Dark**: `rgb(144, 66, 88)` / `#904258` - Depth, sophistication, warmth
+- **Dark**: `rgb(44, 66, 88)` / `#2C4258` - Depth, sophistication, warmth
 
 **Neutral Colors:**
 - **White**: `#FFFFFF` - Clean, clear, approachable

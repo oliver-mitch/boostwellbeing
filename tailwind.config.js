@@ -12,13 +12,13 @@ export default {
         brand: {
           blue: '#4D90DE',      // Primary blue - trust, care, professionalism
           teal: '#21B1A6',      // Teal - freshness, wellbeing, growth
-          dark: '#904258',      // Dark - depth, sophistication, warmth
+          dark: '#2C4258',      // Dark - depth, sophistication, warmth
           'blue-light': '#6BA4E6',
           'blue-dark': '#3A7AC8',
           'teal-light': '#3DC9BD',
           'teal-dark': '#1A8F85',
-          'dark-light': '#A65770',
-          'dark-darker': '#6B3344',
+          'dark-light': '#3D5A77',
+          'dark-darker': '#1E2F40',
         },
       },
       fontFamily: {

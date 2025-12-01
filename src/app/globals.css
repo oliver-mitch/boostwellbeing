@@ -6,13 +6,13 @@
   /* BoostWellbeing Brand Colors */
   --color-blue: #4D90DE;          /* Primary blue - trust, care, professionalism */
   --color-teal: #21B1A6;          /* Teal - freshness, wellbeing, growth */
-  --color-dark: #904258;          /* Dark - depth, sophistication, warmth */
+  --color-dark: #2C4258;          /* Dark - depth, sophistication, warmth */
   --color-blue-light: #6BA4E6;
   --color-blue-dark: #3A7AC8;
   --color-teal-light: #3DC9BD;
   --color-teal-dark: #1A8F85;
-  --color-dark-light: #A65770;
-  --color-dark-darker: #6B3344;
+  --color-dark-light: #3D5A77;
+  --color-dark-darker: #1E2F40;
 
   /* System colors */
   --color-success: #21B1A6;       /* Teal */
@@ -49,15 +49,6 @@
 }
 
 @layer components {
-  /* Custom utility classes */
-  .gradient-brand {
-    @apply bg-gradient-to-r from-brand-blue to-brand-teal;
-  }
-
-  .gradient-brand-text {
-    @apply bg-gradient-to-r from-brand-blue to-brand-teal bg-clip-text text-transparent;
-  }
-
   /* Card styles */
   .card-brand {
     @apply bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200/50 transition-all duration-300;

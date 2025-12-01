@@ -28,7 +28,7 @@ export default function HomePage() {
         {/* Scroll-Reactive Video Background */}
         <ScrollVideoBackground
         videoSrc="/videos/office-background.mp4"
-        opacity={0.25}
+        opacity={0.5}
         blur={true}
         parallaxSpeed={0.3}
       />
