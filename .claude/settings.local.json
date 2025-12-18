@@ -33,7 +33,9 @@
       "Bash(powershell -Command:*)",
       "Bash(timeout /t 5 /nobreak)",
       "Bash(curl:*)",
-      "Bash(where:*)"
+      "Bash(where:*)",
+      "Bash(ls:*)",
+      "Bash(supabase status:*)"
     ],
     "deny": [],
     "ask": []
