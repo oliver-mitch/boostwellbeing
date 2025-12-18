@@ -31,24 +31,40 @@ export default function ContactPage() {
     e.preventDefault();
     setStatus('loading');
 
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      setStatus('success');
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      // Reset form after success
-      setTimeout(() => {
-        setFormData({
-          fullName: '',
-          companyName: '',
-          email: '',
-          phone: '',
-          numberOfEmployees: '',
-          message: '',
-        });
-        setStatus('idle');
-      }, 3000);
-    }, 1000);
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus('success');
+
+        // Reset form after success
+        setTimeout(() => {
+          setFormData({
+            fullName: '',
+            companyName: '',
+            email: '',
+            phone: '',
+            numberOfEmployees: '',
+            message: '',
+          });
+          setStatus('idle');
+        }, 5000);
+      } else {
+        setStatus('error');
+        console.error('Form submission error:', data.error);
+      }
+    } catch (error) {
+      setStatus('error');
+      console.error('Form submission error:', error);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
