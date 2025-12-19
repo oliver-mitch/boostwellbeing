@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
+import { createHubSpotContact, createHubSpotDeal, isHubSpotConfigured } from '@/lib/hubspot';
 
 interface ContactFormData {
   fullName: string;
@@ -68,6 +69,35 @@ Submitted: ${new Date().toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' }
     console.log('=== NEW CONTACT FORM SUBMISSION ===');
     console.log(emailContent);
     console.log('===================================');
+
+    // Send to HubSpot
+    if (isHubSpotConfigured()) {
+      try {
+        const hubspotContact = await createHubSpotContact({
+          email: data.email,
+          firstname: data.fullName,
+          lastname: '', // Will be split from fullName in the function
+          phone: data.phone,
+          company: data.companyName,
+          number_of_employees: data.numberOfEmployees,
+          message: data.message,
+        });
+
+        // Create a deal for this inquiry
+        if (hubspotContact && hubspotContact.id) {
+          await createHubSpotDeal(hubspotContact.id, {
+            dealname: `${data.companyName} - Contact Form Inquiry`,
+            dealstage: 'appointmentscheduled',
+          });
+          console.log('HubSpot contact and deal created successfully');
+        }
+      } catch (hubspotError) {
+        console.error('HubSpot integration error:', hubspotError);
+        // Don't fail the request if HubSpot fails
+      }
+    } else {
+      console.log('HubSpot not configured - skipping integration');
+    }
 
     // TODO: Send actual email
     // Example with SendGrid:
