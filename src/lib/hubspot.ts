@@ -34,7 +34,7 @@ export async function createHubSpotContact(data: HubSpotContactData): Promise<an
     const firstname = nameParts[0] || '';
     const lastname = nameParts.slice(1).join(' ') || '';
 
-    // Prepare contact properties
+    // Prepare contact properties (only standard HubSpot properties)
     const properties = {
       email: data.email,
       firstname: firstname,
@@ -42,13 +42,6 @@ export async function createHubSpotContact(data: HubSpotContactData): Promise<an
       phone: data.phone,
       company: data.company,
       lifecyclestage: 'lead',
-      // Custom properties (ensure these exist in your HubSpot account)
-      number_of_employees: data.number_of_employees || '',
-      hs_lead_status: 'NEW',
-      // Add message to notes
-      ...(data.message && {
-        hs_note_body: `Contact Form Message:\n${data.message}\n\nSubmitted: ${new Date().toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' })}`
-      }),
     };
 
     // Create or update contact using email as unique identifier
@@ -79,10 +72,8 @@ export async function createHubSpotContact(data: HubSpotContactData): Promise<an
     const result = await response.json();
     console.log('HubSpot contact created:', result.id);
 
-    // Add note with the message if provided
-    if (data.message) {
-      await addNoteToContact(result.id, data.message);
-    }
+    // Add note with the message and employee count
+    await addNoteToContact(result.id, data.message, data.number_of_employees);
 
     return result;
   } catch (error) {
@@ -147,7 +138,6 @@ async function updateHubSpotContact(data: HubSpotContactData): Promise<any> {
         lastname: lastname,
         phone: data.phone,
         company: data.company,
-        number_of_employees: data.number_of_employees || '',
       };
 
       const updateResponse = await fetch(
@@ -165,10 +155,8 @@ async function updateHubSpotContact(data: HubSpotContactData): Promise<any> {
       const result = await updateResponse.json();
       console.log('HubSpot contact updated:', contactId);
 
-      // Add note with the new message
-      if (data.message) {
-        await addNoteToContact(contactId, data.message);
-      }
+      // Add note with the new message and employee count
+      await addNoteToContact(contactId, data.message, data.number_of_employees);
 
       return result;
     }
@@ -181,7 +169,7 @@ async function updateHubSpotContact(data: HubSpotContactData): Promise<any> {
 /**
  * Add a note to a contact in HubSpot
  */
-async function addNoteToContact(contactId: string, message: string): Promise<any> {
+async function addNoteToContact(contactId: string, message?: string, numberOfEmployees?: string): Promise<any> {
   const apiKey = process.env.HUBSPOT_API_KEY;
 
   if (!apiKey) {
@@ -189,6 +177,16 @@ async function addNoteToContact(contactId: string, message: string): Promise<any
   }
 
   try {
+    // Build note body with all available information
+    let noteBody = 'Contact Form Submission:\n\n';
+    if (numberOfEmployees) {
+      noteBody += `Number of Employees: ${numberOfEmployees}\n\n`;
+    }
+    if (message) {
+      noteBody += `Message: ${message}\n\n`;
+    }
+    noteBody += `Submitted: ${new Date().toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' })}`;
+
     const response = await fetch(
       `https://api.hubapi.com/crm/v3/objects/notes`,
       {
@@ -199,7 +197,7 @@ async function addNoteToContact(contactId: string, message: string): Promise<any
         },
         body: JSON.stringify({
           properties: {
-            hs_note_body: `Contact Form Submission:\n\n${message}\n\nSubmitted: ${new Date().toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' })}`,
+            hs_note_body: noteBody,
             hs_timestamp: new Date().toISOString(),
           },
           associations: [
