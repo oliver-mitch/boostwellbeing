@@ -53,11 +53,12 @@ export async function createHubSpotContact(data: HubSpotContactData): Promise<an
 
     // Create or update contact using email as unique identifier
     const response = await fetch(
-      `https://api.hubapi.com/crm/v3/objects/contacts?hapikey=${apiKey}`,
+      `https://api.hubapi.com/crm/v3/objects/contacts`,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
         },
         body: JSON.stringify({ properties }),
       }
@@ -104,11 +105,12 @@ async function updateHubSpotContact(data: HubSpotContactData): Promise<any> {
   try {
     // First, search for the contact by email
     const searchResponse = await fetch(
-      `https://api.hubapi.com/crm/v3/objects/contacts/search?hapikey=${apiKey}`,
+      `https://api.hubapi.com/crm/v3/objects/contacts/search`,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
           filterGroups: [
@@ -149,11 +151,12 @@ async function updateHubSpotContact(data: HubSpotContactData): Promise<any> {
       };
 
       const updateResponse = await fetch(
-        `https://api.hubapi.com/crm/v3/objects/contacts/${contactId}?hapikey=${apiKey}`,
+        `https://api.hubapi.com/crm/v3/objects/contacts/${contactId}`,
         {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`,
           },
           body: JSON.stringify({ properties }),
         }
@@ -187,11 +190,12 @@ async function addNoteToContact(contactId: string, message: string): Promise<any
 
   try {
     const response = await fetch(
-      `https://api.hubapi.com/crm/v3/objects/notes?hapikey=${apiKey}`,
+      `https://api.hubapi.com/crm/v3/objects/notes`,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
           properties: {
@@ -251,11 +255,12 @@ export async function createHubSpotDeal(
     };
 
     const response = await fetch(
-      `https://api.hubapi.com/crm/v3/objects/deals?hapikey=${apiKey}`,
+      `https://api.hubapi.com/crm/v3/objects/deals`,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
           properties,
