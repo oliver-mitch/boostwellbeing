@@ -17,10 +17,16 @@ interface HubSpotDealData {
   amount?: string;
 }
 
+interface HubSpotCompanyData {
+  name: string;
+  phone?: string;
+  number_of_employees?: string;
+}
+
 /**
  * Create or update a contact in HubSpot
  */
-export async function createHubSpotContact(data: HubSpotContactData): Promise<any> {
+export async function createHubSpotContact(data: HubSpotContactData, companyId?: string): Promise<any> {
   const apiKey = process.env.HUBSPOT_API_KEY;
 
   if (!apiKey) {
@@ -44,6 +50,26 @@ export async function createHubSpotContact(data: HubSpotContactData): Promise<an
       lifecyclestage: 'lead',
     };
 
+    // Prepare request body with optional company association
+    const requestBody: any = { properties };
+
+    // If company ID is provided, add association
+    if (companyId) {
+      requestBody.associations = [
+        {
+          to: {
+            id: companyId,
+          },
+          types: [
+            {
+              associationCategory: 'HUBSPOT_DEFINED',
+              associationTypeId: 1, // Primary company association
+            },
+          ],
+        },
+      ];
+    }
+
     // Create or update contact using email as unique identifier
     const response = await fetch(
       `https://api.hubapi.com/crm/v3/objects/contacts`,
@@ -53,7 +79,7 @@ export async function createHubSpotContact(data: HubSpotContactData): Promise<an
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${apiKey}`,
         },
-        body: JSON.stringify({ properties }),
+        body: JSON.stringify(requestBody),
       }
     );
 
@@ -61,7 +87,7 @@ export async function createHubSpotContact(data: HubSpotContactData): Promise<an
       // If contact already exists, try to update instead
       if (response.status === 409) {
         console.log('Contact already exists, updating instead...');
-        return await updateHubSpotContact(data);
+        return await updateHubSpotContact(data, companyId);
       }
 
       const errorData = await response.text();
@@ -86,7 +112,7 @@ export async function createHubSpotContact(data: HubSpotContactData): Promise<an
 /**
  * Update an existing contact in HubSpot by email
  */
-async function updateHubSpotContact(data: HubSpotContactData): Promise<any> {
+async function updateHubSpotContact(data: HubSpotContactData, companyId?: string): Promise<any> {
   const apiKey = process.env.HUBSPOT_API_KEY;
 
   if (!apiKey) {
@@ -155,6 +181,11 @@ async function updateHubSpotContact(data: HubSpotContactData): Promise<any> {
       const result = await updateResponse.json();
       console.log('HubSpot contact updated:', contactId);
 
+      // If company ID is provided, create association
+      if (companyId) {
+        await associateContactWithCompany(contactId, companyId);
+      }
+
       // Add note with the new message and employee count
       await addNoteToContact(contactId, data.message, data.number_of_employees);
 
@@ -163,6 +194,40 @@ async function updateHubSpotContact(data: HubSpotContactData): Promise<any> {
   } catch (error) {
     console.error('Error updating HubSpot contact:', error);
     return null;
+  }
+}
+
+/**
+ * Associate a contact with a company in HubSpot
+ */
+async function associateContactWithCompany(contactId: string, companyId: string): Promise<any> {
+  const apiKey = process.env.HUBSPOT_API_KEY;
+
+  if (!apiKey) {
+    return null;
+  }
+
+  try {
+    const response = await fetch(
+      `https://api.hubapi.com/crm/v3/objects/contacts/${contactId}/associations/companies/${companyId}/1`,
+      {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+        },
+      }
+    );
+
+    if (response.ok) {
+      console.log('Contact associated with company:', contactId, '->', companyId);
+      return true;
+    } else {
+      console.error('Failed to associate contact with company:', response.status);
+      return false;
+    }
+  } catch (error) {
+    console.error('Error associating contact with company:', error);
+    return false;
   }
 }
 
@@ -292,6 +357,121 @@ export async function createHubSpotDeal(
   }
 
   return null;
+}
+
+/**
+ * Search for a company by name in HubSpot
+ */
+async function searchHubSpotCompany(companyName: string): Promise<any> {
+  const apiKey = process.env.HUBSPOT_API_KEY;
+
+  if (!apiKey) {
+    return null;
+  }
+
+  try {
+    const response = await fetch(
+      `https://api.hubapi.com/crm/v3/objects/companies/search`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          filterGroups: [
+            {
+              filters: [
+                {
+                  propertyName: 'name',
+                  operator: 'EQ',
+                  value: companyName,
+                },
+              ],
+            },
+          ],
+          properties: ['name', 'phone', 'domain'],
+          limit: 1,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HubSpot API error: ${response.status}`);
+    }
+
+    const result = await response.json();
+
+    if (result.results && result.results.length > 0) {
+      console.log('Found existing HubSpot company:', result.results[0].id);
+      return result.results[0];
+    }
+
+    return null;
+  } catch (error) {
+    console.error('Error searching HubSpot company:', error);
+    return null;
+  }
+}
+
+/**
+ * Create a company in HubSpot
+ */
+export async function createHubSpotCompany(data: HubSpotCompanyData): Promise<any> {
+  const apiKey = process.env.HUBSPOT_API_KEY;
+
+  if (!apiKey) {
+    console.warn('HubSpot API key not configured. Skipping company creation.');
+    return null;
+  }
+
+  try {
+    // First, search for existing company by name
+    const existingCompany = await searchHubSpotCompany(data.name);
+
+    if (existingCompany) {
+      console.log('Using existing company:', existingCompany.id);
+      return existingCompany;
+    }
+
+    // Create new company if not found
+    const properties: any = {
+      name: data.name,
+      lifecyclestage: 'lead',
+    };
+
+    // Add optional properties if provided
+    if (data.phone) {
+      properties.phone = data.phone;
+    }
+    if (data.number_of_employees) {
+      properties.numberofemployees = data.number_of_employees;
+    }
+
+    const response = await fetch(
+      `https://api.hubapi.com/crm/v3/objects/companies`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({ properties }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HubSpot API error: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log('HubSpot company created:', result.id);
+
+    return result;
+  } catch (error) {
+    console.error('Error creating HubSpot company:', error);
+    return null;
+  }
 }
 
 /**

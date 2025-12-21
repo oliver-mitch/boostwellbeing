@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
-import { createHubSpotContact, createHubSpotDeal, isHubSpotConfigured } from '@/lib/hubspot';
+import { createHubSpotContact, createHubSpotDeal, createHubSpotCompany, isHubSpotConfigured } from '@/lib/hubspot';
 
 interface ContactFormData {
   fullName: string;
@@ -32,7 +32,51 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Save to database
+    // STEP 1: Send to HubSpot first (primary system)
+    let hubspotSuccess = false;
+    if (isHubSpotConfigured()) {
+      try {
+        console.log('Creating HubSpot records...');
+
+        // 1. Create or find Company
+        const hubspotCompany = await createHubSpotCompany({
+          name: data.companyName,
+          phone: data.phone,
+          number_of_employees: data.numberOfEmployees,
+        });
+
+        // 2. Create Contact and associate with Company
+        const hubspotContact = await createHubSpotContact(
+          {
+            email: data.email,
+            firstname: data.fullName,
+            lastname: '', // Will be split from fullName in the function
+            phone: data.phone,
+            company: data.companyName,
+            number_of_employees: data.numberOfEmployees,
+            message: data.message,
+          },
+          hubspotCompany?.id // Associate with company if created
+        );
+
+        // 3. Create a Deal for this inquiry
+        if (hubspotContact && hubspotContact.id) {
+          await createHubSpotDeal(hubspotContact.id, {
+            dealname: `${data.companyName} - Contact Form Inquiry`,
+            dealstage: 'appointmentscheduled',
+          });
+          console.log('HubSpot company, contact, and deal created successfully');
+          hubspotSuccess = true;
+        }
+      } catch (hubspotError) {
+        console.error('HubSpot integration error:', hubspotError);
+        // Continue to Supabase backup even if HubSpot fails
+      }
+    } else {
+      console.log('HubSpot not configured - skipping integration');
+    }
+
+    // STEP 2: Save to Supabase as backup/record keeping
     const { error: dbError } = await supabase
       .from('contact_submissions')
       .insert({
@@ -42,71 +86,28 @@ export async function POST(request: NextRequest) {
         phone: data.phone,
         number_of_employees: data.numberOfEmployees,
         message: data.message || '',
-        status: 'new',
+        status: hubspotSuccess ? 'new' : 'pending_hubspot_sync',
       });
 
     if (dbError) {
       console.error('Database error:', dbError);
-      // Continue even if database insert fails - we'll still send the email
-    }
-
-    // Send email notification
-    // For now, we'll use a simple approach - log to console
-    // In production, integrate with SendGrid, Resend, or similar
-    const emailContent = `
-New Contact Form Submission
-
-Name: ${data.fullName}
-Company: ${data.companyName}
-Email: ${data.email}
-Phone: ${data.phone}
-Number of Employees: ${data.numberOfEmployees}
-Message: ${data.message || '(No message)'}
-
-Submitted: ${new Date().toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' })}
-    `.trim();
-
-    console.log('=== NEW CONTACT FORM SUBMISSION ===');
-    console.log(emailContent);
-    console.log('===================================');
-
-    // Send to HubSpot
-    if (isHubSpotConfigured()) {
-      try {
-        const hubspotContact = await createHubSpotContact({
-          email: data.email,
-          firstname: data.fullName,
-          lastname: '', // Will be split from fullName in the function
-          phone: data.phone,
-          company: data.companyName,
-          number_of_employees: data.numberOfEmployees,
-          message: data.message,
-        });
-
-        // Create a deal for this inquiry
-        if (hubspotContact && hubspotContact.id) {
-          await createHubSpotDeal(hubspotContact.id, {
-            dealname: `${data.companyName} - Contact Form Inquiry`,
-            dealstage: 'appointmentscheduled',
-          });
-          console.log('HubSpot contact and deal created successfully');
-        }
-      } catch (hubspotError) {
-        console.error('HubSpot integration error:', hubspotError);
-        // Don't fail the request if HubSpot fails
+      // If both HubSpot and Supabase fail, return error
+      if (!hubspotSuccess) {
+        return NextResponse.json(
+          { error: 'Failed to save your submission. Please try again or email us directly.' },
+          { status: 500 }
+        );
       }
-    } else {
-      console.log('HubSpot not configured - skipping integration');
     }
 
-    // TODO: Send actual email
-    // Example with SendGrid:
-    // await sendEmail({
-    //   to: 'contact@boostwellbeing.co.nz',
-    //   from: 'noreply@boostwellbeing.co.nz',
-    //   subject: `New Contact: ${data.fullName} from ${data.companyName}`,
-    //   text: emailContent,
-    // });
+    // Log submission for monitoring
+    console.log('=== NEW CONTACT FORM SUBMISSION ===');
+    console.log(`Name: ${data.fullName}`);
+    console.log(`Company: ${data.companyName}`);
+    console.log(`Email: ${data.email}`);
+    console.log(`HubSpot: ${hubspotSuccess ? 'Success' : 'Failed'}`);
+    console.log(`Supabase: ${dbError ? 'Failed' : 'Success'}`);
+    console.log('===================================');
 
     return NextResponse.json(
       {
