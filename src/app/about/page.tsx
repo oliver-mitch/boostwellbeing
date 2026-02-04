@@ -102,7 +102,7 @@ export default function AboutPage() {
                 <div className="lg:col-span-2">
                   <div className="prose prose-lg max-w-none text-slate-700">
                     <p>
-                      Ashley has spent more than 20 years in the insurance industry, helping Kiwi businesses choose the right health, protection and employee benefit solutions. He's known for being relaxed, genuine and great at breaking down the technical stuff so anyone can feel confident in their decisions.
+                      Ashley has spent more than 10 years in the insurance industry, helping Kiwi businesses choose the right health, protection and employee benefit solutions. He's known for being relaxed, genuine and great at breaking down the technical stuff so anyone can feel confident in their decisions.
                     </p>
                     <p>
                       He takes the time to get to know each business - how big they are, how their teams work, and what they're trying to achieve - and then guides them through the Southern Cross workplace health insurance options that will support their people best.
