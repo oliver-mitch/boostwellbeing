@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Mail, Phone, User, MessageSquare, Send, CheckCircle, AlertCircle, Loader, Calendar } from 'lucide-react';
 
 interface ContactFormData {
@@ -66,7 +66,7 @@ export function ContactForm({
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!validateForm()) {

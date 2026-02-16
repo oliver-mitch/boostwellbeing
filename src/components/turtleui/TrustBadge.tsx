@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+
 import { Shield, Award, Lock, CheckCircle, Star, Users } from 'lucide-react';
 
 type BadgeType = 'security' | 'certified' | 'encrypted' | 'verified' | 'rated' | 'trusted';

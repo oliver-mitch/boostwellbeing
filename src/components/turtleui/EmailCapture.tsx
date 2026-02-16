@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Mail, CheckCircle, AlertCircle, Loader } from 'lucide-react';
 
 interface EmailCaptureProps {
@@ -31,7 +31,7 @@ export function EmailCapture({
     return regex.test(email);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!email.trim()) {

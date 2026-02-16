@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import type { ReactNode } from 'react';
 import { CheckCircle, TrendingUp, TrendingDown, Info } from 'lucide-react';
 
 interface QuoteCardProps {
@@ -10,7 +10,7 @@ interface QuoteCardProps {
   description?: string;
   highlight?: boolean;
   trend?: 'up' | 'down';
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
 }
 
@@ -91,7 +91,7 @@ interface QuoteResultLineProps {
   value: string | number;
   description?: string;
   highlight?: boolean;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
 }
 
 export function QuoteResultLine({
@@ -124,7 +124,7 @@ export function QuoteResultLine({
 }
 
 interface QuoteInfoBoxProps {
-  children: React.ReactNode;
+  children: ReactNode;
   type?: 'info' | 'warning' | 'success';
 }
 

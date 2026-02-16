@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
@@ -8,7 +8,7 @@ import {
   Clock, UserCheck, TrendingDown,
   ArrowRight, BarChart3, Building2
 } from 'lucide-react';
-import TeamHealthCalculator from '@/src/components/TeamHealthCalculator';
+import TeamHealthCalculator from '@/components/TeamHealthCalculator';
 
 export default function BoostWellbeingGroupHealthPage() {
   return (

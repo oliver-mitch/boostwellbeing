@@ -4,13 +4,8 @@ import path from 'path';
 const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: true,
-  typescript: {
-    // Temporarily ignore TypeScript errors during migration
-    ignoreBuildErrors: true,
-  },
   eslint: {
-    ignoreDuringBuilds: true, // Temporarily ignore during builds
-    dirs: ['src/app', 'src/components'],
+    dirs: ['src/app', 'src/components', 'src/lib'],
   },
   images: {
     domains: ['boostwellbeing.co.nz'],

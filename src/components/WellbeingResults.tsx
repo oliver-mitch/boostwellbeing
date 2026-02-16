@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import type { ComponentType } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import {
@@ -30,7 +30,7 @@ interface Question {
 interface Dimension {
   id: string;
   name: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: ComponentType<{ className?: string }>;
   color: string;
   description: string;
 }
@@ -89,7 +89,7 @@ function getOverallStatus(score: number): {
   label: string;
   color: string;
   description: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: ComponentType<{ className?: string }>;
 } {
   if (score >= 80) {
     return {

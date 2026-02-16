@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
@@ -15,7 +15,7 @@ import {
   ArrowRight,
   Zap
 } from 'lucide-react';
-import WorkplaceWellbeingAssessment from '@/src/components/WorkplaceWellbeingAssessment';
+import WorkplaceWellbeingAssessment from '@/components/WorkplaceWellbeingAssessment';
 
 export default function BoostWellbeingSurveyPage() {
   const [showAssessment, setShowAssessment] = useState(false);

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+
 import Link from 'next/link';
 import { ArrowRight, Users, Heart, CheckCircle } from 'lucide-react';
 import { BoostIcon } from '@/components/icons/BoostIcon';

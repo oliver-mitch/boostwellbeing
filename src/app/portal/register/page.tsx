@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, type FormEvent } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Shield, Lock, Mail, User, Building2 } from 'lucide-react';
 import Link from 'next/link';
@@ -76,7 +76,7 @@ function RegisterForm() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError('');
     setSubmitting(true);

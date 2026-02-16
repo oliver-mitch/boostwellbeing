@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import type { ReactNode } from 'react';
 
 interface ToggleProps {
   label: string;
@@ -46,7 +46,7 @@ interface ToggleCardProps {
   description: string;
   enabled: boolean;
   onChange: (enabled: boolean) => void;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   badge?: string;
   className?: string;
 }

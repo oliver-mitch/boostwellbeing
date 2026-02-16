@@ -3,28 +3,30 @@ import { createClient } from '@supabase/supabase-js';
 // Supabase client for plan selector data persistence
 // Uses environment variables from .env.local
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key';
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-const isConfigured = Boolean(
-  process.env.NEXT_PUBLIC_SUPABASE_URL &&
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
-  process.env.NEXT_PUBLIC_SUPABASE_URL !== 'your-supabase-url'
+export const isSupabaseConfigured = Boolean(
+  supabaseUrl &&
+  supabaseAnonKey &&
+  supabaseUrl !== 'your-supabase-url'
 );
 
-if (!isConfigured && typeof window !== 'undefined') {
+if (!isSupabaseConfigured && typeof window !== 'undefined') {
   console.warn(
-    'Supabase environment variables not configured. Plan save/load features will not work.'
+    'Supabase environment variables not configured. Database features will not work.'
   );
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    persistSession: false, // We're using NextAuth for session management
-  },
-});
-
-export const isSupabaseConfigured = isConfigured;
+export const supabase = createClient(
+  supabaseUrl || 'https://placeholder.supabase.co',
+  supabaseAnonKey || 'placeholder-key',
+  {
+    auth: {
+      persistSession: false, // We're using NextAuth for session management
+    },
+  }
+);
 
 // Database types for TypeScript
 export interface PortalUser {

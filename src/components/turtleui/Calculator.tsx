@@ -1,12 +1,12 @@
 'use client';
 
-import React from 'react';
+import { useState, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
 interface CalculatorProps {
   title: string;
   description?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 
@@ -38,7 +38,7 @@ export function Calculator({ title, description, children, className = '' }: Cal
 
 interface CalculatorSectionProps {
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
   collapsible?: boolean;
   defaultOpen?: boolean;
 }
@@ -49,7 +49,7 @@ export function CalculatorSection({
   collapsible = false,
   defaultOpen = true
 }: CalculatorSectionProps) {
-  const [isOpen, setIsOpen] = React.useState(defaultOpen);
+  const [isOpen, setIsOpen] = useState(defaultOpen);
 
   if (collapsible) {
     return (
@@ -85,7 +85,7 @@ export function CalculatorSection({
 
 interface CalculatorRowProps {
   label: string;
-  children: React.ReactNode;
+  children: ReactNode;
   description?: string;
 }
 
@@ -104,7 +104,7 @@ export function CalculatorRow({ label, children, description }: CalculatorRowPro
 }
 
 interface CalculatorResultsProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 

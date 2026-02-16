@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Calculator,
   CalculatorSection,
@@ -9,7 +9,7 @@ import {
   QuoteCard,
   QuoteResultLine,
   QuoteInfoBox,
-} from "@/src/components/turtleui";
+} from "@/components/turtleui";
 import { Download, FileText, AlertCircle, CheckCircle, TrendingUp } from "lucide-react";
 
 type PlanTier = "Wellbeing 1" | "Wellbeing 2" | "UltraCare";

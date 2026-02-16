@@ -1,4 +1,4 @@
-import React from 'react';
+import type { FC } from 'react';
 
 interface IconProps {
   className?: string;
@@ -17,7 +17,7 @@ interface IconProps {
  * <BoostIcon className="w-6 h-6 text-white" />
  * <BoostIcon variant="monogram" className="w-8 h-8 text-brand-blue" />
  */
-export const BoostIcon: React.FC<IconProps> = ({ className = '', variant = 'arrow' }) => {
+export const BoostIcon: FC<IconProps> = ({ className = '', variant = 'arrow' }) => {
   // Variation A: "B" with Upward Arrow
   if (variant === 'arrow') {
     return (
