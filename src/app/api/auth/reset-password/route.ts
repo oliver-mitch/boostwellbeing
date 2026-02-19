@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
+import { sendPasswordResetEmail } from '@/lib/email';
 import bcrypt from 'bcryptjs';
 
 // Generate a secure random token
@@ -47,12 +48,10 @@ export async function POST(request: NextRequest) {
       if (tokenError) {
         console.error('Error creating reset token:', tokenError);
       } else {
-        // In production, send email here
-        console.log(`Password reset token for ${email}: ${resetToken}`);
-        console.log(`Reset URL: ${process.env.NEXTAUTH_URL}/portal/reset-password?token=${resetToken}`);
-
-        // TODO: Send email with reset link
-        // await sendPasswordResetEmail(user.email, resetToken);
+        const emailResult = await sendPasswordResetEmail(user.email, resetToken, user.name);
+        if (!emailResult.success) {
+          console.error('Failed to send reset email:', emailResult.error);
+        }
       }
     }
 

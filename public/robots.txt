@@ -6,6 +6,7 @@ Allow: /
 # Sitemap
 Sitemap: https://www.boostwellbeing.co.nz/sitemap.xml
 
-# Disallow admin/internal paths if any
+# Disallow admin/internal paths
 Disallow: /api/
 Disallow: /_next/
+Disallow: /portal/

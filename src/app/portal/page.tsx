@@ -87,17 +87,12 @@ export default function PortalPage() {
               <p className="text-slate-600 mb-6">
                 Choose the right Southern Cross health insurance plan for you and your family. Compare plans, add modules, and calculate costs.
               </p>
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                <p className="text-sm text-blue-800">
-                  <strong>Coming Soon:</strong> Interactive plan selector with real-time cost calculations
-                </p>
-              </div>
-              <button
-                className="w-full bg-gradient-to-r from-blue-500 to-green-500 text-white py-3 rounded-lg font-semibold hover:shadow-xl transition-all"
-                disabled
+              <Link
+                href="/portal/plan-selector"
+                className="block w-full text-center bg-gradient-to-r from-blue-500 to-green-500 text-white py-3 rounded-lg font-semibold hover:shadow-xl transition-all"
               >
                 Launch Plan Selector
-              </button>
+              </Link>
             </div>
 
             {/* Resources Card */}
@@ -113,19 +108,19 @@ export default function PortalPage() {
               </p>
               <div className="space-y-3">
                 <Link
-                  href="#"
+                  href="/portal/plan-selector"
                   className="block px-4 py-3 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors text-slate-700 font-medium"
                 >
                   📊 Your Plan Summary
                 </Link>
                 <Link
-                  href="#"
+                  href="/survey"
                   className="block px-4 py-3 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors text-slate-700 font-medium"
                 >
-                  📚 Wellbeing Resources
+                  📚 Wellbeing Assessment
                 </Link>
                 <Link
-                  href="#"
+                  href="/contact"
                   className="block px-4 py-3 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors text-slate-700 font-medium"
                 >
                   💬 Contact Support
@@ -134,13 +129,13 @@ export default function PortalPage() {
             </div>
           </div>
 
-          {/* Info Banner */}
+          {/* Features Banner */}
           <div className="mt-12 bg-gradient-to-r from-blue-50 to-green-50 border-2 border-blue-200 rounded-2xl p-8">
             <h3 className="text-xl font-bold text-slate-900 mb-3">
-              Integration in Progress
+              Your Portal Features
             </h3>
             <p className="text-slate-700 mb-4">
-              We're currently integrating the full planSelector functionality into your client portal. This will include:
+              Use your client portal to manage your team's health insurance:
             </p>
             <ul className="space-y-2 text-slate-700">
               <li className="flex items-start gap-2">
@@ -157,7 +152,7 @@ export default function PortalPage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-600 font-bold">✓</span>
-                <span>Optional add-on modules for customized coverage</span>
+                <span>Optional add-on modules for customised coverage</span>
               </li>
             </ul>
           </div>
