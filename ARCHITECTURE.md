@@ -42,8 +42,8 @@ graph TB
         RateData["Rate Tables<br/>(Effective 01 May 2025)<br/>Hardcoded in rateData.ts"]
     end
 
-    subgraph EmailService["Email Service [WIP]"]
-        EmailSend["Password Reset Email"]
+    subgraph EmailService["Resend Email Service"]
+        EmailSend["Password Reset Email<br/>(src/lib/email.ts)"]
     end
 
     %% User flows
@@ -61,7 +61,7 @@ graph TB
     ContactAPI -->|"NEXT_PUBLIC_SUPABASE_URL<br/>+ ANON_KEY"| DB_Contact
     AuthAPI -->|"NEXTAUTH_SECRET<br/>+ Supabase credentials"| DB_Users
     ResetAPI -->|"Creates token in DB"| DB_Reset
-    ResetAPI -.->|"TODO: Send email [WIP]"| EmailSend
+    ResetAPI -->|"RESEND_API_KEY"| EmailSend
     HealthAPI -->|"Connection check"| Supabase
 
     %% HubSpot internal associations
@@ -93,14 +93,6 @@ graph TD
             Contact["/contact — ContactPage"]
             Survey["/survey — SurveyPage"]
             GroupHealth["/group-health — GroupHealthPage"]
-        end
-
-        subgraph V2aRoutes["V2a Routes (alternate design)"]
-            V2aHome["/v2a — V2a Homepage"]
-            V2aCases["/v2a/case-studies"]
-            V2aContact["/v2a/contact"]
-            V2aHow["/v2a/how-it-works"]
-            V2aRes["/v2a/resources"]
         end
 
         subgraph AuthRoutes["Auth Routes (public)"]
@@ -139,7 +131,6 @@ graph TD
         TCalc["Calculator, CalculatorSection,<br/>CalculatorRow"]
         TSlider["Slider"]
         TQuote["QuoteCard, QuoteResultLine,<br/>QuoteInfoBox"]
-        TUnused["UNUSED: Toggle, FAQ, TrustBadge,<br/>ReviewCard, EmailCapture, ContactForm"]
     end
 
     Home -->|uses| ScrollVideo
@@ -311,10 +302,19 @@ sequenceDiagram
 | `HUBSPOT_API_KEY` | HubSpot CRM | `src/lib/hubspot.ts` |
 | `NEXTAUTH_URL` | NextAuth | `src/lib/auth.ts` |
 | `NEXTAUTH_SECRET` | NextAuth | `src/lib/auth.ts` |
+| `RESEND_API_KEY` | Resend | `src/lib/email.ts` |
+| `RESEND_FROM_EMAIL` | Resend | `src/lib/email.ts` (default: `noreply@boostwellbeing.co.nz`) |
 
-## WIP / Incomplete Features
+## Archived Code
 
-| Feature | Location | Status |
-|---------|----------|--------|
-| Password reset email sending | `src/app/api/auth/reset-password/route.ts:54` | TODO — token created but email not sent |
-| Admin dashboard functionality | `src/app/portal/admin/page.tsx` | Basic UI only |
+TurtleMoney/InsureMe components preserved in `src/archive/turtlemoney/` for potential future reuse:
+- `api.ts` — InsureMe API client
+- `turtleui/ContactForm.tsx`, `ReviewCard.tsx`, `EmailCapture.tsx`, `TrustBadge.tsx`
+
+## Notes
+
+| Area | Status |
+|------|--------|
+| Password reset email | Implemented via Resend (`src/lib/email.ts`) — requires `RESEND_API_KEY` env var |
+| Admin dashboard | Basic invite/user management UI |
+| Error boundaries | Root (`src/app/error.tsx`) and portal (`src/app/portal/error.tsx`) |

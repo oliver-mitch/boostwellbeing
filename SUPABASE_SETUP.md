@@ -54,12 +54,9 @@ This returns:
 - Visit: `https://boostwellbeing.co.nz/portal/forgot-password`
 - Or use the "Forgot password?" link on the login page
 - Enter your email address
-- A reset token will be generated (currently logged to console in production)
-
-**For now (until email is configured):**
-- Check the Vercel logs to get the reset token
+- A reset token will be generated and emailed via Resend
 - The token is valid for 1 hour
-- The reset URL format is: `https://boostwellbeing.co.nz/portal/reset-password?token=YOUR_TOKEN`
+- Requires `RESEND_API_KEY` and `RESEND_FROM_EMAIL` env vars in Vercel
 
 #### Complete Password Reset
 - Click the reset link (or manually visit with token)
@@ -88,35 +85,19 @@ curl -X POST https://boostwellbeing.co.nz/api/auth/reset-password \
   -d '{"email":"admin@boostwellbeing.co.nz"}'
 ```
 
-Then check Vercel logs for the reset token:
-```bash
-vercel logs boostwellbeing.co.nz --since 10m
-```
+## Email Service (Resend)
 
-## Adding Email Service (TODO)
+Password reset emails are sent via [Resend](https://resend.com). The implementation is in `src/lib/email.ts`.
 
-Currently, reset tokens are logged to the console. To send actual emails:
-
-1. Choose an email service:
-   - **SendGrid** (recommended for transactional emails)
-   - **Resend** (developer-friendly)
-   - **AWS SES** (if already using AWS)
-
-2. Install the email package:
+### Setup
+1. Create an account at [resend.com](https://resend.com)
+2. Verify your domain (`boostwellbeing.co.nz`)
+3. Create an API key
+4. Add environment variables in Vercel:
    ```bash
-   npm install @sendgrid/mail
-   # or
-   npm install resend
-   ```
-
-3. Add environment variables:
-   ```bash
-   vercel env add SENDGRID_API_KEY
-   # or
    vercel env add RESEND_API_KEY
+   vercel env add RESEND_FROM_EMAIL  # e.g. noreply@boostwellbeing.co.nz
    ```
-
-4. Update `src/app/api/auth/reset-password/route.ts` to send emails instead of console logging
 
 ## Database Tables
 
