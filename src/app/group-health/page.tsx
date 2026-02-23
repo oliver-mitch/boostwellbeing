@@ -261,10 +261,10 @@ export default function BoostWellbeingGroupHealthPage() {
         >
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-slate-900 mb-3">
-              Calculate Your Investment & Employee Value
+              Estimate Your Group Health Costs
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              See the real numbers: what you invest and what your team receives in value
+              Calculate costs using actual Southern Cross employee plan rates based on your team size and average age
             </p>
           </div>
           <TeamHealthCalculator />

@@ -1,5 +1,15 @@
 // Southern Cross Health Care Rate Data
 // Effective Date: 01 May 2025
+//
+// HOW TO UPDATE RATES FROM A NEW SOUTHERN CROSS RATE CARD:
+// 1. Update the effective date above
+// 2. Update EMPLOYEE_PLANS rates arrays with new age-band pricing (6 plans)
+// 3. Update STANDARD_PLANS rates arrays with new age-band pricing (6 plans)
+// 4. Update EMPLOYEE_MODULES rates arrays (4 modules: Body Care, Day-to-day, Vision/Dental, Keeping Well)
+// 5. Update STANDARD_MODULES if their rates differ from employee modules
+// 6. Update BASE_RATES if the adult/child base rates have changed
+// 7. Run `npm run build` to verify no errors
+// 8. Update the "Rates effective" text in TeamHealthCalculator.tsx and portal CostSummary.tsx
 
 export interface AgeRate {
   ageFrom: number;
