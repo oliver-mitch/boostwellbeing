@@ -32,7 +32,7 @@ export function Slider({
       {/* Label and Value */}
       <div className="flex items-center justify-between">
         <label className="text-sm font-medium text-slate-700">{label}</label>
-        <span className="text-lg font-bold text-turtle-green-600 font-mono">
+        <span className="text-lg font-bold text-brand-blue font-mono">
           {formatValue(value)}
         </span>
       </div>
@@ -51,22 +51,22 @@ export function Slider({
                      [&::-webkit-slider-thumb]:w-6
                      [&::-webkit-slider-thumb]:h-6
                      [&::-webkit-slider-thumb]:rounded-full
-                     [&::-webkit-slider-thumb]:bg-turtle-green-500
+                     [&::-webkit-slider-thumb]:bg-brand-blue
                      [&::-webkit-slider-thumb]:cursor-pointer
                      [&::-webkit-slider-thumb]:shadow-lg
-                     [&::-webkit-slider-thumb]:hover:bg-turtle-green-600
+                     [&::-webkit-slider-thumb]:hover:bg-brand-blue-dark
                      [&::-webkit-slider-thumb]:transition-colors
                      [&::-moz-range-thumb]:w-6
                      [&::-moz-range-thumb]:h-6
                      [&::-moz-range-thumb]:rounded-full
-                     [&::-moz-range-thumb]:bg-turtle-green-500
+                     [&::-moz-range-thumb]:bg-brand-blue
                      [&::-moz-range-thumb]:cursor-pointer
                      [&::-moz-range-thumb]:border-0
                      [&::-moz-range-thumb]:shadow-lg
-                     [&::-moz-range-thumb]:hover:bg-turtle-green-600
+                     [&::-moz-range-thumb]:hover:bg-brand-blue-dark
                      [&::-moz-range-thumb]:transition-colors"
           style={{
-            background: `linear-gradient(to right, #1E8A72 0%, #1E8A72 ${percentage}%, #E2E8F0 ${percentage}%, #E2E8F0 100%)`,
+            background: `linear-gradient(to right, #4D90DE 0%, #4D90DE ${percentage}%, #E2E8F0 ${percentage}%, #E2E8F0 100%)`,
           }}
         />
       </div>

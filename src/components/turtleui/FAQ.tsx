@@ -25,18 +25,18 @@ export function FAQ({ items, className = '' }: FAQProps) {
       {items.map((item, index) => (
         <div
           key={index}
-          className="bg-white border-2 border-slate-200 rounded-2xl overflow-hidden transition-all duration-200 hover:border-turtle-green-300"
+          className="bg-white border-2 border-slate-200 rounded-2xl overflow-hidden transition-all duration-200 hover:border-brand-blue/30"
         >
           <button
             onClick={() => toggleItem(index)}
             className="w-full px-6 py-5 flex items-center justify-between text-left group"
           >
-            <span className="text-lg font-semibold text-slate-900 group-hover:text-turtle-green-600 transition-colors pr-4">
+            <span className="text-lg font-semibold text-slate-900 group-hover:text-brand-blue transition-colors pr-4">
               {item.question}
             </span>
             <ChevronDown
               className={`w-6 h-6 text-slate-400 flex-shrink-0 transition-transform duration-200 ${
-                openIndex === index ? 'rotate-180 text-turtle-green-500' : ''
+                openIndex === index ? 'rotate-180 text-brand-blue' : ''
               }`}
             />
           </button>

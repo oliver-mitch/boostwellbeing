@@ -27,7 +27,7 @@ export default function BoostWellbeingSurveyPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Navigation */}
-      <nav className="container-turtle py-6">
+      <nav className="container mx-auto px-6 py-6">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center">
@@ -55,7 +55,7 @@ export default function BoostWellbeingSurveyPage() {
       </nav>
 
       {/* Hero Section */}
-      <div className="container-turtle py-12">
+      <div className="container mx-auto px-6 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -108,7 +108,7 @@ export default function BoostWellbeingSurveyPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="card-turtle p-6"
+            className="bg-white rounded-2xl shadow-lg border border-slate-200/50 p-6"
           >
             <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
               <Brain className="w-6 h-6 text-purple-600" />
@@ -123,7 +123,7 @@ export default function BoostWellbeingSurveyPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="card-turtle p-6"
+            className="bg-white rounded-2xl shadow-lg border border-slate-200/50 p-6"
           >
             <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
               <Heart className="w-6 h-6 text-green-600" />
@@ -138,7 +138,7 @@ export default function BoostWellbeingSurveyPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="card-turtle p-6"
+            className="bg-white rounded-2xl shadow-lg border border-slate-200/50 p-6"
           >
             <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
               <Users className="w-6 h-6 text-blue-600" />
@@ -153,7 +153,7 @@ export default function BoostWellbeingSurveyPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="card-turtle p-6"
+            className="bg-white rounded-2xl shadow-lg border border-slate-200/50 p-6"
           >
             <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
               <TrendingUp className="w-6 h-6 text-orange-600" />
@@ -168,7 +168,7 @@ export default function BoostWellbeingSurveyPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="card-turtle p-6"
+            className="bg-white rounded-2xl shadow-lg border border-slate-200/50 p-6"
           >
             <div className="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-4">
               <Award className="w-6 h-6 text-yellow-600" />
@@ -183,7 +183,7 @@ export default function BoostWellbeingSurveyPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="card-turtle p-6"
+            className="bg-white rounded-2xl shadow-lg border border-slate-200/50 p-6"
           >
             <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-4">
               <Shield className="w-6 h-6 text-indigo-600" />
@@ -285,7 +285,7 @@ export default function BoostWellbeingSurveyPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-12 card-turtle p-8"
+          className="mt-12 bg-white rounded-2xl shadow-lg border border-slate-200/50 p-8"
         >
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-slate-900 mb-3">
@@ -344,7 +344,7 @@ export default function BoostWellbeingSurveyPage() {
 
       {/* Footer */}
       <footer className="border-t border-slate-200 py-8 mt-20">
-        <div className="container-turtle">
+        <div className="container mx-auto px-6">
           <div className="text-center text-sm text-slate-600">
             <p className="mb-2">
               <strong>BoostWellbeing</strong> - Powered by Southern Cross Health Insurance

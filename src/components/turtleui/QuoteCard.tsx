@@ -44,7 +44,7 @@ export function QuoteCard({
     <div
       className={`p-6 rounded-2xl border-2 transition-all duration-200 ${
         highlight
-          ? 'border-turtle-green-500 bg-turtle-green-50 shadow-lg'
+          ? 'border-brand-blue bg-blue-50 shadow-lg'
           : 'border-slate-200 bg-white'
       } ${className}`}
     >
@@ -58,7 +58,7 @@ export function QuoteCard({
             )}
           </div>
           {highlight && (
-            <CheckCircle className="w-6 h-6 text-turtle-green-600 flex-shrink-0" />
+            <CheckCircle className="w-6 h-6 text-brand-blue flex-shrink-0" />
           )}
         </div>
 
@@ -114,7 +114,7 @@ export function QuoteResultLine({
       </div>
       <div
         className={`text-sm font-semibold font-mono ${
-          highlight ? 'text-turtle-green-600' : 'text-slate-900'
+          highlight ? 'text-brand-blue' : 'text-slate-900'
         }`}
       >
         {typeof value === 'number' ? value.toLocaleString() : value}

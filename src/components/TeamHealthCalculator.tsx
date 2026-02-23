@@ -122,7 +122,7 @@ export default function TeamHealthCalculator(): JSX.Element {
                         onClick={() => setSelectedPlanCode(p.code)}
                         className={`py-3 px-4 rounded-xl font-medium transition-all text-sm text-left ${
                           isSelected
-                            ? "bg-turtle-green-500 text-white shadow-lg"
+                            ? "bg-brand-blue text-white shadow-lg"
                             : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                         }`}
                       >

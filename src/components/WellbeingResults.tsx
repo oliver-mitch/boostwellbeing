@@ -194,7 +194,7 @@ export default function WellbeingResults({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
-      <div className="container-turtle py-8">
+      <div className="container mx-auto px-6 py-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -221,7 +221,7 @@ export default function WellbeingResults({
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-8"
         >
-          <div className={`card-turtle p-10 ${statusColors.bgGradient} border-2 ${statusColors.border}`}>
+          <div className={`bg-white rounded-2xl shadow-lg border border-slate-200/50 p-10 ${statusColors.bgGradient} border-2 ${statusColors.border}`}>
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
@@ -280,7 +280,7 @@ export default function WellbeingResults({
           <div className="grid md:grid-cols-2 gap-6">
             {dimensionScores.map((ds, index) => {
               const Icon = ds.dimension.icon;
-              const barColorClass = ds.score >= 70 ? 'bg-turtle-green-500' : ds.score >= 50 ? 'bg-blue-500' : 'bg-orange-500';
+              const barColorClass = ds.score >= 70 ? 'bg-brand-blue' : ds.score >= 50 ? 'bg-blue-500' : 'bg-orange-500';
               const dimColors = getColorClasses(ds.dimension.color);
 
               return (
@@ -289,7 +289,7 @@ export default function WellbeingResults({
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  className="card-turtle p-6"
+                  className="bg-white rounded-2xl shadow-lg border border-slate-200/50 p-6"
                 >
                   <div className="flex items-start gap-4 mb-4">
                     <div className={`w-12 h-12 ${dimColors.bg} rounded-xl flex items-center justify-center flex-shrink-0`}>
@@ -332,7 +332,7 @@ export default function WellbeingResults({
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mb-8"
         >
-          <div className="card-turtle p-8">
+          <div className="bg-white rounded-2xl shadow-lg border border-slate-200/50 p-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
                 <Brain className="w-6 h-6 text-purple-600" />
@@ -343,7 +343,7 @@ export default function WellbeingResults({
             <div className="space-y-4">
               {recommendations.map((rec, index) => (
                 <div key={index} className="flex items-start gap-3 p-4 bg-slate-50 rounded-xl">
-                  <div className="w-6 h-6 bg-turtle-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-6 h-6 bg-brand-blue rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-white text-sm font-bold">{index + 1}</span>
                   </div>
                   <p className="text-slate-700">{rec}</p>
@@ -361,9 +361,9 @@ export default function WellbeingResults({
           className="grid md:grid-cols-2 gap-6 mb-8"
         >
           {/* Team Health Insurance CTA */}
-          <div className="card-turtle p-8 bg-gradient-to-br from-turtle-green-50 to-turtle-green-100">
+          <div className="bg-white rounded-2xl shadow-lg border border-slate-200/50 p-8 bg-gradient-to-br from-blue-50 to-blue-100">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-turtle-green-500 rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center">
                 <Heart className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-xl font-bold text-slate-900">For Employers</h3>
@@ -378,7 +378,7 @@ export default function WellbeingResults({
           </div>
 
           {/* Contact/Download */}
-          <div className="card-turtle p-8">
+          <div className="bg-white rounded-2xl shadow-lg border border-slate-200/50 p-8">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
                 <Download className="w-6 h-6 text-blue-600" />
@@ -389,7 +389,7 @@ export default function WellbeingResults({
               Want a copy of your results? We can send you a detailed PDF report with all your scores and recommendations.
             </p>
             <a
-              href="mailto:hello@turtlemoney.co.nz?subject=Wellbeing%20Assessment%20Results"
+              href="mailto:contact@boostwellbeing.co.nz?subject=Wellbeing%20Assessment%20Results"
               className="btn-secondary w-full py-3 flex items-center justify-center gap-2"
             >
               <Mail className="w-5 h-5" />
@@ -405,7 +405,7 @@ export default function WellbeingResults({
           transition={{ duration: 0.5, delay: 0.8 }}
           className="text-center"
         >
-          <div className="card-turtle p-8 inline-block">
+          <div className="bg-white rounded-2xl shadow-lg border border-slate-200/50 p-8 inline-block">
             <p className="text-slate-700 mb-6">
               We recommend retaking this assessment quarterly to track your progress and identify trends
             </p>

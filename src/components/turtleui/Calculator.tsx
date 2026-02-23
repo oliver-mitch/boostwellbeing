@@ -16,7 +16,7 @@ export function Calculator({ title, description, children, className = '' }: Cal
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`card-turtle p-8 ${className}`}
+      className={`bg-white rounded-2xl shadow-lg border border-slate-200/50 p-8 ${className}`}
     >
       <div className="space-y-6">
         {/* Header */}
@@ -58,7 +58,7 @@ export function CalculatorSection({
           onClick={() => setIsOpen(!isOpen)}
           className="flex items-center justify-between w-full text-left mb-4 group"
         >
-          <h3 className="text-xl font-semibold text-slate-900 group-hover:text-turtle-green-500 transition-colors">
+          <h3 className="text-xl font-semibold text-slate-900 group-hover:text-brand-blue transition-colors">
             {title}
           </h3>
           <svg
@@ -110,7 +110,7 @@ interface CalculatorResultsProps {
 
 export function CalculatorResults({ children, className = '' }: CalculatorResultsProps) {
   return (
-    <div className={`bg-gradient-to-br from-turtle-green-50 to-turtle-orange-50 rounded-2xl p-6 space-y-4 ${className}`}>
+    <div className={`bg-gradient-to-br from-blue-50 to-slate-50 rounded-2xl p-6 space-y-4 ${className}`}>
       {children}
     </div>
   );

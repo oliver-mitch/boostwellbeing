@@ -176,7 +176,7 @@ export default function WorkplaceWellbeingAssessment({ onBack }: { onBack: () =>
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
-      <div className="container-turtle py-8">
+      <div className="container mx-auto px-6 py-8">
         {/* Header */}
         <div className="mb-8">
           <button
@@ -199,7 +199,7 @@ export default function WorkplaceWellbeingAssessment({ onBack }: { onBack: () =>
             </div>
             <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-gradient-turtle"
+                className="h-full bg-gradient-to-r from-brand-blue to-brand-teal"
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.3 }}
@@ -233,7 +233,7 @@ export default function WorkplaceWellbeingAssessment({ onBack }: { onBack: () =>
               const answer = getAnswer(question.id);
 
               return (
-                <div key={question.id} className="card-turtle p-6">
+                <div key={question.id} className="bg-white rounded-2xl shadow-lg border border-slate-200/50 p-6">
                   <div className="mb-4">
                     <div className="flex items-start gap-3 mb-4">
                       <div className="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -250,23 +250,23 @@ export default function WorkplaceWellbeingAssessment({ onBack }: { onBack: () =>
                         onClick={() => handleAnswer(question.id, option.value)}
                         className={`relative py-4 px-2 rounded-xl border-2 transition-all ${
                           answer === option.value
-                            ? 'border-turtle-green-500 bg-turtle-green-50'
+                            ? 'border-brand-blue bg-blue-50'
                             : 'border-slate-200 hover:border-slate-300 bg-white'
                         }`}
                       >
                         {answer === option.value && (
-                          <div className="absolute top-2 right-2 w-5 h-5 bg-turtle-green-500 rounded-full flex items-center justify-center">
+                          <div className="absolute top-2 right-2 w-5 h-5 bg-brand-blue rounded-full flex items-center justify-center">
                             <Check className="w-3 h-3 text-white" />
                           </div>
                         )}
                         <div className="text-center">
                           <div className={`text-2xl font-bold mb-1 ${
-                            answer === option.value ? 'text-turtle-green-600' : 'text-slate-700'
+                            answer === option.value ? 'text-brand-blue' : 'text-slate-700'
                           }`}>
                             {option.value}
                           </div>
                           <div className={`text-xs leading-tight ${
-                            answer === option.value ? 'text-turtle-green-700' : 'text-slate-500'
+                            answer === option.value ? 'text-brand-blue-dark' : 'text-slate-500'
                           }`}>
                             {option.label}
                           </div>
@@ -323,13 +323,13 @@ export default function WorkplaceWellbeingAssessment({ onBack }: { onBack: () =>
                   isCurrent
                     ? `${dimColors.bg} border-2 ${dimColors.border}`
                     : isComplete
-                    ? 'bg-turtle-green-50 border-2 border-turtle-green-400'
+                    ? 'bg-blue-50 border-2 border-brand-blue/40'
                     : 'bg-slate-50 border-2 border-slate-200'
                 }`}
               >
                 <div className="flex items-center justify-center mb-2">
                   {isComplete && !isCurrent ? (
-                    <div className="w-6 h-6 bg-turtle-green-500 rounded-full flex items-center justify-center">
+                    <div className="w-6 h-6 bg-brand-blue rounded-full flex items-center justify-center">
                       <Check className="w-4 h-4 text-white" />
                     </div>
                   ) : (

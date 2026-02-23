@@ -1,387 +1,389 @@
 'use client';
 
-
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import {
   Users, Shield, Heart, TrendingUp, CheckCircle, Mail,
   Clock, UserCheck, TrendingDown,
   ArrowRight, BarChart3, Building2
 } from 'lucide-react';
+import { BoostIcon } from '@/components/icons/BoostIcon';
 import TeamHealthCalculator from '@/components/TeamHealthCalculator';
 
 export default function BoostWellbeingGroupHealthPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
-      {/* Navigation */}
-      <nav className="container-turtle py-6">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center">
-              <Heart className="w-6 h-6 text-white" />
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white">
+      {/* Navigation - matches main page */}
+      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/50">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center shadow-lg">
+                <BoostIcon className="w-6 h-6 text-white" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold">
+                  <span className="text-brand-blue">Boost</span>
+                  <span className="text-slate-900">Wellbeing</span>
+                </span>
+              </div>
+            </Link>
+            <div className="hidden md:flex items-center gap-8">
+              <Link href="/" className="text-slate-600 hover:text-slate-900 transition-colors font-medium">
+                Home
+              </Link>
+              <Link href="/group-health" className="text-brand-blue font-semibold">
+                Group Health
+              </Link>
+              <Link href="/survey" className="text-slate-600 hover:text-slate-900 transition-colors font-medium">
+                Wellbeing Survey
+              </Link>
+              <Link href="/portal/login" className="text-slate-600 hover:text-slate-900 transition-colors font-medium">
+                Client Login
+              </Link>
+              <Link href="/contact" className="bg-brand-blue hover:bg-brand-blue-dark text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-xl transition-all">
+                Get Started
+              </Link>
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-              BoostWellbeing
-            </span>
-          </Link>
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="/group-health" className="text-blue-600 font-semibold">
-              Group Health
-            </Link>
-            <Link href="/survey" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
-              Wellbeing Survey
-            </Link>
-            <Link href="/contact" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
-              Contact
-            </Link>
-            <Link href="/" className="text-slate-700 hover:text-blue-600 transition-colors">
-              ← Back Home
-            </Link>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section - Business Impact Focused */}
-      <div className="container-turtle py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium mb-6">
-            <Building2 className="w-4 h-4" />
-            For HR Managers & Business Owners
-          </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-            Invest in Health.<br />
-            <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">Gain Competitive Advantage.</span>
-          </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
-            Southern Cross Group Health Insurance delivers measurable returns through reduced turnover,
-            increased productivity, and a healthier, more engaged workforce.
-          </p>
-          <div className="flex items-center justify-center gap-4 text-sm text-slate-700">
-            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
-              <Users className="w-4 h-4 text-blue-500" />
-              <span>3,500+ NZ businesses</span>
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-brand-dark to-slate-900">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full text-sm font-medium mb-8">
+              <Building2 className="w-4 h-4" />
+              For HR Managers & Business Owners
             </div>
-            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
-              <Shield className="w-4 h-4 text-green-500" />
-              <span>950,000+ members</span>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              Invest in Health.<br />
+              <span className="text-brand-blue">Gain Competitive Advantage.</span>
+            </h1>
+            <p className="text-xl text-white/80 max-w-3xl mx-auto mb-10">
+              Southern Cross Group Health Insurance delivers measurable returns through reduced turnover,
+              increased productivity, and a healthier, more engaged workforce.
+            </p>
+            <div className="flex items-center justify-center gap-4 text-sm">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20 text-white">
+                <Users className="w-4 h-4 text-brand-blue" />
+                <span>3,500+ NZ businesses</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20 text-white">
+                <Shield className="w-4 h-4 text-brand-teal" />
+                <span>950,000+ members</span>
+              </div>
             </div>
           </div>
-        </motion.div>
+        </div>
+      </section>
 
-        {/* Key Business Benefits - Above the fold */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-16"
-        >
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-3">
+      {/* Key Business Benefits */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-slate-900 mb-3">
               Why Leading NZ Employers Choose Southern Cross
             </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Evidence-based benefits that directly impact your bottom line and company culture
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {/* ROI Benefit */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="card-turtle p-6 hover:shadow-xl transition-shadow"
-            >
+            <div className="bg-white p-6 rounded-2xl shadow-lg border-2 border-brand-blue/10 hover:border-brand-blue/30 transition-all">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <TrendingUp className="w-6 h-6 text-emerald-600" />
+                <div className="w-12 h-12 bg-brand-blue/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <TrendingUp className="w-6 h-6 text-brand-blue" />
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 mb-2 text-lg">2:1 Return on Investment</h3>
                   <p className="text-sm text-slate-600 mb-3">
                     95% of companies measuring ROI see positive returns—most achieving $2+ for every $1 invested through reduced absenteeism and increased productivity.
                   </p>
-                  <div className="text-xs text-emerald-600 font-semibold">Research-backed ROI</div>
+                  <div className="text-xs text-brand-blue font-semibold">Research-backed ROI</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Retention Benefit */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="card-turtle p-6 hover:shadow-xl transition-shadow"
-            >
+            <div className="bg-white p-6 rounded-2xl shadow-lg border-2 border-brand-teal/10 hover:border-brand-teal/30 transition-all">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <UserCheck className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-brand-teal/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <UserCheck className="w-6 h-6 text-brand-teal" />
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 mb-2 text-lg">Attract & Retain Top Talent</h3>
                   <p className="text-sm text-slate-600 mb-3">
                     53% of workers say health plans are a top reason they stay with their employer. Health insurance is now a must-have benefit for competitive recruitment.
                   </p>
-                  <div className="text-xs text-blue-600 font-semibold">Reduce turnover costs</div>
+                  <div className="text-xs text-brand-teal font-semibold">Reduce turnover costs</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Productivity Benefit */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="card-turtle p-6 hover:shadow-xl transition-shadow"
-            >
+            <div className="bg-white p-6 rounded-2xl shadow-lg border-2 border-brand-dark/10 hover:border-brand-dark/30 transition-all">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <TrendingDown className="w-6 h-6 text-purple-600" />
+                <div className="w-12 h-12 bg-brand-dark/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <TrendingDown className="w-6 h-6 text-brand-dark" />
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 mb-2 text-lg">85% Reduction in Sick Days</h3>
                   <p className="text-sm text-slate-600 mb-3">
                     85% of employers credit wellness programs with reducing absenteeism and recruitment costs. Faster access to treatment means healthier, more present teams.
                   </p>
-                  <div className="text-xs text-purple-600 font-semibold">Minimize downtime</div>
+                  <div className="text-xs text-brand-dark font-semibold">Minimize downtime</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Pre-existing Conditions */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="card-turtle p-6 hover:shadow-xl transition-shadow"
-            >
+            <div className="bg-white p-6 rounded-2xl shadow-lg border-2 border-brand-blue/10 hover:border-brand-blue/30 transition-all">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Shield className="w-6 h-6 text-rose-600" />
+                <div className="w-12 h-12 bg-brand-blue/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Shield className="w-6 h-6 text-brand-blue" />
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 mb-2 text-lg">Pre-existing Coverage from Day 1</h3>
                   <p className="text-sm text-slate-600 mb-3">
                     Group plans cover pre-existing conditions immediately—a unique benefit that provides peace of mind and comprehensive coverage for your entire team.
                   </p>
-                  <div className="text-xs text-rose-600 font-semibold">Inclusive coverage</div>
+                  <div className="text-xs text-brand-blue font-semibold">Inclusive coverage</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Zero Admin */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="card-turtle p-6 hover:shadow-xl transition-shadow"
-            >
+            <div className="bg-white p-6 rounded-2xl shadow-lg border-2 border-brand-teal/10 hover:border-brand-teal/30 transition-all">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-6 h-6 text-amber-600" />
+                <div className="w-12 h-12 bg-brand-teal/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-6 h-6 text-brand-teal" />
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 mb-2 text-lg">Zero Admin Burden for HR</h3>
                   <p className="text-sm text-slate-600 mb-3">
                     We handle all setup, employee onboarding, policy management, and ongoing support. Your HR team can focus on strategic initiatives, not administration.
                   </p>
-                  <div className="text-xs text-amber-600 font-semibold">Turnkey solution</div>
+                  <div className="text-xs text-brand-teal font-semibold">Turnkey solution</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Family Benefits */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
-              className="card-turtle p-6 hover:shadow-xl transition-shadow"
-            >
+            <div className="bg-white p-6 rounded-2xl shadow-lg border-2 border-brand-dark/10 hover:border-brand-dark/30 transition-all">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Heart className="w-6 h-6 text-teal-600" />
+                <div className="w-12 h-12 bg-brand-dark/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Heart className="w-6 h-6 text-brand-dark" />
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 mb-2 text-lg">Family Discounts up to 25%</h3>
                   <p className="text-sm text-slate-600 mb-3">
                     Employees can add partners and dependents at discounted group rates—extending care beyond the workplace and increasing the perceived value of your benefits package.
                   </p>
-                  <div className="text-xs text-teal-600 font-semibold">Enhanced employee value</div>
+                  <div className="text-xs text-brand-dark font-semibold">Enhanced employee value</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
+      </section>
 
-        {/* ROI Statistics Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="mb-16 bg-gradient-to-r from-blue-600 to-green-600 rounded-3xl p-8 text-white"
-        >
-          <div className="text-center mb-6">
-            <BarChart3 className="w-12 h-12 mx-auto mb-4 opacity-90" />
-            <h3 className="text-2xl font-bold mb-2">The Business Case is Clear</h3>
-            <p className="text-blue-50 max-w-2xl mx-auto">
+      {/* ROI Statistics Banner */}
+      <section className="py-16 bg-brand-blue">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-8">
+            <BarChart3 className="w-12 h-12 mx-auto mb-4 text-white/90" />
+            <h3 className="text-3xl font-bold text-white mb-2">The Business Case is Clear</h3>
+            <p className="text-white/80 max-w-2xl mx-auto">
               Independent research shows workplace health programs deliver quantifiable returns
             </p>
           </div>
-          <div className="grid md:grid-cols-4 gap-6 text-center">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-              <div className="text-3xl font-bold mb-1">95%</div>
-              <div className="text-sm text-blue-50">See positive ROI</div>
+          <div className="grid md:grid-cols-4 gap-6 text-center max-w-5xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <div className="text-4xl font-bold text-white mb-1">95%</div>
+              <div className="text-sm text-white/80">See positive ROI</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-              <div className="text-3xl font-bold mb-1">$2:$1</div>
-              <div className="text-sm text-blue-50">Average return rate</div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <div className="text-4xl font-bold text-white mb-1">$2:$1</div>
+              <div className="text-sm text-white/80">Average return rate</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-              <div className="text-3xl font-bold mb-1">53%</div>
-              <div className="text-sm text-blue-50">Stay for health benefits</div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <div className="text-4xl font-bold text-white mb-1">53%</div>
+              <div className="text-sm text-white/80">Stay for health benefits</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-              <div className="text-3xl font-bold mb-1">85%</div>
-              <div className="text-sm text-blue-50">Reduced sick days</div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <div className="text-4xl font-bold text-white mb-1">85%</div>
+              <div className="text-sm text-white/80">Reduced sick days</div>
             </div>
           </div>
-        </motion.div>
+        </div>
+      </section>
 
-        {/* Calculator Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
-          className="mb-16"
-        >
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-3">
+      {/* Calculator Section */}
+      <section className="py-20 bg-gradient-to-br from-slate-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold text-slate-900 mb-3">
               Estimate Your Group Health Costs
             </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Calculate costs using actual Southern Cross employee plan rates based on your team size and average age
             </p>
           </div>
           <TeamHealthCalculator />
-        </motion.div>
+        </div>
+      </section>
 
-        {/* Why Southern Cross Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.0 }}
-          className="mb-16"
-        >
-          <div className="card-turtle p-8">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-3">
-                Why 3,500+ NZ Businesses Trust Southern Cross
-              </h2>
-            </div>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-1">NZ's Most Trusted Health Insurer</h4>
-                  <p className="text-sm text-slate-600">950,000 members and nearly 90 years of healthcare expertise</p>
-                </div>
+      {/* Why Southern Cross Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="bg-white p-10 rounded-2xl shadow-lg border-2 border-brand-blue/20">
+              <div className="text-center mb-10">
+                <h2 className="text-3xl font-bold text-slate-900 mb-3">
+                  Why 3,500+ NZ Businesses Trust Southern Cross
+                </h2>
               </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-1">No Waiting Periods for Group Plans</h4>
-                  <p className="text-sm text-slate-600">Employees can access care immediately, unlike individual policies</p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-slate-900 mb-1">NZ's Most Trusted Health Insurer</h4>
+                    <p className="text-sm text-slate-600">950,000 members and nearly 90 years of healthcare expertise</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-1">Fast Access to Diagnostics & Treatment</h4>
-                  <p className="text-sm text-slate-600">Get your team back to full health and productivity faster</p>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-slate-900 mb-1">No Waiting Periods for Group Plans</h4>
+                    <p className="text-sm text-slate-600">Employees can access care immediately, unlike individual policies</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-1">BeingWellPlus Workplace Resources</h4>
-                  <p className="text-sm text-slate-600">Self-service health and wellbeing hub for your team</p>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-slate-900 mb-1">Fast Access to Diagnostics & Treatment</h4>
+                    <p className="text-sm text-slate-600">Get your team back to full health and productivity faster</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-1">24/7 Health Helpline</h4>
-                  <p className="text-sm text-slate-600">Expert medical advice anytime your team needs it</p>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-slate-900 mb-1">BeingWellPlus Workplace Resources</h4>
+                    <p className="text-sm text-slate-600">Self-service health and wellbeing hub for your team</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-1">Flexible Contribution Options</h4>
-                  <p className="text-sm text-slate-600">Subsidize all, part, or offer discounted group rates</p>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-slate-900 mb-1">24/7 Health Helpline</h4>
+                    <p className="text-sm text-slate-600">Expert medical advice anytime your team needs it</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-slate-900 mb-1">Flexible Contribution Options</h4>
+                    <p className="text-sm text-slate-600">Subsidize all, part, or offer discounted group rates</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
+      </section>
 
-        {/* Contact Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.1 }}
-          id="contact"
-          className="card-turtle p-8 text-center bg-gradient-to-br from-white to-blue-50"
-        >
-          <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <Mail className="w-8 h-8 text-blue-600" />
-          </div>
-          <h2 className="text-3xl font-bold text-slate-900 mb-3">Ready to Strengthen Your Benefits Package?</h2>
-          <p className="text-slate-600 mb-8 max-w-2xl mx-auto text-lg">
-            Get a tailored quote and see how Southern Cross can help you attract top talent,
-            reduce turnover, and build a healthier, more productive workforce.
-          </p>
-          <Link
-            href="/contact"
-            className="bg-gradient-to-r from-blue-600 to-green-600 text-white inline-flex items-center gap-2 px-8 py-4 text-lg mb-8 rounded-xl font-semibold hover:shadow-lg transition-all"
-          >
-            <Mail className="w-5 h-5" />
-            Request a Business Quote
-            <ArrowRight className="w-5 h-5" />
-          </Link>
+      {/* Contact CTA Section */}
+      <section id="contact" className="py-24 bg-brand-blue">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/20">
+              <Mail className="w-8 h-8 text-white" />
+            </div>
+            <h2 className="text-4xl font-bold text-white mb-4">Ready to Strengthen Your Benefits Package?</h2>
+            <p className="text-white/80 mb-10 text-lg">
+              Get a tailored quote and see how Southern Cross can help you attract top talent,
+              reduce turnover, and build a healthier, more productive workforce.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-3 bg-white text-brand-blue px-10 py-5 rounded-lg font-bold text-lg hover:bg-white/90 transition-all shadow-2xl mb-10"
+            >
+              <Mail className="w-5 h-5" />
+              Request a Business Quote
+              <ArrowRight className="w-5 h-5" />
+            </Link>
 
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-600">
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-blue-500" />
-              <span>Free consultation with HR benefits specialist</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-blue-500" />
-              <span>No obligation quote</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-blue-500" />
-              <span>Customized to your business needs</span>
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-white" />
+                <span>Free consultation</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-white" />
+                <span>No obligation quote</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-white" />
+                <span>Customized to your business</span>
+              </div>
             </div>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </section>
 
-      {/* Footer */}
-      <footer className="container-turtle py-8 border-t border-slate-200 mt-16">
-        <div className="text-center text-sm text-slate-500">
-          <p className="mb-2">
-            <strong>BoostWellbeing</strong> is powered by Southern Cross Health Insurance.
-            We help businesses implement comprehensive health and wellbeing solutions.
-          </p>
-          <p>
-            Pricing is indicative and subject to Southern Cross underwriting. Minimum 15 employees required for group plans.
-          </p>
+      {/* Footer - matches main page */}
+      <footer className="bg-slate-900 text-white py-12 border-t border-white/10">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center">
+                  <BoostIcon className="w-6 h-6 text-white" />
+                </div>
+                <span className="text-xl font-bold">
+                  <span className="text-brand-blue">Boost</span>
+                  <span className="text-white">Wellbeing</span>
+                </span>
+              </div>
+              <p className="text-sm text-white/60">
+                In partnership with Southern Cross Health Society
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Navigation</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/" className="block text-white/60 hover:text-white transition-colors">Home</Link>
+                <Link href="/group-health" className="block text-white/60 hover:text-white transition-colors">Group Health</Link>
+                <Link href="/survey" className="block text-white/60 hover:text-white transition-colors">Wellbeing Survey</Link>
+                <Link href="/about" className="block text-white/60 hover:text-white transition-colors">About Us</Link>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Contact</h4>
+              <div className="space-y-2 text-sm text-white/60">
+                <p>contact@boostwellbeing.co.nz</p>
+                <Link href="/contact" className="block hover:text-white transition-colors">Get in touch</Link>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Legal</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="#" className="block text-white/60 hover:text-white transition-colors">Privacy Policy</Link>
+                <Link href="#" className="block text-white/60 hover:text-white transition-colors">Terms of Service</Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 pt-8 text-center text-sm text-white/60 space-y-3 max-w-4xl mx-auto">
+            <p>Pricing is indicative and subject to Southern Cross underwriting. Minimum 15 employees required for group plans.</p>
+            <p className="mt-4">&copy; 2025 BoostWellbeing. All rights reserved.</p>
+          </div>
         </div>
       </footer>
     </div>

@@ -25,8 +25,8 @@ export function Toggle({ label, enabled, onChange, description, className = '' }
       <button
         type="button"
         onClick={() => onChange(!enabled)}
-        className={`relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-turtle-green-500 focus:ring-offset-2 ${
-          enabled ? 'bg-turtle-green-500' : 'bg-slate-300'
+        className={`relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-brand-blue focus:ring-offset-2 ${
+          enabled ? 'bg-brand-blue' : 'bg-slate-300'
         }`}
         role="switch"
         aria-checked={enabled}
@@ -65,14 +65,14 @@ export function ToggleCard({
       onClick={() => onChange(!enabled)}
       className={`w-full text-left p-5 rounded-2xl border-2 transition-all duration-200 ${
         enabled
-          ? 'border-turtle-green-500 bg-turtle-green-50'
+          ? 'border-brand-blue bg-blue-50'
           : 'border-slate-200 bg-white hover:border-slate-300'
       } ${className}`}
     >
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-3 flex-1">
           {icon && (
-            <div className={`p-2 rounded-xl ${enabled ? 'bg-turtle-green-100' : 'bg-slate-100'}`}>
+            <div className={`p-2 rounded-xl ${enabled ? 'bg-blue-100' : 'bg-slate-100'}`}>
               {icon}
             </div>
           )}
@@ -80,7 +80,7 @@ export function ToggleCard({
             <div className="flex items-center gap-2">
               <h4 className="text-base font-semibold text-slate-900">{title}</h4>
               {badge && (
-                <span className="px-2 py-0.5 text-xs font-medium bg-turtle-orange-100 text-turtle-orange-700 rounded-full">
+                <span className="px-2 py-0.5 text-xs font-medium bg-amber-100 text-amber-700 rounded-full">
                   {badge}
                 </span>
               )}
@@ -91,7 +91,7 @@ export function ToggleCard({
 
         {/* Toggle indicator */}
         <div className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-          enabled ? 'border-turtle-green-500 bg-turtle-green-500' : 'border-slate-300'
+          enabled ? 'border-brand-blue bg-brand-blue' : 'border-slate-300'
         }`}>
           {enabled && (
             <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
