@@ -3,8 +3,9 @@
 
 import Link from 'next/link';
 import { ArrowRight, Users, Heart, CheckCircle } from 'lucide-react';
-import { BoostIcon } from '@/components/icons/BoostIcon';
 import ScrollVideoBackground from '@/components/ScrollVideoBackground';
+import { SiteNav } from '@/components/SiteNav';
+import { SiteFooter } from '@/components/SiteFooter';
 
 export default function AboutPage() {
   return (
@@ -17,32 +18,7 @@ export default function AboutPage() {
         parallaxSpeed={0.3}
       />
 
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-white/10">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center shadow-lg">
-                <BoostIcon className="w-6 h-6 text-white" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold">
-                  <span className="text-brand-blue">Boost</span>
-                  <span className="text-white">Wellbeing</span>
-                </span>
-                <span className="text-xs text-white/70 font-medium">Better Health Starts at Work</span>
-              </div>
-            </Link>
-
-            <Link
-              href="/"
-              className="text-white/80 hover:text-white transition-colors font-medium"
-            >
-              ← Back to Home
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SiteNav variant="dark" />
 
       {/* Hero Section */}
       <section className="relative py-20">
@@ -165,15 +141,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative bg-slate-900 text-white py-12 border-t border-white/10 mt-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center text-sm text-white/60">
-            <p>BoostWellbeing is an authorized partner helping businesses access Southern Cross Health Insurance workplace schemes.</p>
-            <p className="mt-4">&copy; 2025 BoostWellbeing. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

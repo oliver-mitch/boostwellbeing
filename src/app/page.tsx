@@ -3,9 +3,10 @@
 
 import Link from 'next/link';
 import { ArrowRight, Shield, TrendingUp, Users, Award, CheckCircle, Building2, PhoneCall, Star } from 'lucide-react';
-import { BoostIcon } from '@/components/icons/BoostIcon';
 import ScrollVideoBackground from '@/components/ScrollVideoBackground';
 import { verifiedStats } from '@/data/southern-cross-stats';
+import { SiteNav } from '@/components/SiteNav';
+import { SiteFooter } from '@/components/SiteFooter';
 import Head from 'next/head';
 
 export default function HomePage() {
@@ -33,46 +34,7 @@ export default function HomePage() {
         parallaxSpeed={0.3}
       />
 
-      {/* Sticky Navigation */}
-      <nav className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-white/10">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center shadow-lg">
-                <BoostIcon className="w-6 h-6 text-white" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold">
-                  <span className="text-brand-blue">Boost</span>
-                  <span className="text-white">Wellbeing</span>
-                </span>
-                <span className="text-xs text-white/70 font-medium">Better Health Starts at Work</span>
-              </div>
-            </Link>
-
-            <div className="hidden md:flex items-center gap-8">
-              <Link href="/" className="text-white/80 hover:text-white transition-colors font-medium">
-                Home
-              </Link>
-              <a href="#how-it-works" className="text-white/80 hover:text-white transition-colors font-medium">
-                How It Works
-              </a>
-              <a href="#success-stories" className="text-white/80 hover:text-white transition-colors font-medium">
-                Case Studies
-              </a>
-              <Link href="/about" className="text-white/80 hover:text-white transition-colors font-medium">
-                About Us
-              </Link>
-              <Link href="/portal/login" className="text-white/80 hover:text-white transition-colors font-medium">
-                Client Login
-              </Link>
-              <Link href="/contact" className="bg-brand-blue hover:bg-brand-blue-dark text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-xl transition-all">
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNav variant="dark" />
 
       {/* Hero Section - Overlaying Video */}
       <section className="relative py-32">
@@ -797,75 +759,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative bg-slate-900 text-white py-12 border-t border-white/10">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center">
-                  <BoostIcon className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-xl font-bold">
-                  <span className="text-brand-blue">Boost</span>
-                  <span className="text-white">Wellbeing</span>
-                </span>
-              </div>
-              <p className="text-sm text-white/60">
-                In partnership with Southern Cross Health Society
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Navigation</h4>
-              <div className="space-y-2 text-sm">
-                <Link href="/" className="block text-white/60 hover:text-white transition-colors">Home</Link>
-                <a href="#how-it-works" className="block text-white/60 hover:text-white transition-colors">How It Works</a>
-                <a href="#success-stories" className="block text-white/60 hover:text-white transition-colors">Case Studies</a>
-                <a href="#resources" className="block text-white/60 hover:text-white transition-colors">Resources</a>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <div className="space-y-2 text-sm text-white/60">
-                <p>contact@boostwellbeing.co.nz</p>
-                <Link href="/contact" className="block hover:text-white transition-colors">Get in touch</Link>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Legal</h4>
-              <div className="space-y-2 text-sm">
-                <Link href="#" className="block text-white/60 hover:text-white transition-colors">Privacy Policy</Link>
-                <Link href="#" className="block text-white/60 hover:text-white transition-colors">Terms of Service</Link>
-              </div>
-            </div>
-          </div>
-
-          {/* References Section */}
-          <div className="border-t border-white/10 pt-8 mb-8">
-            <h4 className="font-semibold mb-4 text-center">References</h4>
-            <div className="text-xs text-white/60 space-y-2 max-w-4xl mx-auto">
-              <p>¹ Employer benefits of health insurance, Kantar TNS, 2019</p>
-              <p>² Southern Cross Health Society Workplace Wellness Survey 2023</p>
-              <p>³ Reader's Digest Quality Service Award, Health Insurance winner 2025</p>
-              <p>⁴ Southern Cross Medical Care Society Annual Report June 2025</p>
-              <p>⁵ Reader's Digest Most Trusted Health Insurance Brand, 2017-2025</p>
-            </div>
-          </div>
-
-          {/* Disclaimers */}
-          <div className="border-t border-white/10 pt-8 text-center text-sm text-white/60 space-y-3 max-w-4xl mx-auto">
-            <p className="font-semibold text-white/80">Important Information</p>
-            <p>Subject to terms and conditions. A workplace health insurance scheme is only available for organizations with at least 5 full-time employees who join the scheme.</p>
-            <p className="border-t border-white/10 pt-4 mt-4">
-              BoostWellbeing is an authorized partner helping businesses access Southern Cross Health Insurance workplace schemes.
-            </p>
-            <p className="mt-4">&copy; 2025 BoostWellbeing. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter showReferences />
       </div>
     </>
   );

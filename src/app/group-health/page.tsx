@@ -6,47 +6,14 @@ import {
   Clock, UserCheck, TrendingDown,
   ArrowRight, BarChart3, Building2
 } from 'lucide-react';
-import { BoostIcon } from '@/components/icons/BoostIcon';
 import TeamHealthCalculator from '@/components/TeamHealthCalculator';
+import { SiteNav } from '@/components/SiteNav';
+import { SiteFooter } from '@/components/SiteFooter';
 
 export default function BoostWellbeingGroupHealthPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white">
-      {/* Navigation - matches main page */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/50">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center shadow-lg">
-                <BoostIcon className="w-6 h-6 text-white" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold">
-                  <span className="text-brand-blue">Boost</span>
-                  <span className="text-slate-900">Wellbeing</span>
-                </span>
-              </div>
-            </Link>
-            <div className="hidden md:flex items-center gap-8">
-              <Link href="/" className="text-slate-600 hover:text-slate-900 transition-colors font-medium">
-                Home
-              </Link>
-              <Link href="/group-health" className="text-brand-blue font-semibold">
-                Group Health
-              </Link>
-              <Link href="/survey" className="text-slate-600 hover:text-slate-900 transition-colors font-medium">
-                Wellbeing Survey
-              </Link>
-              <Link href="/portal/login" className="text-slate-600 hover:text-slate-900 transition-colors font-medium">
-                Client Login
-              </Link>
-              <Link href="/contact" className="bg-brand-blue hover:bg-brand-blue-dark text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-xl transition-all">
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNav variant="light" />
 
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-slate-900 via-brand-dark to-slate-900">
@@ -334,58 +301,7 @@ export default function BoostWellbeingGroupHealthPage() {
         </div>
       </section>
 
-      {/* Footer - matches main page */}
-      <footer className="bg-slate-900 text-white py-12 border-t border-white/10">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center">
-                  <BoostIcon className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-xl font-bold">
-                  <span className="text-brand-blue">Boost</span>
-                  <span className="text-white">Wellbeing</span>
-                </span>
-              </div>
-              <p className="text-sm text-white/60">
-                In partnership with Southern Cross Health Society
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Navigation</h4>
-              <div className="space-y-2 text-sm">
-                <Link href="/" className="block text-white/60 hover:text-white transition-colors">Home</Link>
-                <Link href="/group-health" className="block text-white/60 hover:text-white transition-colors">Group Health</Link>
-                <Link href="/survey" className="block text-white/60 hover:text-white transition-colors">Wellbeing Survey</Link>
-                <Link href="/about" className="block text-white/60 hover:text-white transition-colors">About Us</Link>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <div className="space-y-2 text-sm text-white/60">
-                <p>contact@boostwellbeing.co.nz</p>
-                <Link href="/contact" className="block hover:text-white transition-colors">Get in touch</Link>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Legal</h4>
-              <div className="space-y-2 text-sm">
-                <Link href="#" className="block text-white/60 hover:text-white transition-colors">Privacy Policy</Link>
-                <Link href="#" className="block text-white/60 hover:text-white transition-colors">Terms of Service</Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-white/10 pt-8 text-center text-sm text-white/60 space-y-3 max-w-4xl mx-auto">
-            <p>Pricing is indicative and subject to Southern Cross underwriting. Minimum 15 employees required for group plans.</p>
-            <p className="mt-4">&copy; 2025 BoostWellbeing. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter additionalDisclaimer="Pricing is indicative and subject to Southern Cross underwriting. Minimum 15 employees required for group plans." />
     </div>
   );
 }

@@ -16,6 +16,8 @@ import {
   Zap
 } from 'lucide-react';
 import WorkplaceWellbeingAssessment from '@/components/WorkplaceWellbeingAssessment';
+import { SiteNav } from '@/components/SiteNav';
+import { SiteFooter } from '@/components/SiteFooter';
 
 export default function BoostWellbeingSurveyPage() {
   const [showAssessment, setShowAssessment] = useState(false);
@@ -26,33 +28,7 @@ export default function BoostWellbeingSurveyPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
-      {/* Navigation */}
-      <nav className="container mx-auto px-6 py-6">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center">
-              <Heart className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-              BoostWellbeing
-            </span>
-          </Link>
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="/group-health" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
-              Group Health
-            </Link>
-            <Link href="/survey" className="text-blue-600 font-semibold">
-              Wellbeing Survey
-            </Link>
-            <Link href="/contact" className="text-slate-700 hover:text-blue-600 transition-colors font-medium">
-              Contact
-            </Link>
-            <Link href="/" className="text-slate-700 hover:text-blue-600 transition-colors">
-              ← Back Home
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SiteNav variant="light" />
 
       {/* Hero Section */}
       <div className="container mx-auto px-6 py-12">
@@ -342,17 +318,7 @@ export default function BoostWellbeingSurveyPage() {
         </motion.div>
       </div>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-200 py-8 mt-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center text-sm text-slate-600">
-            <p className="mb-2">
-              <strong>BoostWellbeing</strong> - Powered by Southern Cross Health Insurance
-            </p>
-            <p>© 2025 BoostWellbeing. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
