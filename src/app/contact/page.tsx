@@ -308,7 +308,7 @@ export default function ContactPage() {
               {/* Trust Badge */}
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 text-center">
                 <Shield className="w-16 h-16 text-white mx-auto mb-4" />
-                <h4 className="text-xl font-bold text-white mb-2">Trusted by 3,500+ NZ Businesses</h4>
+                <h4 className="text-xl font-bold text-white mb-2">Backed by New Zealand's Most Trusted Health Insurer</h4>
                 <p className="text-white/80">
                   Join businesses across New Zealand who chose Southern Cross for their team's health
                 </p>

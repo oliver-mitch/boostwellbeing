@@ -2,7 +2,7 @@
 
 
 import Link from 'next/link';
-import { ArrowRight, Shield, TrendingUp, Users, Award, CheckCircle, Building2, PhoneCall, Star } from 'lucide-react';
+import { ArrowRight, Shield, TrendingUp, Users, Award, CheckCircle, Building2, PhoneCall, Star, MessageSquare, Heart } from 'lucide-react';
 import ScrollVideoBackground from '@/components/ScrollVideoBackground';
 import { verifiedStats } from '@/data/southern-cross-stats';
 import { SiteNav } from '@/components/SiteNav';
@@ -41,14 +41,14 @@ export default function HomePage() {
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto text-center">
             <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight text-white">
-              Build a Healthier, More Productive Team with Southern Cross – Guided by <span className="text-brand-blue">Boost</span>Wellbeing
+              Health Insurance Your Team Will Actually Use
             </h1>
 
             <p className="text-xl md:text-2xl mb-12 text-white/90 leading-relaxed max-w-4xl mx-auto">
-              We help NZ businesses bring Southern Cross workplace health insurance to their teams - with clear advice, friendly support, and options tailored to your people.
+              We help New Zealand businesses bring Southern Cross workplace health insurance to life — with plain language advice, personal support, and everything handled for you.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
               <Link
                 href="/contact"
                 className="group inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all"
@@ -57,31 +57,91 @@ export default function HomePage() {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
-                href="#success-stories"
+                href="#how-it-works"
                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-10 py-5 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all"
               >
-                See Success Stories
+                See How It Works
               </a>
             </div>
 
+            {/* Tertiary CTA - Calculator Link */}
+            <div className="mb-16">
+              <Link
+                href="/group-health#calculator"
+                className="inline-flex items-center gap-1 text-white/80 hover:text-white text-base font-medium underline underline-offset-4 decoration-white/40 hover:decoration-white transition-all"
+              >
+                What Would It Cost?
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
             {/* Credibility Band */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 text-center">
-                <div className="text-3xl font-bold text-white mb-2">3,500+</div>
-                <div className="text-sm text-white/80">NZ businesses supported</div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 border border-white/20 max-w-4xl mx-auto">
+              <p className="text-white/90 text-base md:text-lg font-medium tracking-wide">
+                Southern Cross Authorised Partner &nbsp;&bull;&nbsp; 5+ employees to get started &nbsp;&bull;&nbsp; Set up in under a week
+              </p>
+            </div>
+            <div className="flex items-center justify-center gap-6 mt-6 max-w-4xl mx-auto">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-5 py-3 border border-white/20">
+                <div className="text-2xl font-bold text-white">9 Years</div>
+                <div className="text-sm text-white/80">NZ&apos;s most trusted<br />health insurer</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 text-center">
-                <div className="text-3xl font-bold text-white mb-2">9 Years</div>
-                <div className="text-sm text-white/80">NZ's most trusted health insurer</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 text-center">
-                <Award className="w-8 h-8 text-white mx-auto mb-2" />
-                <div className="text-sm text-white/80">Southern Cross authorised partner</div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-5 py-3 border border-white/20">
+                <Award className="w-7 h-7 text-white" />
+                <div className="text-sm text-white/80">Authorised<br />partner</div>
               </div>
             </div>
             <p className="text-xs text-white/60 text-center mt-4">
-              Source: Southern Cross Annual Report June 2025, Reader's Digest Most Trusted Brand 2017-2025
+              Source: Southern Cross Annual Report June 2025, Reader&apos;s Digest Most Trusted Brand 2017-2025
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Why BoostWellbeing Section */}
+      <section className="relative py-24 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-5xl font-bold text-slate-900 mb-6">
+                We&apos;re Not Just a Broker
+              </h2>
+              <p className="text-lg text-slate-700 leading-relaxed max-w-4xl mx-auto">
+                Southern Cross is New Zealand&apos;s most trusted health insurer — and you can go to them directly. But most businesses that do end up with a policy that sits in an inbox, barely used and poorly understood. We make it different. We design your scheme around your people, handle all the communication and onboarding, and stay involved long after the paperwork is signed. You get Oliver or Ashley directly — not a call centre, not a rotating account manager.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-3 gap-8">
+              <div className="bg-gradient-to-br from-brand-blue/5 to-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                <div className="w-14 h-14 bg-brand-blue rounded-2xl flex items-center justify-center mb-5 shadow-lg">
+                  <MessageSquare className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Plain Language</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  We translate insurance into practical decisions — no jargon, no pressure.
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-br from-brand-blue/5 to-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                <div className="w-14 h-14 bg-brand-teal rounded-2xl flex items-center justify-center mb-5 shadow-lg">
+                  <Users className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Personal Service</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  You&apos;ll work directly with Oliver or Ashley from start to finish.
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-br from-brand-blue/5 to-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                <div className="w-14 h-14 bg-brand-dark rounded-2xl flex items-center justify-center mb-5 shadow-lg">
+                  <Heart className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Embedded Support</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  We connect health insurance into your wider wellbeing strategy.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -351,12 +411,72 @@ export default function HomePage() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold text-slate-900 mb-4">
-              Case Studies: Real Impact Across New Zealand
+              Real Impact, Any Size
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               See how businesses like yours are thriving with Southern Cross
             </p>
           </div>
+
+          {/* SME Case Studies */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+            {/* SME Card 1 */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-teal/30 relative">
+              <div className="absolute top-4 right-4 bg-brand-teal/10 text-brand-teal text-xs font-bold px-3 py-1 rounded-full border border-brand-teal/20">
+                SME
+              </div>
+              <div className="flex items-center gap-3 mb-4">
+                <Building2 className="w-8 h-8 text-brand-teal" />
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900">A 28-person Auckland engineering firm</h3>
+                </div>
+              </div>
+              <div className="bg-brand-teal/5 p-4 rounded-lg mb-4">
+                <p className="text-lg font-bold text-brand-teal mb-1">&ldquo;We&apos;d been meaning to sort health insurance for years. Oliver made it happen in a week.&rdquo;</p>
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-brand-teal mt-1 flex-shrink-0" />
+                  <span className="text-slate-700">Scheme up and running in 5 days</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-brand-teal mt-1 flex-shrink-0" />
+                  <span className="text-slate-700">100% staff uptake</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-brand-teal mt-1 flex-shrink-0" />
+                  <span className="text-slate-700">Now part of every new hire offer</span>
+                </div>
+              </div>
+            </div>
+
+            {/* SME Card 2 */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-teal/30 relative">
+              <div className="absolute top-4 right-4 bg-brand-teal/10 text-brand-teal text-xs font-bold px-3 py-1 rounded-full border border-brand-teal/20">
+                SME
+              </div>
+              <div className="flex items-center gap-3 mb-4">
+                <Building2 className="w-8 h-8 text-brand-teal" />
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900">A 45-person construction company</h3>
+                </div>
+              </div>
+              <p className="text-slate-700 leading-relaxed mb-4">
+                Team across multiple sites, mix of ages and health histories.
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-brand-teal mt-1 flex-shrink-0" />
+                  <span className="text-slate-700">Pre-existing conditions covered for most staff</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-brand-teal mt-1 flex-shrink-0" />
+                  <span className="text-slate-700">Foreman team uses it as a recruitment talking point</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p className="text-sm text-slate-500 text-center mb-12 italic">Client names anonymised. Real BoostWellbeing clients.</p>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {/* ORIX Case Study */}
@@ -725,7 +845,7 @@ export default function HomePage() {
               Ready to Invest in Your Team's Health?
             </h2>
             <p className="text-2xl mb-12 text-white/90">
-              Join 3,500+ New Zealand businesses who chose Southern Cross
+              Ready to join the businesses already benefiting from Southern Cross?
             </p>
 
             {/* Benefits Recap */}

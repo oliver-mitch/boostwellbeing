@@ -2,7 +2,7 @@
 
 
 import Link from 'next/link';
-import { ArrowRight, Users, Heart, CheckCircle } from 'lucide-react';
+import { ArrowRight, Users, Heart } from 'lucide-react';
 import ScrollVideoBackground from '@/components/ScrollVideoBackground';
 import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
@@ -25,11 +25,11 @@ export default function AboutPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-              Meet the <span className="text-brand-blue">Boost</span>Wellbeing Team
+              We&apos;re Oliver and Ashley
             </h1>
 
-            <p className="text-xl text-white/90 leading-relaxed">
-              Real people who understand health insurance and care about making it simple for your business
+            <p className="text-xl text-white/90 leading-relaxed max-w-3xl mx-auto">
+              BoostWellbeing exists because we saw too many businesses either skipping health insurance entirely or signing up for a scheme that nobody used. We started this to fix that — by being the advisers we&apos;d want to work with ourselves.
             </p>
           </div>
 
@@ -92,34 +92,22 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Our Approach */}
+          {/* Our Values */}
           <div className="max-w-4xl mx-auto mt-20">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-10 border border-white/20">
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">Our Approach</h2>
-              <div className="space-y-4 text-white/90">
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
-                  <p className="text-lg leading-relaxed">
-                    We translate the world of health insurance into plain language and practical decisions
-                  </p>
+              <h2 className="text-3xl font-bold text-white mb-8 text-center">Our Values</h2>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="bg-white/10 rounded-xl p-6 border border-white/10 text-center">
+                  <p className="text-lg font-bold text-white">Plain language over jargon</p>
                 </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
-                  <p className="text-lg leading-relaxed">
-                    We take a friendly, no-pressure approach - helping you understand your options without the hard sell
-                  </p>
+                <div className="bg-white/10 rounded-xl p-6 border border-white/10 text-center">
+                  <p className="text-lg font-bold text-white">Personal over transactional</p>
                 </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
-                  <p className="text-lg leading-relaxed">
-                    We're here to guide, not pressure - trust is our currency
-                  </p>
+                <div className="bg-white/10 rounded-xl p-6 border border-white/10 text-center">
+                  <p className="text-lg font-bold text-white">Embedded over one-and-done</p>
                 </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
-                  <p className="text-lg leading-relaxed">
-                    We make things simple, take care of the details, and help you make confident decisions
-                  </p>
+                <div className="bg-white/10 rounded-xl p-6 border border-white/10 text-center">
+                  <p className="text-lg font-bold text-white">NZ businesses, not global platforms</p>
                 </div>
               </div>
             </div>

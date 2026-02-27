@@ -34,7 +34,7 @@ export default function BoostWellbeingGroupHealthPage() {
             <div className="flex items-center justify-center gap-4 text-sm">
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20 text-white">
                 <Users className="w-4 h-4 text-brand-blue" />
-                <span>3,500+ NZ businesses</span>
+                <span>Southern Cross Authorised Partner</span>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20 text-white">
                 <Shield className="w-4 h-4 text-brand-teal" />
@@ -210,7 +210,7 @@ export default function BoostWellbeingGroupHealthPage() {
             <div className="bg-white p-10 rounded-2xl shadow-lg border-2 border-brand-blue/20">
               <div className="text-center mb-10">
                 <h2 className="text-3xl font-bold text-slate-900 mb-3">
-                  Why 3,500+ NZ Businesses Trust Southern Cross
+                  Why NZ Businesses Choose Southern Cross
                 </h2>
               </div>
               <div className="grid md:grid-cols-2 gap-6">
