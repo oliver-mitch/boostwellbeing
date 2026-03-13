@@ -206,7 +206,7 @@ export default function CostSummary({ selectedPlan, members }: CostSummaryProps)
         <div className="flex items-start gap-2">
           <Info className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
           <p className="text-sm text-blue-800">
-            Premiums are calculated based on age and plan selection. Rates effective May 1, 2025.
+            Premiums are calculated based on age and plan selection. Rates effective January 1, 2026.
           </p>
         </div>
       </div>

@@ -12,7 +12,7 @@ import {
   QuoteInfoBox,
 } from "@/components/turtleui";
 import { Toggle } from "@/components/turtleui";
-import { EMPLOYEE_PLANS, EMPLOYEE_MODULES, BASE_RATES, getRateForAge } from "@/data/rateData";
+import { EMPLOYEE_PLANS, EMPLOYEE_MODULES, getRateForAge } from "@/data/rateData";
 import { FileText } from "lucide-react";
 
 type PlanCode = typeof EMPLOYEE_PLANS[number]["code"];
@@ -57,7 +57,7 @@ export default function TeamHealthCalculator(): JSX.Element {
     [selectedPlan, averageAge]
   );
 
-  const perEmployeeMonthly = BASE_RATES.adult + planRate;
+  const perEmployeeMonthly = planRate;
   const perEmployeeAnnual = perEmployeeMonthly * 12;
   const totalCompanyMonthly = perEmployeeMonthly * employees;
   const totalCompanyAnnual = totalCompanyMonthly * 12;
@@ -202,16 +202,16 @@ export default function TeamHealthCalculator(): JSX.Element {
                   value={selectedPlan.name}
                 />
                 <QuoteResultLine
-                  label="Rate breakdown"
-                  value={`${formatCurrency(BASE_RATES.adult)} + ${formatCurrency(planRate)}`}
-                  description="Base rate + plan rate per employee/mo"
+                  label="Plan rate"
+                  value={formatCurrency(planRate)}
+                  description="Per employee/mo (workplace scheme rate)"
                 />
               </div>
             </div>
 
             <QuoteInfoBox type="info">
               <p>
-                <strong>Rates effective 01 May 2025.</strong> Final pricing
+                <strong>Rates effective 01 January 2026.</strong> Final pricing
                 confirmed by Southern Cross underwriting. Pre-existing
                 conditions and waiting periods may vary.
               </p>
