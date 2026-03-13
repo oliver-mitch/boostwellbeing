@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import {
   Users, Shield, Heart, TrendingUp, CheckCircle, Mail,
@@ -9,6 +7,12 @@ import {
 import TeamHealthCalculator from '@/components/TeamHealthCalculator';
 import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Group Health Insurance Plans & Cost Estimator',
+  description: 'Explore Southern Cross workplace health insurance plans and estimate costs with our calculator. Plans from ~$15/person/week.',
+};
 
 export default function BoostWellbeingGroupHealthPage() {
   return (

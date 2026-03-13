@@ -47,6 +47,7 @@ export function SiteFooter({ showReferences = false, additionalDisclaimer }: Sit
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
             <div className="space-y-2 text-sm text-white/60">
+              <a href="tel:+6421720710" className="block hover:text-white transition-colors">021 720 710</a>
               <p>contact@boostwellbeing.co.nz</p>
               <Link href="/contact" className="block hover:text-white transition-colors">Get in touch</Link>
             </div>
@@ -55,8 +56,8 @@ export function SiteFooter({ showReferences = false, additionalDisclaimer }: Sit
           <div>
             <h4 className="font-semibold mb-4">Legal</h4>
             <div className="space-y-2 text-sm">
-              <Link href="#" className="block text-white/60 hover:text-white transition-colors">Privacy Policy</Link>
-              <Link href="#" className="block text-white/60 hover:text-white transition-colors">Terms of Service</Link>
+              <Link href="/privacy" className="block text-white/60 hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="block text-white/60 hover:text-white transition-colors">Terms of Service</Link>
             </div>
           </div>
         </div>
@@ -83,7 +84,7 @@ export function SiteFooter({ showReferences = false, additionalDisclaimer }: Sit
             BoostWellbeing is an authorized partner helping businesses access Southern Cross
             Health Insurance workplace schemes.
           </p>
-          <p className="mt-4">&copy; 2025 BoostWellbeing. All rights reserved.</p>
+          <p className="mt-4">&copy; 2026 BoostWellbeing. All rights reserved.</p>
         </div>
       </div>
     </footer>

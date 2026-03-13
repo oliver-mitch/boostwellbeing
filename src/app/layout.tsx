@@ -3,15 +3,19 @@ import './globals.css';
 import { Providers } from './providers';
 
 export const metadata = {
-  title: 'BoostWellbeing - Transform Your Team\'s Health & Wellbeing',
-  description: 'Southern Cross group health insurance for NZ businesses. Comprehensive workplace wellbeing assessments and ROI-driven health solutions for HR managers and business owners.',
-  keywords: ['group health insurance', 'Southern Cross', 'workplace wellbeing', 'employee health', 'New Zealand', 'HR solutions', 'business health insurance'],
+  title: {
+    default: 'BoostWellbeing — Southern Cross Workplace Health Insurance',
+    template: '%s | BoostWellbeing',
+  },
+  description: 'Southern Cross group health insurance for NZ businesses. Plain language advice, personal support, and everything handled for you.',
+  keywords: ['group health insurance', 'Southern Cross', 'workplace wellbeing', 'employee health', 'New Zealand', 'business health insurance'],
   authors: [{ name: 'BoostWellbeing' }],
   openGraph: {
-    title: 'BoostWellbeing - Group Health Insurance & Workplace Wellness',
-    description: 'Proven 2:1 ROI with Southern Cross group health insurance. Reduce sick days by 85% and boost productivity.',
+    title: 'BoostWellbeing — Southern Cross Workplace Health Insurance',
+    description: 'We help NZ businesses bring Southern Cross workplace health insurance to life.',
     type: 'website',
     locale: 'en_NZ',
+    siteName: 'BoostWellbeing',
   },
 };
 

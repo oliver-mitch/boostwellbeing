@@ -3,7 +3,6 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Shield, CheckCircle, Building2, Mail, Phone, User, Users, MessageSquare, Send } from 'lucide-react';
-import ScrollVideoBackground from '@/components/ScrollVideoBackground';
 import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
 
@@ -76,20 +75,25 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900">
-      {/* Scroll-Reactive Video Background */}
-      <ScrollVideoBackground
-        videoSrc="/videos/office-background.mp4"
-        opacity={0.5}
-        blur={true}
-        parallaxSpeed={0.3}
-      />
-
+    <div className="min-h-screen">
       <SiteNav variant="dark" />
 
-      {/* Hero Section */}
-      <section className="relative py-20">
-        <div className="container mx-auto px-6">
+      {/* Hero Section with Video Background */}
+      <section className="relative py-20 bg-slate-900 overflow-hidden">
+        <div className="absolute inset-0 -z-0">
+          <video
+            className="w-full h-full object-cover opacity-40"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          >
+            <source src="/videos/office-background.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900/80" />
+        </div>
+        <div className="relative z-10 container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
               Let's Build a Healthier Team Together
@@ -326,8 +330,9 @@ export default function ContactPage() {
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="w-5 h-5 text-blue-400" />
-                    <span>Mon-Fri: 9am - 5pm NZST</span>
+                    <a href="tel:+6421720710" className="hover:text-white transition-colors">021 720 710</a>
                   </div>
+                  <p className="text-sm text-white/60 pl-8">Mon-Fri: 9am - 5pm NZST</p>
                 </div>
               </div>
             </div>

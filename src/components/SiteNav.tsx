@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Phone } from 'lucide-react';
 import { BoostIcon } from '@/components/icons/BoostIcon';
 
 interface SiteNavProps {
@@ -11,6 +12,7 @@ interface SiteNavProps {
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/group-health', label: 'Group Health' },
+  { href: '/healthcare-costs', label: 'Healthcare Costs' },
   { href: '/survey', label: 'Wellbeing Survey' },
   { href: '/about', label: 'About Us' },
   { href: '/portal/login', label: 'Client Login' },
@@ -66,6 +68,15 @@ export function SiteNav({ variant = 'dark' }: SiteNavProps) {
                 </Link>
               );
             })}
+            <a
+              href="tel:+6421720710"
+              className={`inline-flex items-center gap-1.5 font-medium ${
+                isDark ? 'text-white/80 hover:text-white' : 'text-slate-600 hover:text-slate-900'
+              } transition-colors`}
+            >
+              <Phone className="w-4 h-4" />
+              021 720 710
+            </a>
             <Link
               href="/contact"
               className="bg-brand-blue hover:bg-brand-blue-dark text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-xl transition-all"
