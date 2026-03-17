@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Shield, TrendingUp, Users, Award, CheckCircle, Building2, PhoneCall, MessageSquare, Heart } from 'lucide-react';
+import { ArrowRight, Shield, Users, Award, CheckCircle, Building2, PhoneCall, MessageSquare, Heart } from 'lucide-react';
 import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
 import { ScrollReveal, AnimatedCounter } from '@/components/ScrollReveal';
@@ -24,18 +24,22 @@ export const metadata: Metadata = {
 const jsonLd = [
   {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': 'InsuranceAgency',
     name: 'BoostWellbeing',
-    description: 'Southern Cross workplace health insurance advisory for New Zealand businesses.',
-    url: 'https://www.boostwellbeing.co.nz',
-    telephone: '+6421720710',
+    description: 'Southern Cross workplace health insurance advisory for NZ businesses',
+    url: 'https://boostwellbeing.co.nz',
+    telephone: '+64-21-720-710',
     email: 'contact@boostwellbeing.co.nz',
     address: {
       '@type': 'PostalAddress',
+      addressLocality: 'Auckland',
       addressCountry: 'NZ',
     },
-    areaServed: 'NZ',
-    serviceType: 'Workplace Health Insurance Advisory',
+    areaServed: {
+      '@type': 'Country',
+      name: 'New Zealand',
+    },
+    openingHours: 'Mo-Fr 09:00-17:00',
   },
   {
     '@context': 'https://schema.org',
@@ -86,7 +90,7 @@ export default function HomePage() {
       />
       <SiteNav variant="dark" />
 
-      {/* Hero Section with Video Background */}
+      {/* Hero */}
       <section className="relative py-32 bg-slate-900 overflow-hidden">
         <div className="absolute inset-0 -z-0">
           <video
@@ -104,7 +108,7 @@ export default function HomePage() {
         </div>
         <div className="relative z-10 container mx-auto px-6">
           <div className="max-w-5xl mx-auto text-center">
-            <h1 className="font-display text-5xl md:text-7xl font-normal mb-8 leading-tight text-white">
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight text-white">
               Health Insurance Your Team Will Actually Use
             </h1>
 
@@ -112,7 +116,7 @@ export default function HomePage() {
               We help New Zealand businesses bring Southern Cross workplace health insurance to life — with plain language advice, personal support, and everything handled for you.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <Link
                 href="/contact"
                 className="group inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all"
@@ -128,16 +132,6 @@ export default function HomePage() {
               </a>
             </div>
 
-            <div className="mb-16">
-              <Link
-                href="/group-health#calculator"
-                className="inline-flex items-center gap-1 text-white/80 hover:text-white text-base font-medium underline underline-offset-4 decoration-white/40 hover:decoration-white transition-all"
-              >
-                What Would It Cost?
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-
             <div className="bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 border border-white/20 max-w-4xl mx-auto">
               <p className="text-white/90 text-base md:text-lg font-medium tracking-wide">
                 Southern Cross Authorised Partner &nbsp;&bull;&nbsp; 5+ employees to get started &nbsp;&bull;&nbsp; Set up in under a week
@@ -147,13 +141,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why BoostWellbeing — merged from old sections 2 + 3 */}
+      {/* We're Not Just a Broker */}
       <section className="relative py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <ScrollReveal>
               <div className="text-center mb-12">
-                <h2 className="font-display text-4xl md:text-5xl font-normal text-slate-900 mb-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
                   We&apos;re Not Just a Broker
                 </h2>
                 <p className="text-lg text-slate-700 leading-relaxed max-w-3xl mx-auto">
@@ -203,12 +197,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Southern Cross + Business Case — merged */}
+      {/* Why Southern Cross — with condensed business case */}
       <section id="why-southern-cross" className="relative py-24 bg-gradient-to-br from-slate-50 to-white">
         <div className="container mx-auto px-6">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="font-display text-4xl md:text-5xl font-normal text-slate-900 mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
                 Why Southern Cross
               </h2>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto">
@@ -217,8 +211,8 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
 
-          {/* Key stats with scroll animation */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-16">
+          {/* Key stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
             <ScrollReveal delay={0}>
               <div className="text-center bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
                 <AnimatedCounter value="68%" className="text-4xl font-bold text-brand-blue mb-1" />
@@ -245,284 +239,39 @@ export default function HomePage() {
             </ScrollReveal>
           </div>
 
-          {/* Business benefits — condensed from 4 to 3 */}
-          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <ScrollReveal delay={0.1}>
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 h-full">
-                <div className="w-14 h-14 bg-brand-blue rounded-2xl flex items-center justify-center mb-5 shadow-lg">
-                  <TrendingUp className="w-7 h-7 text-white" />
+          {/* Condensed business case — bullet points */}
+          <ScrollReveal delay={0.2}>
+            <div className="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
+                  <p className="text-slate-700"><strong>Cut waiting times in half</strong> — employees with health insurance spend less than half the time on elective surgery waiting lists</p>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">Cut Waiting Times</h3>
-                <p className="text-slate-700 leading-relaxed mb-4">
-                  Employees with health insurance spend less than half the time on waiting lists for elective surgery. Fewer projects derailed, more predictable resourcing.
-                </p>
-                <p className="text-xs text-slate-500">Source: Kantar TNS, 2019</p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.2}>
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 h-full">
-                <div className="w-14 h-14 bg-brand-teal rounded-2xl flex items-center justify-center mb-5 shadow-lg">
-                  <Users className="w-7 h-7 text-white" />
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-brand-teal mt-1 flex-shrink-0" />
+                  <p className="text-slate-700"><strong>Attract &amp; retain talent</strong> — Southern Cross signals genuine investment in your people and becomes a benefit they don&apos;t give up lightly</p>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">Attract &amp; Retain Talent</h3>
-                <p className="text-slate-700 leading-relaxed">
-                  In NZ&apos;s competitive job market, offering Southern Cross signals genuine investment in your people. It reduces recruitment spend and becomes a benefit employees don&apos;t give up lightly.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.3}>
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 h-full">
-                <div className="w-14 h-14 bg-brand-dark rounded-2xl flex items-center justify-center mb-5 shadow-lg">
-                  <Shield className="w-7 h-7 text-brand-blue" />
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-brand-dark mt-1 flex-shrink-0" />
+                  <p className="text-slate-700"><strong>Predictable costs</strong> — group scheme pricing gives better value than individual plans with transparent premiums you can budget around</p>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">Predictable Costs</h3>
-                <p className="text-slate-700 leading-relaxed">
-                  Group scheme pricing gives better value than individual plans. Transparent premiums mean you can budget confidently and demonstrate ROI to leadership.
-                </p>
               </div>
-            </ScrollReveal>
-          </div>
+            </div>
+          </ScrollReveal>
 
           <p className="text-xs text-slate-500 text-center mt-8">
-            Source: Southern Cross Annual Report June 2025, Reader&apos;s Digest Most Trusted Brand 2017-2025
+            Source: Southern Cross Annual Report June 2025, Reader&apos;s Digest Most Trusted Brand 2017-2025, Kantar TNS 2019
           </p>
         </div>
       </section>
 
-      {/* Southern Cross in Action — SC case studies only, no fake SMEs */}
-      <section id="case-studies" className="relative py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="font-display text-4xl md:text-5xl font-normal text-slate-900 mb-4">
-                Southern Cross in Action
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Real businesses, real outcomes — powered by Southern Cross workplace schemes
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
-            {/* ORIX */}
-            <ScrollReveal delay={0.1}>
-              <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-blue/20 h-full">
-                <div className="flex items-center gap-3 mb-4">
-                  <Building2 className="w-8 h-8 text-brand-blue" />
-                  <div>
-                    <h3 className="text-2xl font-bold text-slate-900">ORIX New Zealand</h3>
-                    <p className="text-slate-600">Financial Services</p>
-                  </div>
-                </div>
-                <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-4 rounded-xl border border-yellow-200 mb-4">
-                  <div className="flex items-center gap-3">
-                    <Award className="w-8 h-8 text-yellow-600" />
-                    <div>
-                      <p className="font-bold text-slate-900">2025 Wayfinder Award Winner</p>
-                      <p className="text-sm text-slate-700">Excellence in Workplace Wellbeing</p>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-slate-700 leading-relaxed mb-4">
-                  ORIX NZ designed a comprehensive wellbeing scheme with Southern Cross that won national recognition.
-                </p>
-                <div className="space-y-2">
-                  <div className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
-                    <span className="text-slate-700">90 staff across four offices covered</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
-                    <span className="text-slate-700">Improved engagement and lower turnover</span>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Beca */}
-            <ScrollReveal delay={0.2}>
-              <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-teal/20 h-full">
-                <div className="flex items-center gap-3 mb-4">
-                  <Building2 className="w-8 h-8 text-brand-blue" />
-                  <div>
-                    <h3 className="text-2xl font-bold text-slate-900">Beca</h3>
-                    <p className="text-slate-600">Engineering &amp; Professional Services</p>
-                  </div>
-                </div>
-                <div className="bg-brand-teal/5 p-4 rounded-lg mb-4">
-                  <p className="text-2xl font-bold text-brand-blue mb-1">&ldquo;A true partner&rdquo;</p>
-                  <p className="text-sm text-slate-700">— Chloe Stewart Tyson</p>
-                </div>
-                <p className="text-slate-700 leading-relaxed mb-4">
-                  NZ&apos;s largest professional services consultancy provides comprehensive health coverage for employees and families.
-                </p>
-                <div className="space-y-2">
-                  <div className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
-                    <span className="text-slate-700">Immediate specialist care when needed</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
-                    <span className="text-slate-700">Improved talent attraction and loyalty</span>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Ravensdown */}
-            <ScrollReveal delay={0.3}>
-              <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-dark/20 h-full">
-                <div className="flex items-center gap-3 mb-4">
-                  <Building2 className="w-8 h-8 text-brand-blue" />
-                  <div>
-                    <h3 className="text-2xl font-bold text-slate-900">Ravensdown</h3>
-                    <p className="text-slate-600">Agriculture &amp; Fertiliser</p>
-                  </div>
-                </div>
-                <div className="bg-brand-dark/5 p-4 rounded-lg mb-4">
-                  <p className="text-2xl font-bold text-brand-blue mb-1">600+ employees</p>
-                  <p className="text-sm text-slate-700">Fully subsidised coverage including families</p>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
-                    <span className="text-slate-700">Strong retention in competitive market</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
-                    <span className="text-slate-700">&ldquo;A benefit you don&apos;t give up lightly&rdquo; — Tracey Paterson, GM HR</span>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-
-          <p className="text-sm text-slate-500 text-center italic">
-            These are Southern Cross clients. BoostWellbeing is a new advisory — we&apos;re building our own client stories and would love yours to be among them.
-          </p>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section id="how-it-works" className="relative py-24 bg-gradient-to-br from-slate-50 to-white">
-        <div className="container mx-auto px-6">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <h2 className="font-display text-4xl md:text-5xl font-normal text-slate-900 mb-4">
-                How It Works
-              </h2>
-              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                From first call to fully covered — usually in under a week
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="max-w-5xl mx-auto space-y-8">
-            <ScrollReveal delay={0.1}>
-              <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-brand-blue/20">
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 bg-brand-blue rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
-                    <span className="text-3xl font-bold text-white">1</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Free Consultation</h3>
-                    <p className="text-slate-700 leading-relaxed">
-                      We learn about your workforce, budget, and goals. No obligation, no pressure — just a clear picture of your options.
-                    </p>
-                    <div className="flex items-center gap-2 text-slate-600 mt-3">
-                      <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
-                      <span className="font-semibold">30-minute call</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.15}>
-              <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-brand-teal/20">
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 bg-brand-teal rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
-                    <span className="text-3xl font-bold text-white">2</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Tailored Plan Design</h3>
-                    <p className="text-slate-700 leading-relaxed">
-                      We design a Southern Cross scheme that fits your team — coverage levels, budget, and possible cover for pre-existing conditions.
-                    </p>
-                    <div className="flex items-center gap-2 text-slate-600 mt-3">
-                      <div className="w-2 h-2 bg-brand-teal/50 rounded-full"></div>
-                      <span className="font-semibold">2-3 days</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.2}>
-              <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-brand-dark/20">
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 bg-brand-dark rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
-                    <span className="text-3xl font-bold text-white">3</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Onboarding &amp; Launch</h3>
-                    <p className="text-slate-700 leading-relaxed">
-                      We handle employee communications and digital enrolment. Your team signs up, and cover begins.
-                    </p>
-                    <div className="flex items-center gap-2 text-slate-600 mt-3">
-                      <div className="w-2 h-2 bg-brand-dark/50 rounded-full"></div>
-                      <span className="font-semibold">1-2 days</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.25}>
-              <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-brand-dark/20">
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 bg-brand-dark rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
-                    <span className="text-3xl font-bold text-white">4</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Ongoing Support</h3>
-                    <p className="text-slate-700 leading-relaxed">
-                      We stay involved — helping with new starters, renewals, and connecting you to BeingWellPlus wellbeing resources.
-                    </p>
-                    <div className="flex items-center gap-2 text-slate-600 mt-3">
-                      <div className="w-2 h-2 bg-brand-dark rounded-full"></div>
-                      <span className="font-semibold">Ongoing</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-
-          <ScrollReveal delay={0.3}>
-            <div className="text-center mt-12">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-xl transition-all"
-              >
-                Get Your Free Consultation
-                <PhoneCall className="w-5 h-5" />
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Indicative Pricing — with subtle texture */}
+      {/* What Does It Cost — moved up per spec */}
       <section className="relative py-24 bg-white overflow-hidden">
-        {/* Subtle dot texture */}
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #4D90DE 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
         <div className="relative container mx-auto px-6">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="font-display text-4xl md:text-5xl font-normal text-slate-900 mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
                 What Does It Cost?
               </h2>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto">
@@ -592,12 +341,233 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FAQ — trimmed to 4, alternating background for visual rhythm */}
+      {/* Southern Cross in Action */}
+      <section id="case-studies" className="relative py-24 bg-gradient-to-br from-slate-50 to-white">
+        <div className="container mx-auto px-6">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+                Southern Cross in Action
+              </h2>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                Real businesses, real outcomes — powered by Southern Cross workplace schemes
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
+            <ScrollReveal delay={0.1}>
+              <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-blue/20 h-full">
+                <div className="flex items-center gap-3 mb-4">
+                  <Building2 className="w-8 h-8 text-brand-blue" />
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-900">ORIX New Zealand</h3>
+                    <p className="text-slate-600">Financial Services</p>
+                  </div>
+                </div>
+                <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-4 rounded-xl border border-yellow-200 mb-4">
+                  <div className="flex items-center gap-3">
+                    <Award className="w-8 h-8 text-yellow-600" />
+                    <div>
+                      <p className="font-bold text-slate-900">2025 Wayfinder Award Winner</p>
+                      <p className="text-sm text-slate-700">Excellence in Workplace Wellbeing</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-slate-700 leading-relaxed mb-4">
+                  ORIX NZ designed a comprehensive wellbeing scheme with Southern Cross that won national recognition.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
+                    <span className="text-slate-700">90 staff across four offices covered</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
+                    <span className="text-slate-700">Improved engagement and lower turnover</span>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-teal/20 h-full">
+                <div className="flex items-center gap-3 mb-4">
+                  <Building2 className="w-8 h-8 text-brand-blue" />
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-900">Beca</h3>
+                    <p className="text-slate-600">Engineering &amp; Professional Services</p>
+                  </div>
+                </div>
+                <div className="bg-brand-teal/5 p-4 rounded-lg mb-4">
+                  <p className="text-2xl font-bold text-brand-blue mb-1">&ldquo;A true partner&rdquo;</p>
+                  <p className="text-sm text-slate-700">— Chloe Stewart Tyson</p>
+                </div>
+                <p className="text-slate-700 leading-relaxed mb-4">
+                  NZ&apos;s largest professional services consultancy provides comprehensive health coverage for employees and families.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
+                    <span className="text-slate-700">Immediate specialist care when needed</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
+                    <span className="text-slate-700">Improved talent attraction and loyalty</span>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.3}>
+              <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-brand-dark/20 h-full">
+                <div className="flex items-center gap-3 mb-4">
+                  <Building2 className="w-8 h-8 text-brand-blue" />
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-900">Ravensdown</h3>
+                    <p className="text-slate-600">Agriculture &amp; Fertiliser</p>
+                  </div>
+                </div>
+                <div className="bg-brand-dark/5 p-4 rounded-lg mb-4">
+                  <p className="text-2xl font-bold text-brand-blue mb-1">600+ employees</p>
+                  <p className="text-sm text-slate-700">Fully subsidised coverage including families</p>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
+                    <span className="text-slate-700">Strong retention in competitive market</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" />
+                    <span className="text-slate-700">&ldquo;A benefit you don&apos;t give up lightly&rdquo; — Tracey Paterson, GM HR</span>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          <p className="text-sm text-slate-500 text-center italic">
+            These are Southern Cross clients. BoostWellbeing is a new advisory — we&apos;re building our own client stories and would love yours to be among them.
+          </p>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section id="how-it-works" className="relative py-24 bg-white">
+        <div className="container mx-auto px-6">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+                How It Works
+              </h2>
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                From first call to fully covered — usually in under a week
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="max-w-5xl mx-auto space-y-8">
+            <ScrollReveal delay={0.1}>
+              <div className="bg-gradient-to-br from-slate-50 to-white rounded-2xl shadow-lg p-8 border-2 border-brand-blue/20">
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 bg-brand-blue rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
+                    <span className="text-3xl font-bold text-white">1</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Free Consultation</h3>
+                    <p className="text-slate-700 leading-relaxed">
+                      We learn about your workforce, budget, and goals. No obligation, no pressure — just a clear picture of your options.
+                    </p>
+                    <div className="flex items-center gap-2 text-slate-600 mt-3">
+                      <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
+                      <span className="font-semibold">30-minute call</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.15}>
+              <div className="bg-gradient-to-br from-slate-50 to-white rounded-2xl shadow-lg p-8 border-2 border-brand-teal/20">
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 bg-brand-teal rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
+                    <span className="text-3xl font-bold text-white">2</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Tailored Plan Design</h3>
+                    <p className="text-slate-700 leading-relaxed">
+                      We design a Southern Cross scheme that fits your team — coverage levels, budget, and possible cover for pre-existing conditions.
+                    </p>
+                    <div className="flex items-center gap-2 text-slate-600 mt-3">
+                      <div className="w-2 h-2 bg-brand-teal/50 rounded-full"></div>
+                      <span className="font-semibold">2-3 days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <div className="bg-gradient-to-br from-slate-50 to-white rounded-2xl shadow-lg p-8 border-2 border-brand-dark/20">
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 bg-brand-dark rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
+                    <span className="text-3xl font-bold text-white">3</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Onboarding &amp; Launch</h3>
+                    <p className="text-slate-700 leading-relaxed">
+                      We handle employee communications and digital enrolment. Your team signs up, and cover begins.
+                    </p>
+                    <div className="flex items-center gap-2 text-slate-600 mt-3">
+                      <div className="w-2 h-2 bg-brand-dark/50 rounded-full"></div>
+                      <span className="font-semibold">1-2 days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.25}>
+              <div className="bg-gradient-to-br from-slate-50 to-white rounded-2xl shadow-lg p-8 border-2 border-brand-dark/20">
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 bg-brand-dark rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
+                    <span className="text-3xl font-bold text-white">4</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Ongoing Support</h3>
+                    <p className="text-slate-700 leading-relaxed">
+                      We stay involved — helping with new starters, renewals, and connecting you to BeingWellPlus wellbeing resources.
+                    </p>
+                    <div className="flex items-center gap-2 text-slate-600 mt-3">
+                      <div className="w-2 h-2 bg-brand-dark rounded-full"></div>
+                      <span className="font-semibold">Ongoing</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          <ScrollReveal delay={0.3}>
+            <div className="text-center mt-12">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-xl transition-all"
+              >
+                Get Your Free Consultation
+                <PhoneCall className="w-5 h-5" />
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
       <section className="relative py-24 bg-gradient-to-br from-slate-50 to-white">
         <div className="container mx-auto px-6">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <h2 className="font-display text-4xl md:text-5xl font-normal text-slate-900 mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
                 Frequently Asked Questions
               </h2>
             </div>
@@ -647,7 +617,7 @@ export default function HomePage() {
       <section className="relative py-24 bg-brand-blue">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-display text-4xl md:text-5xl font-normal text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Ready to Invest in Your Team&apos;s Health?
             </h2>
             <p className="text-xl mb-10 text-white/90">
@@ -663,7 +633,7 @@ export default function HomePage() {
             </Link>
 
             <p className="text-white/80 mt-8">
-              Questions? <Link href="/contact" className="underline hover:text-white">Get in touch</Link> or call <a href="tel:+64021720710" className="underline hover:text-white">021 720 710</a>
+              Questions? <Link href="/contact" className="underline hover:text-white">Get in touch</Link> or call <a href="tel:+6421720710" className="underline hover:text-white">021 720 710</a>
             </p>
           </div>
         </div>

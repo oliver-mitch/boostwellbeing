@@ -141,7 +141,7 @@ export default function FamilyMembers({
 
       <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-lg">
         <p className="text-sm text-gray-700">
-          <strong>Tip:</strong> Select a family member to customize their module selections.
+          <strong>Tip:</strong> Select a family member to customise their module selections.
           The first member is typically the employee.
         </p>
       </div>

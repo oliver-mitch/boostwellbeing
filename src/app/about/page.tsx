@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Users, Heart } from 'lucide-react';
+import { ArrowRight, Users, Heart, Phone, Mail } from 'lucide-react';
 import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
 import type { Metadata } from 'next';
@@ -34,7 +34,7 @@ export default function AboutPage() {
         </div>
         <div className="relative z-10 container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h1 className="font-display text-5xl md:text-6xl font-normal mb-6 text-white">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
               We&apos;re Oliver and Ashley
             </h1>
 
@@ -55,6 +55,14 @@ export default function AboutPage() {
                   <div className="text-center mt-6">
                     <h3 className="text-2xl font-bold text-slate-900">Oliver Mitch</h3>
                     <p className="text-slate-600 font-semibold">Co-Founder, <span className="text-brand-blue">Boost</span>Wellbeing</p>
+                    <div className="flex flex-col items-center gap-2 mt-4">
+                      <a href="tel:+6421720710" className="inline-flex items-center gap-2 text-sm text-brand-blue hover:text-brand-blue-dark transition-colors">
+                        <Phone className="w-4 h-4" /> 021 720 710
+                      </a>
+                      <a href="mailto:contact@boostwellbeing.co.nz" className="inline-flex items-center gap-2 text-sm text-brand-blue hover:text-brand-blue-dark transition-colors">
+                        <Mail className="w-4 h-4" /> contact@boostwellbeing.co.nz
+                      </a>
+                    </div>
                   </div>
                 </div>
                 <div className="lg:col-span-2">
@@ -66,7 +74,7 @@ export default function AboutPage() {
                       After a long, high-paced career, Oliver stepped back to refocus on health, family and what matters most. That time shaped his view of why good workplace benefits, especially access to health care, make such a meaningful difference.
                     </p>
                     <p>
-                      At BoostWellbeing, Oliver's role is simple: make it easy for businesses to bring Southern Cross health insurance into their workplace. He takes a friendly, no-pressure approach, helping leaders understand their options and choose a plan that fits their people and their budget.
+                      At BoostWellbeing, Oliver&apos;s role is simple: make it easy for businesses to bring Southern Cross health insurance into their workplace. He takes a friendly, no-pressure approach, helping leaders understand their options and choose a plan that fits their people and their budget.
                     </p>
                   </div>
                 </div>
@@ -83,6 +91,14 @@ export default function AboutPage() {
                   <div className="text-center mt-6">
                     <h3 className="text-2xl font-bold text-slate-900">Ashley Griffiths</h3>
                     <p className="text-slate-600 font-semibold">Co-Founder, <span className="text-brand-blue">Boost</span>Wellbeing</p>
+                    <div className="flex flex-col items-center gap-2 mt-4">
+                      <a href="tel:+6421720710" className="inline-flex items-center gap-2 text-sm text-brand-teal hover:text-brand-teal-dark transition-colors">
+                        <Phone className="w-4 h-4" /> 021 720 710
+                      </a>
+                      <a href="mailto:contact@boostwellbeing.co.nz" className="inline-flex items-center gap-2 text-sm text-brand-teal hover:text-brand-teal-dark transition-colors">
+                        <Mail className="w-4 h-4" /> contact@boostwellbeing.co.nz
+                      </a>
+                    </div>
                   </div>
                 </div>
                 <div className="lg:col-span-2">

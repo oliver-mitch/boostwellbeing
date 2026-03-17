@@ -1,8 +1,9 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Phone } from 'lucide-react';
+import { Phone, Menu, X } from 'lucide-react';
 import { BoostIcon } from '@/components/icons/BoostIcon';
 
 interface SiteNavProps {
@@ -13,14 +14,13 @@ const NAV_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/group-health', label: 'Group Health' },
   { href: '/healthcare-costs', label: 'Healthcare Costs' },
-  { href: '/survey', label: 'Wellbeing Survey' },
   { href: '/about', label: 'About Us' },
-  { href: '/portal/login', label: 'Client Login' },
 ];
 
 export function SiteNav({ variant = 'dark' }: SiteNavProps) {
   const pathname = usePathname();
   const isDark = variant === 'dark';
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <nav
@@ -49,6 +49,7 @@ export function SiteNav({ variant = 'dark' }: SiteNavProps) {
             </div>
           </Link>
 
+          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
@@ -84,7 +85,63 @@ export function SiteNav({ variant = 'dark' }: SiteNavProps) {
               Get Started
             </Link>
           </div>
+
+          {/* Mobile hamburger button */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className={`md:hidden p-2 rounded-lg ${
+              isDark ? 'text-white hover:bg-white/10' : 'text-slate-900 hover:bg-slate-100'
+            } transition-colors`}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          >
+            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <div className={`md:hidden mt-4 pb-4 border-t ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
+            <div className="flex flex-col gap-1 pt-4">
+              {NAV_LINKS.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`py-3 px-4 rounded-lg text-lg font-medium ${
+                      isActive
+                        ? 'text-brand-blue bg-brand-blue/10'
+                        : isDark
+                          ? 'text-white/80 hover:text-white hover:bg-white/5'
+                          : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50'
+                    } transition-colors`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+
+              <a
+                href="tel:+6421720710"
+                className={`py-3 px-4 rounded-lg text-lg font-medium inline-flex items-center gap-2 ${
+                  isDark ? 'text-white/80 hover:text-white hover:bg-white/5' : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50'
+                } transition-colors`}
+              >
+                <Phone className="w-5 h-5" />
+                021 720 710
+              </a>
+
+              <Link
+                href="/contact"
+                onClick={() => setMobileOpen(false)}
+                className="mt-2 bg-brand-blue hover:bg-brand-blue-dark text-white px-6 py-3 rounded-lg font-semibold text-center text-lg hover:shadow-xl transition-all"
+              >
+                Get Started
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );

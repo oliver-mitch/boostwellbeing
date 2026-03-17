@@ -86,12 +86,12 @@ export default function TeamHealthCalculator(): JSX.Element {
             <Slider
               label="Number of employees"
               value={employees}
-              min={15}
+              min={5}
               max={500}
               step={5}
               onChange={setEmployees}
               formatValue={(v) => `${v} employees`}
-              description="Minimum 15 employees required for group plans"
+              description="Minimum 5 full-time employees who join the scheme"
             />
 
             <Slider

@@ -39,7 +39,8 @@ export function SiteFooter({ showReferences = false, additionalDisclaimer }: Sit
             <div className="space-y-2 text-sm">
               <Link href="/" className="block text-white/60 hover:text-white transition-colors">Home</Link>
               <Link href="/group-health" className="block text-white/60 hover:text-white transition-colors">Group Health</Link>
-              <Link href="/survey" className="block text-white/60 hover:text-white transition-colors">Wellbeing Survey</Link>
+              <Link href="/healthcare-costs" className="block text-white/60 hover:text-white transition-colors">Healthcare Costs</Link>
+              <Link href="/guide" className="block text-white/60 hover:text-white transition-colors">Insurance Guide</Link>
               <Link href="/about" className="block text-white/60 hover:text-white transition-colors">About Us</Link>
             </div>
           </div>
@@ -77,11 +78,11 @@ export function SiteFooter({ showReferences = false, additionalDisclaimer }: Sit
           <p className="font-semibold text-white/80">Important Information</p>
           <p>
             Subject to terms and conditions. A workplace health insurance scheme is only
-            available for organizations with at least 5 full-time employees who join the scheme.
+            available for organisations with at least 5 full-time employees who join the scheme.
           </p>
           {additionalDisclaimer && <p>{additionalDisclaimer}</p>}
           <p className="border-t border-white/10 pt-4 mt-4">
-            BoostWellbeing is an authorized partner helping businesses access Southern Cross
+            BoostWellbeing is an authorised partner helping businesses access Southern Cross
             Health Insurance workplace schemes.
           </p>
           <p className="mt-4">&copy; 2026 BoostWellbeing. All rights reserved.</p>

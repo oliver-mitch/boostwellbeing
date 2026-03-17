@@ -47,7 +47,7 @@ export default function BoostWellbeingSurveyPage() {
           </h1>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
             Take our validated 10-minute assessment to discover your wellbeing score across 6 key dimensions.
-            Get personalized insights based on research from Gallup, PERMA, and workplace psychology studies.
+            Get personalised insights based on research from Gallup, PERMA, and workplace psychology studies.
           </p>
 
           <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-600 mb-10">
@@ -210,7 +210,7 @@ export default function BoostWellbeingSurveyPage() {
                 <div>
                   <h4 className="font-semibold text-slate-900 mb-2">Actionable insights</h4>
                   <p className="text-sm text-slate-600">
-                    Receive personalized recommendations based on your unique results
+                    Receive personalised recommendations based on your unique results
                   </p>
                 </div>
               </div>

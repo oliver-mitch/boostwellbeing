@@ -95,7 +95,7 @@ export default function ContactPage() {
         </div>
         <div className="relative z-10 container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <h1 className="font-display text-5xl md:text-6xl font-normal mb-6 text-white">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
               Let&apos;s Build a Healthier Team Together
             </h1>
 
@@ -288,7 +288,7 @@ export default function ContactPage() {
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
                     <div>
-                      <p className="font-semibold text-white">Customized Plan Design</p>
+                      <p className="font-semibold text-white">Customised Plan Design</p>
                       <p className="text-sm text-white/80">Tailored to your business needs and budget</p>
                     </div>
                   </div>

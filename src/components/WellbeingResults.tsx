@@ -210,7 +210,7 @@ export default function WellbeingResults({
             Your Wellbeing Results
           </h1>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Here's your personalized wellbeing profile across 6 key dimensions
+            Here's your personalised wellbeing profile across 6 key dimensions
           </p>
         </motion.div>
 
@@ -337,7 +337,7 @@ export default function WellbeingResults({
               <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
                 <Brain className="w-6 h-6 text-purple-600" />
               </div>
-              <h2 className="text-2xl font-bold text-slate-900">Personalized Recommendations</h2>
+              <h2 className="text-2xl font-bold text-slate-900">Personalised Recommendations</h2>
             </div>
 
             <div className="space-y-4">

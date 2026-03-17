@@ -104,7 +104,7 @@ export default function PortalPage() {
                 Your Resources
               </h2>
               <p className="text-slate-600 mb-6">
-                Access your personalized wellbeing resources, reports, and support materials.
+                Access your personalised wellbeing resources, reports, and support materials.
               </p>
               <div className="space-y-3">
                 <Link

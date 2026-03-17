@@ -301,7 +301,7 @@ export default function PlanSelectorPage() {
               <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold mb-3">
                 3
               </div>
-              <h3 className="font-semibold text-gray-800 mb-2">Customize Modules</h3>
+              <h3 className="font-semibold text-gray-800 mb-2">Customise Modules</h3>
               <p className="text-sm text-gray-600">
                 For Wellbeing plans, select optional modules for additional coverage.
               </p>

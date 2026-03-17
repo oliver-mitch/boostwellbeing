@@ -30,7 +30,7 @@ export default function BoostWellbeingGroupHealthPage() {
               <Building2 className="w-4 h-4" />
               For HR Managers & Business Owners
             </div>
-            <h1 className="font-display text-5xl md:text-6xl font-normal text-white mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
               Invest in Health.<br />
               <span className="text-brand-blue">Gain Competitive Advantage.</span>
             </h1>
@@ -301,7 +301,7 @@ export default function BoostWellbeingGroupHealthPage() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-white" />
-                <span>Customized to your business</span>
+                <span>Customised to your business</span>
               </div>
             </div>
           </div>
