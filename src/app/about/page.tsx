@@ -7,6 +7,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'About Us — Oliver & Ashley',
   description: 'Meet the team behind BoostWellbeing. We started this because too many businesses skip health insurance or sign up for a scheme nobody uses.',
+  alternates: {
+    canonical: 'https://www.boostwellbeing.co.nz/about',
+  },
 };
 
 export default function AboutPage() {
@@ -31,7 +34,7 @@ export default function AboutPage() {
         </div>
         <div className="relative z-10 container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+            <h1 className="font-display text-5xl md:text-6xl font-normal mb-6 text-white">
               We&apos;re Oliver and Ashley
             </h1>
 

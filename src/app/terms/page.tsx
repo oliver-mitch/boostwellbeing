@@ -3,8 +3,11 @@ import { SiteFooter } from '@/components/SiteFooter';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | BoostWellbeing',
+  title: 'Terms of Service',
   description: 'BoostWellbeing terms of service — conditions governing use of our website and services.',
+  alternates: {
+    canonical: 'https://www.boostwellbeing.co.nz/terms',
+  },
 };
 
 export default function TermsPage() {

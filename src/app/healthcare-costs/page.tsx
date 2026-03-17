@@ -7,6 +7,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'The Real Cost of Healthcare in New Zealand',
   description: 'Typical costs of common medical procedures in NZ, sourced from Southern Cross 2024-2025 claims data. See why workplace health insurance matters.',
+  alternates: {
+    canonical: 'https://www.boostwellbeing.co.nz/healthcare-costs',
+  },
 };
 
 const PROCEDURES = [
@@ -38,7 +41,7 @@ export default function HealthcareCostsPage() {
       <main className="py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h1 className="font-display text-4xl md:text-5xl font-normal text-slate-900 mb-4">
               The Real Cost of Healthcare in New Zealand
             </h1>
             <p className="text-xl text-slate-600 mb-4 leading-relaxed">

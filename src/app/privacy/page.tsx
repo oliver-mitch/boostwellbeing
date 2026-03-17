@@ -3,8 +3,11 @@ import { SiteFooter } from '@/components/SiteFooter';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | BoostWellbeing',
+  title: 'Privacy Policy',
   description: 'BoostWellbeing privacy policy — how we collect, use, and protect your personal information.',
+  alternates: {
+    canonical: 'https://www.boostwellbeing.co.nz/privacy',
+  },
 };
 
 export default function PrivacyPage() {

@@ -12,6 +12,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Group Health Insurance Plans & Cost Estimator',
   description: 'Explore Southern Cross workplace health insurance plans and estimate costs with our calculator. Plans from ~$15/person/week.',
+  alternates: {
+    canonical: 'https://www.boostwellbeing.co.nz/group-health',
+  },
 };
 
 export default function BoostWellbeingGroupHealthPage() {
@@ -27,7 +30,7 @@ export default function BoostWellbeingGroupHealthPage() {
               <Building2 className="w-4 h-4" />
               For HR Managers & Business Owners
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="font-display text-5xl md:text-6xl font-normal text-white mb-6 leading-tight">
               Invest in Health.<br />
               <span className="text-brand-blue">Gain Competitive Advantage.</span>
             </h1>

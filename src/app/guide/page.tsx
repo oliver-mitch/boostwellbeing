@@ -7,6 +7,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: '5 Questions Before Choosing Workplace Health Insurance',
   description: 'A practical guide for NZ business owners considering group health insurance. The 5 questions you should answer before committing.',
+  alternates: {
+    canonical: 'https://www.boostwellbeing.co.nz/guide',
+  },
 };
 
 const QUESTIONS = [
@@ -59,7 +62,7 @@ export default function GuidePage() {
               <HelpCircle className="w-4 h-4" />
               Free Guide
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h1 className="font-display text-4xl md:text-5xl font-normal text-slate-900 mb-4">
               5 Questions Before Choosing Workplace Health Insurance
             </h1>
             <p className="text-xl text-slate-600 leading-relaxed">
