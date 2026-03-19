@@ -132,10 +132,37 @@ export default function HomePage() {
               </a>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4 border border-white/20 max-w-4xl mx-auto">
-              <p className="text-white/90 text-base md:text-lg font-medium tracking-wide">
-                Southern Cross Authorised Partner &nbsp;&bull;&nbsp; 5+ employees to get started &nbsp;&bull;&nbsp; Set up in under a week
-              </p>
+            <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+              {[
+                "Southern Cross authorised partner",
+                "Cover for existing conditions",
+                "5+ employees to get started",
+                "Set up in under a week",
+              ].map((point) => (
+                <div
+                  key={point}
+                  className="flex items-center gap-2 bg-white/[0.08] border border-white/15 rounded-full px-5 py-2.5"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    className="shrink-0"
+                  >
+                    <path
+                      d="M13.3 4L6 11.3 2.7 8"
+                      stroke="#21B1A6"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span className="text-white/90 text-sm font-medium whitespace-nowrap">
+                    {point}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
