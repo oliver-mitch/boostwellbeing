@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Phone, Menu, X } from 'lucide-react';
 import { BoostIcon } from '@/components/icons/BoostIcon';
+import { trackEvent } from '@/lib/analytics';
 
 interface SiteNavProps {
   variant?: 'dark' | 'light';
@@ -71,6 +72,7 @@ export function SiteNav({ variant = 'dark' }: SiteNavProps) {
             })}
             <a
               href="tel:+6421720710"
+              onClick={() => trackEvent('phone_link_click', { location: 'navbar_desktop' })}
               className={`inline-flex items-center gap-1.5 font-medium ${
                 isDark ? 'text-white/80 hover:text-white' : 'text-slate-600 hover:text-slate-900'
               } transition-colors`}
@@ -80,6 +82,7 @@ export function SiteNav({ variant = 'dark' }: SiteNavProps) {
             </a>
             <Link
               href="/contact"
+              onClick={() => trackEvent('cta_click', { label: 'get_started', location: 'navbar_desktop' })}
               className="bg-brand-blue hover:bg-brand-blue-dark text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-xl transition-all"
             >
               Get Started
@@ -124,6 +127,7 @@ export function SiteNav({ variant = 'dark' }: SiteNavProps) {
 
               <a
                 href="tel:+6421720710"
+                onClick={() => trackEvent('phone_link_click', { location: 'navbar_mobile' })}
                 className={`py-3 px-4 rounded-lg text-lg font-medium inline-flex items-center gap-2 ${
                   isDark ? 'text-white/80 hover:text-white hover:bg-white/5' : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50'
                 } transition-colors`}
@@ -134,7 +138,10 @@ export function SiteNav({ variant = 'dark' }: SiteNavProps) {
 
               <Link
                 href="/contact"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  trackEvent('cta_click', { label: 'get_started', location: 'navbar_mobile' });
+                  setMobileOpen(false);
+                }}
                 className="mt-2 bg-brand-blue hover:bg-brand-blue-dark text-white px-6 py-3 rounded-lg font-semibold text-center text-lg hover:shadow-xl transition-all"
               >
                 Get Started

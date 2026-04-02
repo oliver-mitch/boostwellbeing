@@ -3,6 +3,7 @@ import { ArrowRight, Shield, Users, Award, CheckCircle, Building2, PhoneCall, Me
 import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
 import { ScrollReveal, AnimatedCounter } from '@/components/ScrollReveal';
+import { TrackedLink } from '@/components/TrackedLink';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -117,13 +118,15 @@ export default function HomePage() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-              <Link
+              <TrackedLink
                 href="/contact"
+                eventName="cta_click"
+                eventParams={{ label: 'get_free_consultation', section: 'hero' }}
                 className="group inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all"
               >
                 Get Your Free Consultation
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </TrackedLink>
               <a
                 href="#how-it-works"
                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-10 py-5 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all"
@@ -357,13 +360,15 @@ export default function HomePage() {
           </div>
 
           <div className="text-center mt-8">
-            <Link
+            <TrackedLink
               href="/group-health#calculator"
+              eventName="cta_click"
+              eventParams={{ label: 'try_cost_estimator', section: 'pricing' }}
               className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white px-8 py-4 rounded-lg font-semibold transition-all"
             >
               Try the Cost Estimator
               <ArrowRight className="w-5 h-5" />
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>
@@ -577,13 +582,15 @@ export default function HomePage() {
 
           <ScrollReveal delay={0.3}>
             <div className="text-center mt-12">
-              <Link
+              <TrackedLink
                 href="/contact"
+                eventName="cta_click"
+                eventParams={{ label: 'get_free_consultation', section: 'how_it_works' }}
                 className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-xl transition-all"
               >
                 Get Your Free Consultation
                 <PhoneCall className="w-5 h-5" />
-              </Link>
+              </TrackedLink>
             </div>
           </ScrollReveal>
         </div>
@@ -651,13 +658,15 @@ export default function HomePage() {
               Free consultation, no obligation. Most businesses are fully set up in under a week.
             </p>
 
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName="cta_click"
+              eventParams={{ label: 'schedule_free_consultation', section: 'final_cta' }}
               className="inline-flex items-center gap-3 bg-white text-brand-blue px-12 py-6 rounded-lg font-bold text-xl hover:bg-brand-blue/10 hover:text-white transition-all shadow-2xl"
             >
               Schedule Your Free Consultation
               <ArrowRight className="w-6 h-6" />
-            </Link>
+            </TrackedLink>
 
             <p className="text-white/80 mt-8">
               Questions? <Link href="/contact" className="underline hover:text-white">Get in touch</Link> or call <a href="tel:+6421720710" className="underline hover:text-white">021 720 710</a>

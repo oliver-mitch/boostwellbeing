@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { ArrowRight, Users, Heart, Phone, Mail } from 'lucide-react';
 import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
+import { TrackedLink } from '@/components/TrackedLink';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -144,13 +144,15 @@ export default function AboutPage() {
             <h3 className="text-3xl font-bold text-white mb-6">
               Ready to work with us?
             </h3>
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName="cta_click"
+              eventParams={{ label: 'get_free_consultation', section: 'about_page' }}
               className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white px-10 py-5 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all"
             >
               Get Your Free Consultation
               <ArrowRight className="w-5 h-5" />
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { ArrowRight, AlertTriangle } from 'lucide-react';
 import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
+import { TrackedLink } from '@/components/TrackedLink';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ export default function HealthcareCostsPage() {
       <main className="py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            <h1 className="font-display text-4xl md:text-5xl font-normal text-slate-900 mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
               The Real Cost of Healthcare in New Zealand
             </h1>
             <p className="text-xl text-slate-600 mb-4 leading-relaxed">
@@ -120,13 +120,15 @@ export default function HealthcareCostsPage() {
               <p className="text-white/90 mb-6">
                 Workplace health insurance starts from around $15 per person per week — less than a single GP visit.
               </p>
-              <Link
+              <TrackedLink
                 href="/contact"
+                eventName="cta_click"
+                eventParams={{ label: 'get_free_quote', section: 'healthcare_costs' }}
                 className="inline-flex items-center gap-2 bg-white text-brand-blue px-8 py-4 rounded-lg font-semibold text-lg hover:bg-brand-blue/10 hover:text-white transition-all"
               >
                 Get a Free Quote
                 <ArrowRight className="w-5 h-5" />
-              </Link>
+              </TrackedLink>
             </div>
 
             <p className="text-xs text-slate-500 text-center mt-8">

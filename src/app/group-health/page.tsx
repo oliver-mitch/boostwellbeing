@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import {
   Users, Shield, Heart, TrendingUp, CheckCircle, Mail,
   Clock, UserCheck, TrendingDown,
@@ -7,6 +6,7 @@ import {
 import TeamHealthCalculator from '@/components/TeamHealthCalculator';
 import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
+import { TrackedLink } from '@/components/TrackedLink';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -281,14 +281,16 @@ export default function BoostWellbeingGroupHealthPage() {
               Get a tailored quote and see how Southern Cross can help you attract top talent,
               reduce turnover, and build a healthier, more productive workforce.
             </p>
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName="cta_click"
+              eventParams={{ label: 'request_business_quote', section: 'group_health' }}
               className="inline-flex items-center gap-3 bg-white text-brand-blue px-10 py-5 rounded-lg font-bold text-lg hover:bg-white/90 transition-all shadow-2xl mb-10"
             >
               <Mail className="w-5 h-5" />
               Request a Business Quote
               <ArrowRight className="w-5 h-5" />
-            </Link>
+            </TrackedLink>
 
             <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
               <div className="flex items-center gap-2">

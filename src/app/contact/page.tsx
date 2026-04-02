@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, Shield, CheckCircle, Building2, Mail, Phone, User, Users, MessageSquare, Send } from 'lucide-react';
 import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
+import { trackEvent } from '@/lib/analytics';
 
 interface ContactFormData {
   fullName: string;
@@ -43,6 +44,10 @@ export default function ContactPage() {
       const data = await response.json();
 
       if (response.ok) {
+        trackEvent('contact_form_submit', {
+          source: 'contact_page',
+          company_size: formData.numberOfEmployees,
+        });
         setStatus('success');
 
         // Reset form after success

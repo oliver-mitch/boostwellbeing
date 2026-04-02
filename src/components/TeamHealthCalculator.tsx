@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Link from "next/link";
+import { trackEvent } from "@/lib/analytics";
 import {
   Calculator,
   CalculatorSection,
@@ -218,13 +218,14 @@ export default function TeamHealthCalculator(): JSX.Element {
             </QuoteInfoBox>
 
             <div className="pt-4">
-              <Link
+              <a
                 href="/contact"
+                onClick={() => trackEvent('cta_click', { label: 'request_tailored_quote', section: 'cost_calculator' })}
                 className="w-full btn-primary py-3 flex items-center justify-center gap-2"
               >
                 <FileText className="w-5 h-5" />
                 Request Tailored Quote
-              </Link>
+              </a>
             </div>
           </QuoteCard>
         </div>

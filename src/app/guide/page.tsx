@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { ArrowRight, CheckCircle, HelpCircle } from 'lucide-react';
 import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
+import { TrackedLink } from '@/components/TrackedLink';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -62,7 +62,7 @@ export default function GuidePage() {
               <HelpCircle className="w-4 h-4" />
               Free Guide
             </div>
-            <h1 className="font-display text-4xl md:text-5xl font-normal text-slate-900 mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
               5 Questions Before Choosing Workplace Health Insurance
             </h1>
             <p className="text-xl text-slate-600 leading-relaxed">
@@ -99,13 +99,15 @@ export default function GuidePage() {
             <p className="text-white/90 mb-6">
               Book a free 30-minute consultation. We&apos;ll help you answer all five and figure out the right approach for your team.
             </p>
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName="cta_click"
+              eventParams={{ label: 'book_free_consultation', section: 'guide_page' }}
               className="inline-flex items-center gap-2 bg-white text-brand-blue px-8 py-4 rounded-lg font-semibold text-lg hover:bg-brand-blue/10 hover:text-white transition-all"
             >
               Book Your Free Consultation
               <ArrowRight className="w-5 h-5" />
-            </Link>
+            </TrackedLink>
             <p className="text-white/70 mt-4 text-sm">
               Or call us directly: <a href="tel:+6421720710" className="underline hover:text-white">021 720 710</a>
             </p>
