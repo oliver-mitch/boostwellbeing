@@ -1,6 +1,6 @@
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { supabase } from './supabase';
+import { supabaseAdmin } from './supabase-server';
 import bcrypt from 'bcryptjs';
 
 export const authOptions: NextAuthOptions = {
@@ -17,25 +17,25 @@ export const authOptions: NextAuthOptions = {
         }
 
         try {
-          // Query user from database
-          const { data: user, error } = await supabase
+          const { data: user, error } = await supabaseAdmin
             .from('portal_users')
             .select('id, email, name, is_admin, company_name, password_hash')
-            .eq('email', credentials.email)
+            .eq('email', credentials.email.toLowerCase())
             .single();
 
-          if (error || !user) {
-            console.error('User not found:', error);
+          if (error || !user || !user.password_hash) {
             return null;
           }
 
-          // Verify password
-          const isValidPassword = await bcrypt.compare(credentials.password, user.password_hash || '');
-
+          const isValidPassword = await bcrypt.compare(credentials.password, user.password_hash);
           if (!isValidPassword) {
-            console.error('Invalid password');
             return null;
           }
+
+          await supabaseAdmin
+            .from('portal_users')
+            .update({ last_login_at: new Date().toISOString() })
+            .eq('id', user.id);
 
           return {
             id: user.id,

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabase-server';
 import { createHubSpotContact, createHubSpotDeal, createHubSpotCompany, isHubSpotConfigured } from '@/lib/hubspot';
 
 interface ContactFormData {
@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
     }
 
     // STEP 2: Save to Supabase as backup/record keeping
-    const { error: dbError } = await supabase
+    const { error: dbError } = await supabaseAdmin
       .from('contact_submissions')
       .insert({
         full_name: data.fullName,

@@ -81,6 +81,15 @@ export function SiteNav({ variant = 'dark' }: SiteNavProps) {
               021 720 710
             </a>
             <Link
+              href="/portal/login"
+              onClick={() => trackEvent('client_login_click', { location: 'navbar_desktop' })}
+              className={`text-sm font-medium transition-colors ${
+                isDark ? 'text-white/60 hover:text-white' : 'text-slate-500 hover:text-slate-900'
+              }`}
+            >
+              Client Login
+            </Link>
+            <Link
               href="/contact"
               onClick={() => trackEvent('cta_click', { label: 'get_started', location: 'navbar_desktop' })}
               className="bg-brand-blue hover:bg-brand-blue-dark text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-xl transition-all"
@@ -135,6 +144,19 @@ export function SiteNav({ variant = 'dark' }: SiteNavProps) {
                 <Phone className="w-5 h-5" />
                 021 720 710
               </a>
+
+              <Link
+                href="/portal/login"
+                onClick={() => {
+                  trackEvent('client_login_click', { location: 'navbar_mobile' });
+                  setMobileOpen(false);
+                }}
+                className={`py-3 px-4 rounded-lg text-lg font-medium ${
+                  isDark ? 'text-white/70 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                } transition-colors`}
+              >
+                Client Login
+              </Link>
 
               <Link
                 href="/contact"

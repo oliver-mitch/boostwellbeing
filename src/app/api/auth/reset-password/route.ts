@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabase-server';
 import { sendPasswordResetEmail } from '@/lib/email';
 import bcrypt from 'bcryptjs';
 
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if user exists
-    const { data: user, error } = await supabase
+    const { data: user, error } = await supabaseAdmin
       .from('portal_users')
       .select('id, email, name')
       .eq('email', email)
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
       expiresAt.setHours(expiresAt.getHours() + 1); // Token expires in 1 hour
 
       // Store reset token in database
-      const { error: tokenError } = await supabase
+      const { error: tokenError } = await supabaseAdmin
         .from('password_reset_tokens')
         .insert({
           user_id: user.id,
@@ -92,7 +92,7 @@ export async function PUT(request: NextRequest) {
     }
 
     // Find valid reset token
-    const { data: resetToken, error: tokenError } = await supabase
+    const { data: resetToken, error: tokenError } = await supabaseAdmin
       .from('password_reset_tokens')
       .select('user_id, expires_at, used')
       .eq('token', token)
@@ -117,7 +117,7 @@ export async function PUT(request: NextRequest) {
     const passwordHash = await bcrypt.hash(newPassword, 10);
 
     // Update user's password
-    const { error: updateError } = await supabase
+    const { error: updateError } = await supabaseAdmin
       .from('portal_users')
       .update({ password_hash: passwordHash })
       .eq('id', resetToken.user_id);
@@ -131,7 +131,7 @@ export async function PUT(request: NextRequest) {
     }
 
     // Mark token as used
-    await supabase
+    await supabaseAdmin
       .from('password_reset_tokens')
       .update({ used: true })
       .eq('token', token);
