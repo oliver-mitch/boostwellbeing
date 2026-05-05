@@ -85,7 +85,7 @@ export function SiteFooter({ showReferences = false, additionalDisclaimer }: Sit
             BoostWellbeing is an authorised partner helping businesses access Southern Cross
             Health Insurance workplace schemes.
           </p>
-          <p className="mt-4">&copy; 2026 BoostWellbeing. All rights reserved.</p>
+          <p className="mt-4">&copy; BoostWellbeing. All rights reserved.</p>
         </div>
       </div>
     </footer>
