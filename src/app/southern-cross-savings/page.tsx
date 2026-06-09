@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Shield, CheckCircle, Award, Phone, ArrowRight } from "lucide-react";
-import { BoostIcon } from "@/components/icons/BoostIcon";
+import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import SavingsCalculator, { HowItWorksAccordion } from "./SavingsCalculator";
 
@@ -36,28 +36,8 @@ const TRUST_ITEMS = [
 export default function SouthernCrossSavingsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
-      {/* ── Minimal header — paid traffic page, no site nav ── */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-brand-blue rounded-lg flex items-center justify-center shadow">
-              <BoostIcon className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold">
-              <span className="text-brand-blue">Boost</span>
-              <span className="text-slate-800">Wellbeing</span>
-            </span>
-          </Link>
-          {/* TODO (§8): Replace placeholder with verified phone number */}
-          <a
-            href="tel:+6421720710"
-            className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-brand-blue transition-colors"
-          >
-            <Phone className="w-4 h-4" />
-            021 720 710
-          </a>
-        </div>
-      </header>
+      {/* ── Site header (shared SiteNav) ── */}
+      <SiteNav variant="light" />
 
       {/* ── Hero ── */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-8">
