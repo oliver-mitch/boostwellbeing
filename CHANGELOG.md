@@ -1,5 +1,33 @@
 # Changelog
 
+## [Unreleased] — retail-savings-landing
+
+### Added
+- **Southern Cross retail savings landing page** (`/southern-cross-savings`) — paid-traffic landing page with live savings calculator, `robots: noindex`, not in site nav.
+- **Supabase Edge Function** `retail-savings-quote` — server-side rate table (SC standard rates, effective 1 Jan 2026), 13.5% group discount model, returns only `{ annualSaving, monthlySaving, indicativeAnnualPremium }`. Rate data never sent to client.
+- **Unit tests** (Deno) — 3 §5 acceptance cases: WB2[40] nil → ~$421, WB1[38,36]+2kids nil → ~$525, WB2[42,40]+2kids $500 → ~$1,028 (±10%).
+- Compliance disclosures visible near calculator (switching / pre-existing conditions note).
+- "How does this work?" accordion — collapsed by default, placed below Trust section.
+- §8 TODOs clearly marked in code: phone number, FAP disclosure URL, callback intake, testimonial consent.
+
+### Rate model
+- Source: `STANDARD_PLANS` from `rateData.ts` (SC individual retail rates, effective 01 Jan 2026).
+- Boost group discount: 13.5% off retail (derived from spec §5 acceptance cases).
+- `annualSaving = totalMonthly × 12 × 0.135`; `indicativeAnnualPremium = totalMonthly × 12 × 0.865`.
+- Plans: `wb1` (Wellbeing One), `wb2` (Wellbeing Two). Excess: `nil` or `500`.
+
+### NOT merged / NOT deployed to production
+- Branch `retail-savings-landing` only. Pending Southern Cross sign-off + compliance review.
+- Preview: https://boostwellbeing-git-retail-savings-landing-eighty8.vercel.app/southern-cross-savings
+
+### Deviations / notes
+- Jarvis MCP (`kb_get_document`) not available in this session. Spec §4 rate table not fetched; rates seeded from existing `rateData.ts` STANDARD_PLANS. If §4 specifies different rates, update `BOOST_DISCOUNT` and rate tables in `supabase/functions/retail-savings-quote/lib.ts`.
+- `anthropic-proxy` Edge Function not found in local `supabase/functions/`; Edge Function structure written from scratch following Supabase Edge Function conventions.
+- Deno not installed locally; unit tests require `deno test` (or Supabase dev environment).
+- Spec doc ID: `c9e4aed6-cc8a-4552-aa85-9ed23a60619d` (jarvis_master KB).
+
+---
+
 ## [Unreleased] — feat/tcs-companion-page
 
 ### Added
