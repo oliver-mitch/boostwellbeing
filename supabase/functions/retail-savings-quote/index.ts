@@ -1,11 +1,13 @@
 // Supabase Edge Function: retail-savings-quote
-// Returns Southern Cross retail savings for a given family configuration.
-// Rate table is embedded here — never sent to the client.
+// Returns the Nil-vs-$500-excess saving on a Southern Cross plan for a given
+// family configuration. The rate table lives in lib.ts (server-side) and is
+// never sent to the client — only { annualSaving, monthlySaving,
+// indicativeAnnualPremium } is returned (build spec §2).
 //
-// TODO (§8): Update BOOST_DISCOUNT after Southern Cross sign-off on rate card.
+// TODO (§8): Refresh the SC rate card in lib.ts after 1 July 2026.
 // TODO (§8): Add IP-based rate limiting via Upstash once function is signed off.
 
-import { calculateQuote } from "./lib.ts";
+import { calculateQuote, type PlanCode } from "./lib.ts";
 
 function getCorsHeaders(origin: string | null): Record<string, string> {
   const allowed =
@@ -72,13 +74,13 @@ Deno.serve(async (req: Request) => {
     });
   }
 
-  const { plan, excess, adults, numChildren } = body as Record<string, unknown>;
+  const { plan, adults, kids, healthyLifestyle } = body as Record<string, unknown>;
 
   const result = calculateQuote({
-    plan: plan as "wb1" | "wb2",
-    excess: excess as "nil" | "500",
+    plan: plan as PlanCode,
     adults: adults as number[],
-    numChildren: numChildren as number,
+    kids: kids as number,
+    healthyLifestyle: healthyLifestyle as boolean,
   });
 
   if ("error" in result) {

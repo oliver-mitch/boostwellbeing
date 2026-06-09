@@ -4,26 +4,28 @@
 
 ### Added
 - **Southern Cross retail savings landing page** (`/southern-cross-savings`) — paid-traffic landing page with live savings calculator, `robots: noindex`, not in site nav.
-- **Supabase Edge Function** `retail-savings-quote` — server-side rate table (SC standard rates, effective 1 Jan 2026), 13.5% group discount model, returns only `{ annualSaving, monthlySaving, indicativeAnnualPremium }`. Rate data never sent to client.
-- **Unit tests** (Deno) — 3 §5 acceptance cases: WB2[40] nil → ~$421, WB1[38,36]+2kids nil → ~$525, WB2[42,40]+2kids $500 → ~$1,028 (±10%).
-- Compliance disclosures visible near calculator (switching / pre-existing conditions note).
-- "How does this work?" accordion — collapsed by default, placed below Trust section.
+- **Supabase Edge Function** `retail-savings-quote` — holds the §4 SC rate card server-side, returns only `{ annualSaving, monthlySaving, indicativeAnnualPremium }`. Rate matrix / per-line premiums never sent to client (§2). CORS + 30/min in-memory rate limiting.
+- **Unit tests** (Deno) — the three §5 acceptance cases plus rule coverage: WB2 [42,40]+2 kids HL on → saving ≈$1,028 / premium ≈$6,585; WB2 [40] HL off → $421; WB1 [38,36]+2 kids HL off → $525; first-two-children cap; HL ×0.9 adults-only; age clamp 21–70.
+- Persistent switching / pre-existing-conditions note near the calculator (§6.7); "$500 excess — on us" chip + Nil-vs-$500 comparison bars in the result.
+- "How does this work?" accordion — collapsed, de-emphasised, below Trust — explains the three-step $500-excess reimbursement (§6.6).
 - §8 TODOs clearly marked in code: phone number, FAP disclosure URL, callback intake, testimonial consent.
 
-### Rate model
-- Source: `STANDARD_PLANS` from `rateData.ts` (SC individual retail rates, effective 01 Jan 2026).
-- Boost group discount: 13.5% off retail (derived from spec §5 acceptance cases).
-- `annualSaving = totalMonthly × 12 × 0.135`; `indicativeAnnualPremium = totalMonthly × 12 × 0.865`.
-- Plans: `wb1` (Wellbeing One), `wb2` (Wellbeing Two). Excess: `nil` or `500`.
+### Rate model (build spec §3)
+- The saving is the **Nil-excess − $500-excess premium difference on the SAME Southern Cross plan** — not a group discount, not a cross-insurer switch. Customer takes the cheaper $500-excess plan; BoostWellbeing (with Risk Solutions Ltd) reimburses the $500 excess on the first eligible claim each policy year.
+- Rate table seeded verbatim from spec §4 (KB doc `908dca90-…`), annual / direct-debit, format `age: [$500, Nil]`. **Effective to 30 June 2026 — refresh after 1 July.**
+- Healthy Lifestyle Reward = ×0.9 on adult premiums (21+ only). Only the first two children under 21 are rated (`min(kids, 2)`). Adult ages clamp to 21–70.
+- Request: `{ plan: "WB1"|"WB2", adults: number[], kids: number, healthyLifestyle: boolean }`.
+- Verified: all three §5 cases reproduce exactly (1027.71, 421.16, 524.70; premium 6584.95).
+
+### Fixed — calc rebuilt to spec
+- The first build used a guessed **13.5% flat group-discount** model (seeded from `rateData.ts`) because Jarvis MCP / spec §4 was unavailable then. That model couldn't produce the §5 HL family figure ($964 vs $1,028) and its tests were loosened to ±10% and conflated HL with excess. Replaced with the correct §3 model; page/calculator/accordion copy moved off the "buying direct / group discount" framing to the $500-excess mechanism (§7 compliance).
 
 ### NOT merged / NOT deployed to production
-- Branch `retail-savings-landing` only. Pending Southern Cross sign-off + compliance review.
+- Branch `retail-savings-landing` only. Pending Southern Cross sign-off + compliance review + Oliver approval.
 - Preview: https://boostwellbeing-git-retail-savings-landing-eighty8.vercel.app/southern-cross-savings
 
-### Deviations / notes
-- Jarvis MCP (`kb_get_document`) not available in this session. Spec §4 rate table not fetched; rates seeded from existing `rateData.ts` STANDARD_PLANS. If §4 specifies different rates, update `BOOST_DISCOUNT` and rate tables in `supabase/functions/retail-savings-quote/lib.ts`.
-- `anthropic-proxy` Edge Function not found in local `supabase/functions/`; Edge Function structure written from scratch following Supabase Edge Function conventions.
-- Deno not installed locally; unit tests require `deno test` (or Supabase dev environment).
+### Notes
+- Deno not installed locally; `deno test` could not be run here. The pure `calculateQuote` logic was verified in Node (via `tsx`) against the §5 cases — all pass. Run `deno test supabase/functions/retail-savings-quote/index.test.ts` in CI / a Deno env to confirm.
 - Spec doc ID: `c9e4aed6-cc8a-4552-aa85-9ed23a60619d` (jarvis_master KB).
 
 ---

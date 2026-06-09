@@ -6,9 +6,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import SavingsCalculator, { HowItWorksAccordion } from "./SavingsCalculator";
 
 export const metadata: Metadata = {
-  title: "Save on Southern Cross Health Insurance | BoostWellbeing",
+  title: "Same Southern Cross cover, lower premium | BoostWellbeing",
   description:
-    "See how much you could save on Southern Cross health insurance when you join through BoostWellbeing. Get an instant indicative saving in seconds.",
+    "Choose the $500-excess version of your Southern Cross Wellbeing plan — same cover, lower premium — and we pay the $500 excess. See your saving in seconds.",
   robots: {
     index: false,
     follow: false,
@@ -17,19 +17,19 @@ export const metadata: Metadata = {
 
 const TRUST_ITEMS = [
   {
-    icon: Shield,
-    heading: "Southern Cross authorised",
-    body: "We're an authorised Financial Adviser for Southern Cross Health Society — New Zealand's most trusted health insurer.",
+    icon: CheckCircle,
+    heading: "Advice from people, not a portal",
+    body: "A real adviser handles your application, answers your questions, and stays available after you're covered.",
   },
   {
     icon: Award,
-    heading: "Group scheme savings",
-    body: "Our group scheme means members typically save compared with buying direct. No catch, no employer required.",
+    heading: "$0 adviser fee",
+    body: "Our advice costs you nothing — we're paid by Southern Cross, not by you.",
   },
   {
-    icon: CheckCircle,
-    heading: "Personal support included",
-    body: "A real adviser handles your application, answers your questions, and stays available after you're covered.",
+    icon: Shield,
+    heading: "Southern Cross partner",
+    body: "We're an authorised Financial Adviser for Southern Cross Health Society — New Zealand's most trusted health insurer.",
   },
 ];
 
@@ -71,19 +71,22 @@ export default function SouthernCrossSavingsPage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight">
-              Save on your Southern Cross health cover.
+              Same Southern Cross cover. Lower premium.{" "}
+              <span className="text-brand-teal">We pay your $500 excess.</span>
             </h1>
 
             <p className="text-xl text-slate-600 leading-relaxed">
-              Join through Boost Wellbeing&apos;s group scheme and pay less than
-              buying direct — for exactly the same Southern Cross policy.
+              Choose the $500-excess version of your Southern Cross Wellbeing
+              plan — identical cover, lower premium — and we reimburse the $500
+              excess on your first eligible claim each year. See your saving
+              below.
             </p>
 
             <ul className="space-y-2.5">
               {[
-                "Same Southern Cross policy, less cost",
-                "No employer needed — join as an individual",
-                "Instant indicative saving below",
+                "Exactly the same Southern Cross cover",
+                "Lower premium than the Nil-excess version",
+                "We reimburse the $500 excess each year",
                 "Personal adviser included, at no extra charge",
               ].map((point) => (
                 <li key={point} className="flex items-center gap-2.5 text-slate-700">
@@ -93,17 +96,38 @@ export default function SouthernCrossSavingsPage() {
               ))}
             </ul>
 
-            {/* Social proof placeholder */}
+            {/* Dual CTA */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href="#calculator"
+                className="inline-flex items-center justify-center gap-2 bg-brand-teal hover:bg-brand-teal-dark text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-lg"
+              >
+                See your saving
+                <ArrowRight className="w-4 h-4 rotate-90" />
+              </a>
+              {/* TODO (§8): Replace placeholder with verified phone number */}
+              <a
+                href="tel:+6421720710"
+                className="inline-flex items-center justify-center gap-2 border border-slate-300 text-slate-700 font-semibold px-6 py-3 rounded-xl hover:border-brand-blue hover:text-brand-blue transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                Book a 15-min call
+              </a>
+            </div>
+
+            {/* First-person testimonial (§8 — pending consent) */}
             <div className="pt-2 border-t border-slate-100">
-              <p className="text-sm text-slate-500">
-                {/* TODO (§8): Add verified testimonial with signed consent form */}
-                <span className="italic text-slate-400">[Testimonial — pending consent sign-off]</span>
+              <p className="text-sm text-slate-500 italic">
+                {/* TODO (§8): Confirm and add first-person "Ollie" testimonial once consent form signed */}
+                <span className="text-slate-400">
+                  &ldquo;[First-person testimonial — Ollie — pending consent sign-off]&rdquo;
+                </span>
               </p>
             </div>
           </div>
 
           {/* Right: calculator */}
-          <div>
+          <div id="calculator" className="scroll-mt-24">
             <SavingsCalculator />
           </div>
         </div>
@@ -174,19 +198,24 @@ export default function SouthernCrossSavingsPage() {
         <div className="text-xs text-slate-400 space-y-2 border-t border-slate-100 pt-6">
           <p>
             <strong className="text-slate-500">Important information:</strong>{" "}
-            This calculator provides an indicative saving only and does not
-            constitute financial advice. Actual premiums are determined by
-            Southern Cross Health Society and are subject to underwriting. Cover
-            is subject to Southern Cross Health Society&apos;s policy terms and
-            conditions. Switching health cover may affect your pre-existing
-            condition cover — please review your current policy before making
-            any changes and seek professional advice if you are unsure.
+            The calculator provides an indicative figure only. It is not a quote,
+            contract, or offer of insurance, and its output is not personalised
+            financial advice. Premiums are confirmed by Southern Cross Health
+            Society on application and change over time (figures current to
+            30 June 2026). Cover is subject to Southern Cross acceptance and the
+            relevant policy document.
           </p>
           <p>
-            Savings estimates are based on the Southern Cross individual rate
-            card effective 1 January 2026. Rates may differ for your specific
-            circumstances. Boost Wellbeing Ltd is a licensed Financial Advice
-            Provider.{" "}
+            The $500 excess reimbursement is provided by BoostWellbeing (with
+            Risk Solutions Ltd), not by Southern Cross, and applies to the
+            standard excess on a member&apos;s first eligible claim each policy
+            year. The saving shown is anchored to the Nil-excess versus
+            $500-excess premium on the same Southern Cross plan — it is not a
+            switch-and-save between insurers. Switching insurer or plan may
+            affect cover for pre-existing conditions and stand-downs.
+          </p>
+          <p>
+            BoostWellbeing is a Financial Advice Provider.{" "}
             {/* TODO (§8): Insert FAP disclosure statement URL once approved */}
             <span className="underline cursor-default">
               Financial Advice Provider disclosure [TODO: insert URL]
