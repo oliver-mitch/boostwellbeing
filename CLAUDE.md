@@ -2,6 +2,27 @@
 
 ## Current Task
 
+**Retail Southern Cross Savings Landing Page** — branch `retail-savings-landing`, pending Southern Cross sign-off and compliance review.
+
+**Spec document ID:** `c9e4aed6-cc8a-4552-aa85-9ed23a60619d`
+**KB name:** `jarvis_master`
+**Spec title:** `BoostWellbeing — Retail Savings Landing Page + Calculator (Build Spec)`
+
+**Status:** Branch `retail-savings-landing` built. Do NOT merge to main or deploy to production until:
+1. Southern Cross sign-off received
+2. Compliance review completed
+3. Oliver reviews and approves
+
+**§8 TODOs remaining** (must resolve before launch):
+- Phone number: confirm verified number for the landing page
+- FAP disclosure URL: insert once approved
+- Callback intake form: wire up once SC compliance approves
+- Testimonial: add once consent form signed
+
+---
+
+## Previous Task (completed)
+
 Fix the client portal — Supabase tables, Resend email, admin seed, nav link. Bring `Client Login` back to the site.
 
 **Spec document ID:** `d8d4c901-3862-448e-aad3-b042c211d9d7`
