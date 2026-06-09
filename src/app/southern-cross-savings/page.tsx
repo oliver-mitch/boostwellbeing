@@ -95,15 +95,8 @@ export default function SouthernCrossSavingsPage() {
               </a>
             </div>
 
-            {/* First-person testimonial (§8 — pending consent) */}
-            <div className="pt-2 border-t border-slate-100">
-              <p className="text-sm text-slate-500 italic">
-                {/* TODO (§8): Confirm and add first-person "Ollie" testimonial once consent form signed */}
-                <span className="text-slate-400">
-                  &ldquo;[First-person testimonial — Ollie — pending consent sign-off]&rdquo;
-                </span>
-              </p>
-            </div>
+            {/* TODO (§8): Add first-person "Ollie" testimonial here once the consent
+                form is signed. Placeholder intentionally not rendered. */}
           </div>
 
           {/* Right: calculator */}
