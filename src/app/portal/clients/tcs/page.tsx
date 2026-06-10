@@ -412,7 +412,7 @@ export default function TcsProposalCompanion() {
                 {PLANS.find(p => p.code === plan)?.onUs && (
                   <p className="text-xs text-brand-teal font-medium mt-1.5 flex items-center gap-1">
                     <BadgeCheck className="w-3.5 h-3.5" />
-                    $500 excess on us — reimbursed on the first eligible claim, per person, per year
+                    $500 excess — we cover it. We pay it on the first claim, so that person has no excess for the year.
                   </p>
                 )}
               </div>
