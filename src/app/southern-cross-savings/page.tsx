@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Shield, CheckCircle, Award, Phone, ArrowRight } from "lucide-react";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import SavingsCalculator, { HowItWorksAccordion } from "./SavingsCalculator";
+import LeadCtas from "./LeadCtas";
 
 export const metadata: Metadata = {
   title: "Same Southern Cross cover, lower premium | BoostWellbeing",
@@ -85,13 +85,12 @@ export default function SouthernCrossSavingsPage() {
                 See your saving
                 <ArrowRight className="w-4 h-4 rotate-90" />
               </a>
-              {/* TODO (§8): Replace placeholder with verified phone number */}
               <a
-                href="tel:+6421720710"
+                href="#get-started"
                 className="inline-flex items-center justify-center gap-2 border border-slate-300 text-slate-700 font-semibold px-6 py-3 rounded-xl hover:border-brand-blue hover:text-brand-blue transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                Book a 15-min call
+                Book a 10-min call
               </a>
             </div>
 
@@ -131,33 +130,16 @@ export default function SouthernCrossSavingsPage() {
       </section>
 
       {/* ── CTA band ── */}
-      <section className="bg-brand-blue">
+      <section id="get-started" className="bg-brand-blue scroll-mt-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 text-center space-y-5">
           <h2 className="text-2xl sm:text-3xl font-bold text-white">
             Ready to get covered for less?
           </h2>
           <p className="text-blue-100 max-w-xl mx-auto">
-            Use the calculator above to see your saving, then talk to an adviser
-            to get everything set up — usually in under a week.
+            Book a quick call, get the details by email, or get started — an
+            adviser handles the rest, usually in under a week.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            {/* TODO (§8): Wire callback intake form once approved by SC compliance */}
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-white text-brand-blue font-semibold px-8 py-3.5 rounded-xl hover:bg-blue-50 transition-colors shadow-lg"
-            >
-              Talk to an adviser
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <a
-              href="tel:+6421720710"
-              className="inline-flex items-center justify-center gap-2 border border-white/30 text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-white/10 transition-colors"
-            >
-              <Phone className="w-4 h-4" />
-              {/* TODO (§8): Replace with verified phone number */}
-              021 720 710
-            </a>
-          </div>
+          <LeadCtas />
         </div>
       </section>
 
