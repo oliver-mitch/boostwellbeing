@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { ChevronDown, ChevronUp, Loader2, AlertCircle, TrendingDown, Baby, Heart, ShieldCheck } from "lucide-react";
+import { ChevronDown, ChevronUp, Loader2, AlertCircle, TrendingDown, Baby, Heart, ShieldCheck, Mail, Check } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -90,6 +90,11 @@ export default function SavingsCalculator() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // "Send me my saving" email-capture state
+  const [savingEmail, setSavingEmail] = useState("");
+  const [savingStatus, setSavingStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
+  const [savingErr, setSavingErr] = useState<string | null>(null);
+
   // ── Quote request ──
   const fetchQuote = useCallback(async () => {
     setLoading(true);
@@ -126,6 +131,8 @@ export default function SavingsCalculator() {
 
       const data: QuoteResult = await res.json();
       setResult(data);
+      setSavingStatus("idle");
+      setSavingErr(null);
 
       trackEvent("retail_savings_quote", {
         plan,
@@ -141,6 +148,42 @@ export default function SavingsCalculator() {
       setLoading(false);
     }
   }, [plan, primaryAge, hasPartner, partnerAge, kids, healthyLifestyle]);
+
+  // ── Email the prospect their saving ──
+  const sendSaving = useCallback(async () => {
+    if (!result) return;
+    setSavingStatus("loading");
+    setSavingErr(null);
+    const adults = hasPartner ? [primaryAge, partnerAge] : [primaryAge];
+    const planLabel = PLAN_OPTIONS.find((p) => p.code === plan)?.label ?? "Southern Cross Wellbeing";
+    try {
+      const res = await fetch("/api/retail-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "send_saving",
+          email: savingEmail,
+          plan,
+          planLabel,
+          adults,
+          kids,
+          healthyLifestyle,
+          annualSaving: result.annualSaving,
+          monthlySaving: result.monthlySaving,
+          indicativeAnnualPremium: result.indicativeAnnualPremium,
+        }),
+      });
+      if (!res.ok) {
+        const d = await res.json().catch(() => ({}));
+        throw new Error(d.error || "Couldn't send right now.");
+      }
+      trackEvent("retail_send_saving", { plan });
+      setSavingStatus("done");
+    } catch (e) {
+      setSavingErr(e instanceof Error ? e.message : "Couldn't send right now.");
+      setSavingStatus("error");
+    }
+  }, [result, savingEmail, hasPartner, primaryAge, partnerAge, plan, kids, healthyLifestyle]);
 
   // Width of the "your premium" bar relative to the no-excess premium (visual only).
   const noExcessPremium = result ? result.indicativeAnnualPremium + result.annualSaving : 0;
@@ -326,6 +369,37 @@ export default function SavingsCalculator() {
                   <ShieldCheck className="w-3.5 h-3.5" />
                   Your $500 excess — we cover it
                 </span>
+              </div>
+
+              {/* Send me my saving */}
+              <div className="border-t border-brand-teal/10 pt-3">
+                {savingStatus === "done" ? (
+                  <p className="text-sm text-center text-brand-teal font-medium flex items-center justify-center gap-1.5">
+                    <Check className="w-4 h-4" /> Sent — check your inbox.
+                  </p>
+                ) : (
+                  <>
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      <input
+                        type="email"
+                        value={savingEmail}
+                        onChange={(e) => setSavingEmail(e.target.value)}
+                        placeholder="you@email.com"
+                        aria-label="Your email"
+                        className="flex-1 px-3 py-2 rounded-lg border border-slate-200 text-sm focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none"
+                      />
+                      <button
+                        onClick={sendSaving}
+                        disabled={savingStatus === "loading"}
+                        className="inline-flex items-center justify-center gap-1.5 bg-brand-blue hover:bg-brand-blue-dark text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors disabled:opacity-70 whitespace-nowrap"
+                      >
+                        {savingStatus === "loading" ? <Loader2 className="w-4 h-4 animate-spin" /> : <Mail className="w-4 h-4" />}
+                        Send me my saving
+                      </button>
+                    </div>
+                    {savingErr && <p className="text-xs text-red-600 mt-1.5">{savingErr}</p>}
+                  </>
+                )}
               </div>
 
               <p className="text-xs text-slate-400 text-center pt-1">
