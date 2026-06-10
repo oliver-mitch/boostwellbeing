@@ -20,22 +20,48 @@ import {
 export const dynamic = 'force-dynamic';
 
 // ─── Calculation model ────────────────────────────────────────────────────────
-// Base values: Entry risk, age 46, Wellbeing One $500
-const BASE = {
-  absenteeism: 450,
-  presenteeism: 482,
-  turnover: 408,
-  healthValue: 1849,
+// Source of truth: TCS NZ proposal dated 3 June 2026 (spec doc cb2b7d01).
+// Census: 39 NZ lives, average age 46. These are the REAL proposal figures —
+// do not invent.
+//
+//  • Risk (Fidelity Life): annual premium TOTALS for the 39-life census, per
+//    line. Scales LINEARLY by headcount only — risk does NOT vary with age here
+//    (per spec §3). Enhanced is its own line mix, not a flat multiple of Entry.
+//  • Health (Southern Cross Wellbeing, group-discounted, incl GST): annual
+//    premium TOTALS per plan. Per-head scales along the SC rate curve,
+//    normalised so age 46 = the proposal figure exactly.
+
+const CENSUS = 39;
+
+const RISK_TOTALS = {
+  entry:    { life: 17549, trauma: 18812, ip: 15908 }, // total 52,269
+  enhanced: { life: 27133, trauma: 18812, ip: 47503 }, // total 93,448
 } as const;
 
-const RISK_MULT = { entry: 1, enhanced: 1.35 } as const;
-
-const PLAN_HEALTH_MULT: Record<string, number> = {
-  wb_1_500: 1.0,
-  wb_2_500: 1.3,
-  wb_1: 1.15,
-  wb_2: 1.45,
+const HEALTH_TOTALS: Record<string, number> = {
+  wb_1_500: 72102,  // Wellbeing One · $500 excess  (recommended default)
+  wb_1:     83355,  // Wellbeing One · no excess
+  wb_2_500: 122070, // Wellbeing Two · $500 excess
+  wb_2:     141121, // Wellbeing Two · no excess
 };
+
+// Health age curve = ratio to age 46, derived from the real Southern Cross
+// workplace rate card (EMPLOYEE_PLANS), ages 25–65. WB1 plans use the WB1
+// curve, WB2 the WB2 curve. Ratios only — the dollar rate card never ships to
+// the client. age 46 → 1.0 (index 21), so the proposal figure is reproduced.
+const AGE_MIN = 25;
+const AGE_MAX = 65;
+const HEALTH_AGE_CURVE: Record<'wb1' | 'wb2', number[]> = {
+  wb1: [0.525,0.526,0.529,0.529,0.529,0.529,0.53,0.53,0.53,0.542,0.563,0.6,0.634,0.676,0.705,0.731,0.791,0.83,0.87,0.915,0.959,1,1.039,1.077,1.113,1.137,1.16,1.185,1.219,1.285,1.362,1.44,1.515,1.592,1.717,1.867,1.992,2.118,2.247,2.433,2.627],
+  wb2: [0.526,0.529,0.532,0.536,0.543,0.549,0.56,0.565,0.572,0.603,0.623,0.658,0.7,0.735,0.758,0.782,0.813,0.838,0.862,0.908,0.953,1,1.046,1.081,1.113,1.133,1.143,1.163,1.191,1.245,1.308,1.371,1.433,1.496,1.592,1.717,1.798,1.895,1.992,2.122,2.254],
+};
+
+const planFamily = (plan: string): 'wb1' | 'wb2' => (plan.startsWith('wb_2') ? 'wb2' : 'wb1');
+
+function healthAgeFactor(plan: string, age: number): number {
+  const a = Math.min(AGE_MAX, Math.max(AGE_MIN, Math.round(age)));
+  return HEALTH_AGE_CURVE[planFamily(plan)][a - AGE_MIN];
+}
 
 function calcMetrics(
   risk: 'entry' | 'enhanced',
@@ -43,20 +69,28 @@ function calcMetrics(
   age: number,
   staff: number
 ) {
-  const rm = RISK_MULT[risk];
-  const af = age / 46;
-  const phm = PLAN_HEALTH_MULT[plan] ?? 1;
+  // Risk: per-head is the census line total / 39 (constant — no age scaling).
+  const r = RISK_TOTALS[risk];
+  const lifePH   = r.life / CENSUS;
+  const traumaPH = r.trauma / CENSUS;
+  const ipPH     = r.ip / CENSUS;
 
-  const absenteeism = Math.round(BASE.absenteeism * rm * af);
-  const presenteeism = Math.round(BASE.presenteeism * rm * af);
-  const turnover = Math.round(BASE.turnover * rm * af);
-  const healthValue = Math.round(BASE.healthValue * rm * phm * af);
+  // Health: census per-head, scaled along the SC rate curve (age 46 = 1.0).
+  const healthBasePH = (HEALTH_TOTALS[plan] ?? HEALTH_TOTALS.wb_1_500) / CENSUS;
+  const healthPH = healthBasePH * healthAgeFactor(plan, age);
 
-  const perHead = absenteeism + presenteeism + turnover + healthValue;
+  const perHead = lifePH + traumaPH + ipPH + healthPH;
+  const riskAnnual = (lifePH + traumaPH + ipPH) * staff;
+  const healthAnnual = healthPH * staff;
   const annual = perHead * staff;
   const weekly = annual / staff / 52;
 
-  return { absenteeism, presenteeism, turnover, healthValue, perHead, annual, weekly };
+  return {
+    // per-head, per line (for the metric cards / donut)
+    life: lifePH, trauma: traumaPH, ip: ipPH, health: healthPH,
+    riskAnnual, healthAnnual,
+    perHead, annual, weekly,
+  };
 }
 
 // ─── Plan options ─────────────────────────────────────────────────────────────
@@ -190,40 +224,40 @@ export default function TcsProposalCompanion() {
 
   const metrics = [
     {
-      label: 'Absenteeism',
-      sub: 'Cost of sick days & recovery time',
-      value: m.absenteeism,
-      icon: Clock,
+      label: 'Life',
+      sub: 'Fidelity Life — life cover',
+      value: m.life,
+      icon: Users,
       color: '#4D90DE',
       bg: 'bg-blue-50',
       border: 'border-blue-200',
       text: 'text-[#4D90DE]',
     },
     {
-      label: 'Presenteeism',
-      sub: 'Productivity lost while at work',
-      value: m.presenteeism,
-      icon: TrendingDown,
+      label: 'Trauma',
+      sub: 'Fidelity Life — trauma cover',
+      value: m.trauma,
+      icon: HeartPulse,
       color: '#21B1A6',
       bg: 'bg-teal-50',
       border: 'border-teal-200',
       text: 'text-[#21B1A6]',
     },
     {
-      label: 'Staff Turnover',
-      sub: 'Health-related resignations & replacements',
-      value: m.turnover,
-      icon: Users,
+      label: 'Income Protection',
+      sub: 'Fidelity Life — IP cover',
+      value: m.ip,
+      icon: TrendingDown,
       color: '#3A7AC8',
       bg: 'bg-indigo-50',
       border: 'border-indigo-200',
       text: 'text-[#3A7AC8]',
     },
     {
-      label: 'Health Coverage',
-      sub: 'Annual plan value per employee',
-      value: m.healthValue,
-      icon: HeartPulse,
+      label: 'Health',
+      sub: 'Southern Cross Wellbeing premium',
+      value: m.health,
+      icon: Clock,
       color: '#0F172A',
       bg: 'bg-slate-50',
       border: 'border-slate-200',
@@ -291,12 +325,13 @@ export default function TcsProposalCompanion() {
                 TCS NZ Health Proposal
               </h2>
               <p className="mt-2 text-slate-300 text-sm max-w-lg">
-                This interactive companion models the annual value of group health cover for your
-                team. Adjust the settings below to explore different scenarios.
+                Companion to your proposal dated 3 June 2026. This models the combined annual
+                premium — Fidelity Life risk cover plus Southern Cross health — for your team.
+                Adjust the settings below to model cover levels and team size.
               </p>
             </div>
             <div className="text-right">
-              <p className="text-slate-400 text-xs">Total annual value</p>
+              <p className="text-slate-400 text-xs">Total annual premium</p>
               <p className="text-3xl sm:text-4xl font-bold font-poppins text-white">
                 {fmt(m.annual)}
               </p>
@@ -377,7 +412,7 @@ export default function TcsProposalCompanion() {
                 {PLANS.find(p => p.code === plan)?.onUs && (
                   <p className="text-xs text-brand-teal font-medium mt-1.5 flex items-center gap-1">
                     <BadgeCheck className="w-3.5 h-3.5" />
-                    BoostWellbeing covers this plan — no premium cost to TCS
+                    $500 excess on us — reimbursed on the first eligible claim, per person, per year
                   </p>
                 )}
               </div>
@@ -436,12 +471,12 @@ export default function TcsProposalCompanion() {
           {/* Donut chart */}
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
             <h3 className="text-lg font-semibold text-slate-900 font-poppins mb-6">
-              Value breakdown per employee
+              Premium breakdown per employee
             </h3>
             <div className="flex flex-col sm:flex-row items-center gap-6">
               <div className="w-48 h-48 flex-shrink-0">
                 <DonutChart
-                  values={[m.absenteeism, m.presenteeism, m.turnover, m.healthValue]}
+                  values={[m.life, m.trauma, m.ip, m.health]}
                   labels={metrics.map(m => m.label)}
                   total={m.perHead}
                 />
@@ -471,7 +506,7 @@ export default function TcsProposalCompanion() {
           {/* Recap table */}
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
             <h3 className="text-lg font-semibold text-slate-900 font-poppins mb-6">
-              Investment summary
+              Premium summary
             </h3>
 
             <div className="space-y-3">
@@ -540,21 +575,31 @@ export default function TcsProposalCompanion() {
           {showDisclaimer && (
             <div className="px-6 pb-6 text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4">
               <p>
-                Productivity values (absenteeism, presenteeism, turnover) are modelled from NZIER and
-                Southern Cross industry research benchmarks, scaled to the selected risk profile and
-                average employee age. Entry risk reflects a standard NZ workforce health profile;
-                Enhanced reflects a higher-risk cohort.
+                Figures are the actual premiums from your proposal dated 3 June 2026, on a census of
+                39 NZ lives at an average age of 46. They scale linearly with team size — exact at
+                39 lives / age 46, indicative otherwise.
               </p>
               <p>
-                Health coverage value represents the estimated annual value of the selected Southern
-                Cross plan per employee, accounting for excess level and plan tier. Plan rates are
-                effective 01 January 2026.
+                <strong className="text-slate-700">Risk</strong> (Life, Trauma, Income Protection) are
+                Fidelity Life estimates, salary/age-rated and subject to underwriting above the
+                automatic acceptance limits; GST applies to Trauma and Income Protection, Life cover is
+                GST-exempt. Risk premiums are scaled by headcount only and do not vary with the average
+                age slider.
               </p>
               <p>
-                <strong className="text-slate-700">On us</strong> plans (Wellbeing One $500 and
-                Wellbeing Two $500) are provided at no premium cost to TCS as part of the BoostWellbeing
-                arrangement. Final pricing subject to Southern Cross underwriting. This tool is for
-                indicative purposes only.
+                <strong className="text-slate-700">Health</strong> is group-discounted Southern Cross
+                Wellbeing cover (incl GST), confirmed by Southern Cross on application. Per-head health
+                premium scales along the Southern Cross rate curve, normalised so age 46 matches the
+                proposal exactly.
+              </p>
+              <p>
+                <strong className="text-slate-700">$500 excess “on us”:</strong> BoostWellbeing (with
+                Risk Solutions Ltd) reimburses the $500 excess on the $500-excess Wellbeing plans —
+                first eligible claim, per person, per policy year. This is not provided by Southern
+                Cross, and is the reimbursement of the excess, not the premium. On census, Wellbeing One
+                $500 ($72,102) vs no-excess ($83,355) keeps roughly $11,253/yr lower premium across 39
+                staff. Indicative only — not a quote, contract, or offer of insurance, and not financial
+                advice.
               </p>
             </div>
           )}
