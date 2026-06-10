@@ -37,12 +37,27 @@ export const authOptions: NextAuthOptions = {
             .update({ last_login_at: new Date().toISOString() })
             .eq('id', user.id);
 
+          // Fetched separately and tolerantly: if the client_scope column
+          // hasn't been migrated yet, this fails open to null rather than
+          // breaking login. null = full portal access; a slug locks the user
+          // to /portal/clients/<slug> (enforced in middleware).
+          let clientScope: string | null = null;
+          const { data: scopeRow, error: scopeError } = await supabaseAdmin
+            .from('portal_users')
+            .select('client_scope')
+            .eq('id', user.id)
+            .single();
+          if (!scopeError && scopeRow) {
+            clientScope = (scopeRow as { client_scope: string | null }).client_scope ?? null;
+          }
+
           return {
             id: user.id,
             email: user.email,
             name: user.name || user.email,
             isAdmin: user.is_admin || false,
             companyName: user.company_name || '',
+            clientScope,
           };
         } catch (err) {
           console.error('Auth error:', err);
@@ -60,6 +75,7 @@ export const authOptions: NextAuthOptions = {
         token.id = user.id;
         token.isAdmin = user.isAdmin;
         token.companyName = user.companyName;
+        token.clientScope = user.clientScope;
       }
       return token;
     },
@@ -68,6 +84,7 @@ export const authOptions: NextAuthOptions = {
         session.user.id = token.id;
         session.user.isAdmin = token.isAdmin;
         session.user.companyName = token.companyName;
+        session.user.clientScope = token.clientScope ?? null;
       }
       return session;
     }

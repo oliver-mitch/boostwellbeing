@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Poppins — used for headings in portal client pages */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+
 :root {
   /* BoostWellbeing Brand Colors */
   --color-blue: #4D90DE;          /* Primary blue - trust, care, professionalism */

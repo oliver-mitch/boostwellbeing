@@ -2,6 +2,27 @@
 
 ## Current Task
 
+No active build task. Retail savings page + TCS proposal companion + portal access-scoping
+were merged to `main` and deployed to production on **2026-06-10** (Oliver approved; SC
+sign-off was waived by Oliver). Specs: retail `c9e4aed6-cc8a-4552-aa85-9ed23a60619d`,
+TCS `cb2b7d01-4431-4db0-acde-ac20ee681c10` (both in `jarvis_master`).
+
+**Open follow-ups:**
+- **Retail §8 TODOs** (Oliver continuing): verified phone number; FAP disclosure URL;
+  wire callback intake to the real intake (HubSpot — confirm first); first-person
+  testimonial once consent signed. Refresh the SC rate card in
+  `supabase/functions/retail-savings-quote/lib.ts` after **1 July 2026** (rates effective
+  to 30 June 2026).
+- **Portal scoping — activate:** migration `007_portal_client_scope.sql` adds
+  `portal_users.client_scope`. Apply it to prod, then `UPDATE portal_users SET
+  client_scope='tcs' WHERE email='<david>';` to lock David's login to `/portal/clients/tcs`.
+  Middleware (`src/middleware.ts`) enforces it; users with NULL scope are unaffected.
+- The retail page is `robots:noindex` and not linked from the main nav.
+
+---
+
+## Previous Task (completed)
+
 Fix the client portal — Supabase tables, Resend email, admin seed, nav link. Bring `Client Login` back to the site.
 
 **Spec document ID:** `d8d4c901-3862-448e-aad3-b042c211d9d7`
