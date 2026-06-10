@@ -57,9 +57,9 @@ export default function SouthernCrossSavingsPage() {
 
             <p className="text-xl text-slate-600 leading-relaxed">
               Choose the $500-excess version of your Southern Cross Wellbeing
-              plan — identical cover, lower premium — and we reimburse the $500
-              excess on your first eligible claim each year. See your saving
-              below.
+              plan — same cover, lower premium — and we cover the $500 excess.
+              If you claim, we pay it, so you&apos;re never out of pocket. See
+              your saving below.
             </p>
 
             <ul className="space-y-2.5">

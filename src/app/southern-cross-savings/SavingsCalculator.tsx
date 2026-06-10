@@ -324,7 +324,7 @@ export default function SavingsCalculator() {
               <div className="flex items-center justify-center">
                 <span className="inline-flex items-center gap-1.5 bg-brand-blue/10 text-brand-blue text-xs font-semibold px-3 py-1.5 rounded-full">
                   <ShieldCheck className="w-3.5 h-3.5" />
-                  $500 excess — on us
+                  Your $500 excess — we cover it
                 </span>
               </div>
 
@@ -356,9 +356,9 @@ export function HowItWorksAccordion() {
   const [open, setOpen] = useState(false);
 
   const steps = [
-    "You choose the $500-excess version of your Southern Cross Wellbeing plan — identical cover, lower premium.",
-    "Southern Cross applies the $500 excess once, on your first eligible claim each policy year.",
-    "BoostWellbeing (with Risk Solutions Ltd) reimburses that $500 — so you keep the lower premium and the excess is on us.",
+    "You choose the $500-excess Wellbeing plan — the same Southern Cross cover as the no-excess version, just a lower premium.",
+    "If you ever claim, Southern Cross applies the $500 excess once — and we pay it for you.",
+    "An excess only applies once a year, so once we've covered it you pay no excess at all. We cover it — plain and simple.",
   ];
 
   return (
