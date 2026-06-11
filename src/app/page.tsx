@@ -137,7 +137,7 @@ export default function HomePage() {
 
             <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
               {[
-                "Southern Cross authorised partner",
+                "Southern Cross distribution partner",
                 "Cover for existing conditions",
                 "5+ employees to get started",
                 "Set up in under a week",
