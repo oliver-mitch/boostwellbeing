@@ -80,7 +80,7 @@ export default function SouthernCrossSavingsPage() {
             <div className="flex flex-col sm:flex-row gap-3">
               <a
                 href="#calculator"
-                className="inline-flex items-center justify-center gap-2 bg-brand-teal hover:bg-brand-teal-dark text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-lg"
+                className="lg:hidden inline-flex items-center justify-center gap-2 bg-brand-teal hover:bg-brand-teal-dark text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-lg"
               >
                 See your saving
                 <ArrowRight className="w-4 h-4 rotate-90" />
