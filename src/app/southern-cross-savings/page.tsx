@@ -28,8 +28,8 @@ const TRUST_ITEMS = [
   },
   {
     icon: Shield,
-    heading: "Southern Cross partner",
-    body: "We're an authorised Financial Adviser for Southern Cross Health Society — New Zealand's most trusted health insurer.",
+    heading: "Southern Cross distribution partner",
+    body: "BoostWellbeing operates under the Financial Advice Provider licence of Risk Solutions Limited (FSP718392) and distributes Southern Cross health insurance plans. The advice we give is our own — independent of Southern Cross.",
   },
 ];
 
@@ -47,7 +47,7 @@ export default function SouthernCrossSavingsPage() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-brand-blue/10 text-brand-blue text-sm font-semibold px-3 py-1.5 rounded-full">
               <Shield className="w-3.5 h-3.5" />
-              Southern Cross Authorised Adviser
+              Southern Cross distribution partner
             </div>
 
             <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight">
@@ -170,12 +170,20 @@ export default function SouthernCrossSavingsPage() {
             affect cover for pre-existing conditions and stand-downs.
           </p>
           <p>
-            BoostWellbeing is a Financial Advice Provider.{" "}
-            {/* TODO (§8): Insert FAP disclosure statement URL once approved */}
-            <span className="underline cursor-default">
-              Financial Advice Provider disclosure [TODO: insert URL]
-            </span>
-            . Southern Cross Health Society Limited is the insurer.
+            Financial advice is provided by Risk Solutions Limited (FSP718392), a licensed
+            Financial Advice Provider. BoostWellbeing operates under Risk Solutions
+            Limited&apos;s licence. View our disclosure information at{" "}
+            <a
+              href="https://www.risksolutions.net.nz/about/"
+              target="_blank"
+              rel="noopener"
+              className="underline hover:text-slate-500 transition-colors"
+            >
+              risksolutions.net.nz/about
+            </a>
+            . Southern Cross Medical Care Society (Southern Cross Health Society) is the
+            insurer. We are a distributor of Southern Cross plans and do not act as agent
+            of, or advise on behalf of, Southern Cross.
           </p>
         </div>
       </section>

@@ -31,7 +31,7 @@ export default function TermsPage() {
             <section>
               <h2 className="text-2xl font-semibold text-slate-900 mb-3">Our Services</h2>
               <p className="text-slate-700 leading-relaxed">
-                BoostWellbeing provides workplace health insurance advisory services. We help businesses access Southern Cross Health Society workplace schemes. We are an authorised partner of Southern Cross but are not an insurer ourselves. All insurance policies are issued and underwritten by Southern Cross Health Society, subject to their terms, conditions, and underwriting criteria.
+                BoostWellbeing provides workplace health insurance advisory services. We help businesses access Southern Cross Health Society workplace schemes. We are a distributor of Southern Cross plans but are not an insurer ourselves. All insurance policies are issued and underwritten by Southern Cross Medical Care Society (Southern Cross Health Society), subject to their terms, conditions, and underwriting criteria.
               </p>
             </section>
 

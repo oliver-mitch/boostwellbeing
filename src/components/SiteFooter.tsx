@@ -30,7 +30,7 @@ export function SiteFooter({ showReferences = false, additionalDisclaimer }: Sit
               </span>
             </div>
             <p className="text-sm text-white/60">
-              In partnership with Southern Cross Health Society
+              Distributor of Southern Cross Health Society plans
             </p>
           </div>
 
@@ -82,8 +82,8 @@ export function SiteFooter({ showReferences = false, additionalDisclaimer }: Sit
           </p>
           {additionalDisclaimer && <p>{additionalDisclaimer}</p>}
           <p className="border-t border-white/10 pt-4 mt-4">
-            BoostWellbeing is an authorised partner helping businesses access Southern Cross
-            Health Insurance workplace schemes.
+            BoostWellbeing operates under the FAP licence of Risk Solutions Limited (FSP718392)
+            and is a distributor of Southern Cross health insurance.
           </p>
           <p className="mt-4">&copy; BoostWellbeing. All rights reserved.</p>
         </div>
