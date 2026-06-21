@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
+import AttributionCapture from "@/components/AttributionCapture";
 import InsuranceGate from "./InsuranceGate";
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 export default function HealthInsuranceSavingsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      <AttributionCapture />
       <SiteNav variant="light" />
 
       {/* Hero */}

@@ -1,5 +1,6 @@
 -- 008_retail_leads.sql
--- Lead captures from the retail savings landing page (/southern-cross-savings):
+-- Lead captures from the retail savings landing pages
+-- (/southern-cross-savings and /health-insurance-savings):
 -- "book a 10-min call", "get more info", and "send me my saving".
 -- Written server-side via the service-role key only (RLS denies anon/public).
 
@@ -11,13 +12,22 @@ CREATE TABLE IF NOT EXISTS retail_leads (
   phone                     text,
   -- saving snapshot (for 'send_saving' — what we emailed the prospect)
   plan                      text,
-  adults                    integer[],
+  adults                    jsonb,
   kids                      integer,
   healthy_lifestyle         boolean,
   annual_saving             numeric,
   monthly_saving            numeric,
   indicative_annual_premium numeric,
   source                    text DEFAULT 'southern-cross-savings',
+  -- attribution
+  utm_source                text,
+  utm_medium                text,
+  utm_campaign              text,
+  utm_content               text,
+  utm_term                  text,
+  fbclid                    text,
+  referrer                  text,
+  landing_path              text,
   created_at                timestamptz DEFAULT now()
 );
 

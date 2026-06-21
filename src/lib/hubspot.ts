@@ -480,3 +480,97 @@ export async function createHubSpotCompany(data: HubSpotCompanyData): Promise<an
 export function isHubSpotConfigured(): boolean {
   return Boolean(process.env.HUBSPOT_API_KEY);
 }
+
+interface RetailContactData {
+  email?: string;
+  name?: string;
+  phone?: string;
+  leadType: string;
+  utmSource?: string;
+  utmCampaign?: string;
+}
+
+/**
+ * Create or update a HubSpot CONTACT for a retail lead.
+ * Individual only — no company or deal (retail is consumer, not B2B).
+ * Best-effort: errors are logged but never propagated.
+ */
+export async function upsertRetailHubSpotContact(data: RetailContactData): Promise<void> {
+  const apiKey = process.env.HUBSPOT_API_KEY;
+  if (!apiKey || !data.email) return;
+
+  try {
+    const nameParts = (data.name ?? '').trim().split(/\s+/);
+    const firstname = nameParts[0] || '';
+    const lastname = nameParts.slice(1).join(' ') || '';
+
+    const properties: Record<string, string> = {
+      email: data.email,
+      lifecyclestage: 'lead',
+    };
+    if (firstname) properties.firstname = firstname;
+    if (lastname) properties.lastname = lastname;
+    if (data.phone) properties.phone = data.phone;
+
+    let contactId: string | null = null;
+
+    const createRes = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
+      body: JSON.stringify({ properties }),
+    });
+
+    if (createRes.ok) {
+      contactId = (await createRes.json()).id;
+    } else if (createRes.status === 409) {
+      // Contact already exists — find and update.
+      const searchRes = await fetch('https://api.hubapi.com/crm/v3/objects/contacts/search', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
+        body: JSON.stringify({
+          filterGroups: [{ filters: [{ propertyName: 'email', operator: 'EQ', value: data.email }] }],
+        }),
+      });
+      if (searchRes.ok) {
+        const sr = await searchRes.json();
+        contactId = sr.results?.[0]?.id ?? null;
+        if (contactId) {
+          const patch: Record<string, string> = {};
+          if (firstname) patch.firstname = firstname;
+          if (lastname) patch.lastname = lastname;
+          if (data.phone) patch.phone = data.phone;
+          await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/${contactId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
+            body: JSON.stringify({ properties: patch }),
+          });
+        }
+      }
+    } else {
+      console.error('HubSpot retail contact create failed:', createRes.status, await createRes.text());
+    }
+
+    if (!contactId) return;
+
+    // Add a note with source tag + lead details.
+    let noteBody = 'BoostWellbeing Retail – Southern Cross Savings\n\n';
+    noteBody += `Lead type: ${data.leadType}`;
+    if (data.utmSource) noteBody += `\nSource: ${data.utmSource}`;
+    if (data.utmCampaign) noteBody += `\nCampaign: ${data.utmCampaign}`;
+    noteBody += `\nSubmitted: ${new Date().toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' })}`;
+
+    await fetch('https://api.hubapi.com/crm/v3/objects/notes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
+      body: JSON.stringify({
+        properties: { hs_note_body: noteBody, hs_timestamp: new Date().toISOString() },
+        associations: [{
+          to: { id: contactId },
+          types: [{ associationCategory: 'HUBSPOT_DEFINED', associationTypeId: 202 }],
+        }],
+      }),
+    });
+  } catch (err) {
+    console.error('HubSpot retail contact error (non-blocking):', err);
+  }
+}

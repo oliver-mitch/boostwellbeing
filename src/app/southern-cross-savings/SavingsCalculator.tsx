@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { ChevronDown, ChevronUp, Loader2, AlertCircle, TrendingDown, Baby, Heart, ShieldCheck, Mail, Check } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { getAttribution } from "@/lib/attribution";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -156,6 +157,7 @@ export default function SavingsCalculator() {
     setSavingErr(null);
     const adults = hasPartner ? [primaryAge, partnerAge] : [primaryAge];
     const planLabel = PLAN_OPTIONS.find((p) => p.code === plan)?.label ?? "Southern Cross Wellbeing";
+    const attr = getAttribution();
     try {
       const res = await fetch("/api/retail-lead", {
         method: "POST",
@@ -171,6 +173,14 @@ export default function SavingsCalculator() {
           annualSaving: result.annualSaving,
           monthlySaving: result.monthlySaving,
           indicativeAnnualPremium: result.indicativeAnnualPremium,
+          utmSource: attr.utm_source,
+          utmMedium: attr.utm_medium,
+          utmCampaign: attr.utm_campaign,
+          utmContent: attr.utm_content,
+          utmTerm: attr.utm_term,
+          fbclid: attr.fbclid,
+          referrer: attr.referrer,
+          landingPath: attr.landing_path,
         }),
       });
       if (!res.ok) {

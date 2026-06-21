@@ -3,12 +3,14 @@
 import { useState, useCallback } from "react";
 import { Phone, Info, ArrowRight, X, Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { getAttribution } from "@/lib/attribution";
 
-// TODO (§8): Southern Cross broker-authority form URL — the form that authorises
-// BoostWellbeing as the member's Southern Cross broker so we can change their plan.
-// Oliver to provide. Until set, "Get started" falls back to the Get-more-info form
-// so the CTA still captures the lead.
-const SC_BROKER_AUTHORITY_FORM_URL = "";
+// TODO (§8): Supply the Southern Cross broker-authority form URL that authorises
+// BoostWellbeing as the member's SC broker so we can change their plan.
+// Set NEXT_PUBLIC_SC_BROKER_AUTHORITY_FORM_URL in Vercel env vars.
+// Until set, "Get started" opens the book-a-call modal (strongest capture).
+const SC_BROKER_AUTHORITY_FORM_URL =
+  process.env.NEXT_PUBLIC_SC_BROKER_AUTHORITY_FORM_URL ?? "";
 
 type LeadType = "book_call" | "more_info";
 
@@ -55,11 +57,23 @@ function LeadModal({ kind, onClose }: { kind: LeadType; onClose: () => void }) {
   const submit = useCallback(async () => {
     setStatus("loading");
     setError(null);
+    const attr = getAttribution();
     try {
       const res = await fetch("/api/retail-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: kind, ...values }),
+        body: JSON.stringify({
+          type: kind,
+          ...values,
+          utmSource: attr.utm_source,
+          utmMedium: attr.utm_medium,
+          utmCampaign: attr.utm_campaign,
+          utmContent: attr.utm_content,
+          utmTerm: attr.utm_term,
+          fbclid: attr.fbclid,
+          referrer: attr.referrer,
+          landingPath: attr.landing_path,
+        }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -155,8 +169,10 @@ export default function LeadCtas() {
       trackEvent("retail_cta_click", { cta: "get_started" });
       window.open(SC_BROKER_AUTHORITY_FORM_URL, "_blank", "noopener");
     } else {
-      // Fallback until the SC authority form URL is provided.
-      setModal("more_info");
+      // No authority form URL yet — open book-a-call (strongest capture).
+      // TODO: set NEXT_PUBLIC_SC_BROKER_AUTHORITY_FORM_URL once Oliver provides the SC URL.
+      trackEvent("retail_cta_click", { cta: "get_started_book_call_fallback" });
+      setModal("book_call");
     }
   };
 

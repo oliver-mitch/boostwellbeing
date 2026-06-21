@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Shield, CheckCircle, Award, Phone, ArrowRight } from "lucide-react";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
+import AttributionCapture from "@/components/AttributionCapture";
 import SavingsCalculator, { HowItWorksAccordion } from "./SavingsCalculator";
 import LeadCtas from "./LeadCtas";
 
@@ -36,6 +37,7 @@ const TRUST_ITEMS = [
 export default function SouthernCrossSavingsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      <AttributionCapture />
       {/* ── Site header (shared SiteNav) ── */}
       <SiteNav variant="light" />
 
