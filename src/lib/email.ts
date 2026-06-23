@@ -138,6 +138,99 @@ export async function sendRetailLeadNotification(lead: {
   }
 }
 
+// ── Facebook Lead Auto-Reply ──────────────────────────────────────────────────
+
+// Sends the approved follow-up email to a new Facebook lead.
+// From address must be oliver@boostwellbeing.co.nz — requires boostwellbeing.co.nz
+// to be verified in Resend (SPF/DKIM on Cloudflare). Until verified, set
+// FB_LEAD_FROM_EMAIL in Vercel env to onboarding@resend.dev for testing.
+export async function sendFacebookLeadAutoReply(
+  email: string,
+  firstName: string | null
+): Promise<{ success: boolean; error?: string }> {
+  const fromEmail = process.env.FB_LEAD_FROM_EMAIL || 'oliver@boostwellbeing.co.nz';
+  const from = `Ollie from BoostWellbeing <${fromEmail}>`;
+  const greeting = firstName ? firstName : 'there';
+
+  const plainText = `Hi ${greeting},
+
+Thanks for putting your hand up on Facebook. Here's how it works — it's simpler than it sounds.
+
+We get you the same Southern Cross cover for a lower premium — and we cover your $500 excess. Every Southern Cross Wellbeing plan has a Nil-excess and a $500-excess version: identical cover, but the $500-excess one is cheaper. We put you on that version so you pay less, then cover the $500 excess ourselves, so you're never out of pocket.
+
+How much you save depends on where you're starting from, so the one thing I need to know is which of these is you:
+
+Already with Southern Cross — the easy one. We move you to the $500-excess version of your plan, you keep the exact same cover, and pocket the difference. The calculator shows it in seconds: https://boostwellbeing.co.nz/southern-cross-savings#calculator
+
+With another insurer — we can look at moving you across, but your saving depends on what you're paying now, and we'll check pre-existing conditions and stand-downs carefully before anything changes, so you don't lose cover you already rely on. A quick chat is the best way to see your real number.
+
+Not covered yet — no problem. You start on the lower-premium $500-excess plan and we cover the excess from day one.
+
+Just hit reply with which one you are (or call me on 021 720 710) and I'll take it from there — most people are sorted within a week. The advice costs you nothing; Southern Cross pays us, not you.
+
+Cheers,
+Ollie
+BoostWellbeing — same cover, lower premium
+021 720 710 · boostwellbeing.co.nz
+
+P.S. The figure in our ad is what my family saved (2 adults, 2 kids) — your saving depends on your situation, so use the calculator or call us now to find yours.
+
+---
+The saving is the difference between the Nil-excess and $500-excess premium on the same Southern Cross plan — it is not a switch between insurers, and figures are indicative only (not a quote or personalised advice; premiums are confirmed by Southern Cross on application). The $500 excess reimbursement is provided by BoostWellbeing (with Risk Solutions Ltd), not Southern Cross, and applies to your first eligible claim each policy year. Financial advice is provided by Risk Solutions Limited (FSP718392); disclosure at risksolutions.net.nz/about. Southern Cross Health Society is the insurer; BoostWellbeing is a distributor of its plans.
+
+Prefer I didn't follow up? Just reply and let me know.`;
+
+  const html = `<div style="font-family: Inter, Arial, Helvetica, sans-serif; font-size: 15px; color: #0F172A; line-height: 1.55; max-width: 600px;">
+<p>Hi ${greeting},</p>
+
+<p>Thanks for putting your hand up on Facebook. Here's how it works — it's simpler than it sounds.</p>
+
+<p>We get you the same Southern Cross cover for a lower premium — and we cover your $500 excess. Every Southern Cross Wellbeing plan has a Nil-excess and a $500-excess version: identical cover, but the $500-excess one is cheaper. We put you on that version so you pay less, then cover the $500 excess ourselves, so you're never out of pocket.</p>
+
+<p>How much you save depends on where you're starting from, so the one thing I need to know is which of these is you:</p>
+
+<p><strong>Already with Southern Cross</strong> — the easy one. We move you to the $500-excess version of your plan, you keep the exact same cover, and pocket the difference. The calculator shows it in seconds: <a href="https://boostwellbeing.co.nz/southern-cross-savings#calculator" style="color:#4D90DE;">boostwellbeing.co.nz/southern-cross-savings</a></p>
+
+<p><strong>With another insurer</strong> — we can look at moving you across, but your saving depends on what you're paying now, and we'll check pre-existing conditions and stand-downs carefully before anything changes, so you don't lose cover you already rely on. A quick chat is the best way to see your real number.</p>
+
+<p><strong>Not covered yet</strong> — no problem. You start on the lower-premium $500-excess plan and we cover the excess from day one.</p>
+
+<p>Just hit reply with which one you are (or call me on 021 720 710) and I'll take it from there — most people are sorted within a week. The advice costs you nothing; Southern Cross pays us, not you.</p>
+
+<p>Cheers,<br>
+Ollie<br>
+BoostWellbeing — same cover, lower premium<br>
+021 720 710 · <a href="https://boostwellbeing.co.nz" style="color:#4D90DE;">boostwellbeing.co.nz</a></p>
+
+<p>P.S. The figure in our ad is what my family saved (2 adults, 2 kids) — your saving depends on your situation, so use the calculator or call us now to find yours.</p>
+
+<hr style="border:none; border-top:1px solid #e2e8f0; margin:18px 0;">
+
+<p style="font-size: 12px; color: #64748b; line-height: 1.45;">The saving is the difference between the Nil-excess and $500-excess premium on the same Southern Cross plan — it is not a switch between insurers, and figures are indicative only (not a quote or personalised advice; premiums are confirmed by Southern Cross on application). The $500 excess reimbursement is provided by BoostWellbeing (with Risk Solutions Ltd), not Southern Cross, and applies to your first eligible claim each policy year. Financial advice is provided by Risk Solutions Limited (FSP718392); disclosure at risksolutions.net.nz/about. Southern Cross Health Society is the insurer; BoostWellbeing is a distributor of its plans.</p>
+
+<p style="font-size: 12px; color: #64748b;">Prefer I didn't follow up? Just reply and let me know.</p>
+</div>`;
+
+  try {
+    const resend = getResendClient();
+    const { error } = await resend.emails.send({
+      from,
+      to: email,
+      subject: 'Same Southern Cross cover, lower premium — here\'s how',
+      text: plainText,
+      html,
+    });
+    if (error) {
+      console.error('Resend error (Facebook auto-reply):', error);
+      return { success: false, error: error.message };
+    }
+    return { success: true };
+  } catch (err) {
+    console.error('Email send error (Facebook auto-reply):', err);
+    return { success: false, error: err instanceof Error ? err.message : 'Failed to send email' };
+  }
+}
+
 export async function sendPasswordResetEmail(
   email: string,
   resetToken: string,
