@@ -20,12 +20,30 @@ function validateHmacSignature(rawBody: string, signature: string, secret: strin
   }
 }
 
-function extractField(fieldData: Array<{ name: string; values: string[] }>, ...keys: string[]): string | null {
-  for (const key of keys) {
-    const field = fieldData.find((f) => f.name === key);
-    if (field?.values?.[0]) return field.values[0];
-  }
-  return null;
+type FieldData = Array<{ name: string; values: string[] }>;
+
+function firstValue(fd: FieldData, predicate: (name: string) => boolean): string | null {
+  return fd.find((f) => predicate(f.name.toLowerCase()) && f.values?.[0])?.values[0] ?? null;
+}
+
+function extractEmail(fd: FieldData): string | null {
+  const byName = firstValue(fd, (n) => n.includes('email'));
+  if (byName) return byName.trim().toLowerCase();
+  const byValue = fd.find((f) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.values?.[0] ?? ''));
+  return byValue ? byValue.values[0].trim().toLowerCase() : null;
+}
+
+function extractName(fd: FieldData): string | null {
+  const fullName = firstValue(fd, (n) => n === 'full_name' || n === 'full name');
+  if (fullName) return fullName;
+  const first = firstValue(fd, (n) => n === 'first_name' || n === 'first name');
+  const last = firstValue(fd, (n) => n === 'last_name' || n === 'last name');
+  if (first || last) return [first, last].filter(Boolean).join(' ');
+  return firstValue(fd, (n) => n.includes('name') && !n.includes('company') && !n.includes('business'));
+}
+
+function extractPhone(fd: FieldData): string | null {
+  return firstValue(fd, (n) => n === 'phone_number') ?? firstValue(fd, (n) => n.includes('phone'));
 }
 
 // ── GET — webhook verification ────────────────────────────────────────────────
@@ -124,10 +142,10 @@ async function processLeadgenEvent({
   const leadData: GraphLeadgenResponse = await graphRes.json();
   const fd = leadData.field_data ?? [];
 
-  // Extract fields — Meta uses various field name conventions
-  const fullName = extractField(fd, 'full_name', 'name', 'full name') ?? null;
-  const email = extractField(fd, 'email') ?? null;
-  const phone = extractField(fd, 'phone_number', 'phone', 'mobile_number') ?? null;
+  // Extract fields — key-agnostic over field_data
+  const fullName = extractName(fd);
+  const email = extractEmail(fd);
+  const phone = extractPhone(fd);
 
   // Insert with leadgen_id as idempotency key — UNIQUE constraint prevents duplicates
   const { error: insertError } = await supabaseAdmin.from('retail_leads').insert({
@@ -140,6 +158,7 @@ async function processLeadgenEvent({
     page_id: page_id ?? null,
     form_id: form_id ?? leadData.form_id ?? null,
     status: 'new',
+    raw_fields: leadData.field_data ?? null,
   });
 
   if (insertError) {
